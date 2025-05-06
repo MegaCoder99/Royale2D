@@ -28,8 +28,8 @@ public enum EditorEvent
 }
 
 // Unfortunately, XAML's parameter syntax is extremely verbose and clunky, particularly when you get to passing in arrays of stuff.
-// Thus we will take string CSV parameters and parse them into the actual enum values here implicitly. Implicit is bad, but XAML is worse
-// and if we were to design our own UI framework, we'd make our system not suck, unlike XAML, and not need the implictness here
+// Thus we will take string CSV parameters and parse them into the actual enum values here implicitly.
+// Implicit is bad, but I think it's the lesser of the two evils here...
 public class SideEffectConverters
 {
     public static RedrawData ParseXamlRedrawParameter(string parameter)
@@ -60,7 +60,7 @@ public class SideEffectConverters
         string[] pieces = parameter.Split(',');
         if (pieces.Length != 2)
         {
-            throw new Exception("Dirty and redraw parameter must be a string of length 3");
+            throw new Exception("Dirty and redraw parameter must be a CSV of length 2");
         }
         for (int i = 0; i < pieces.Length; i++)
         {

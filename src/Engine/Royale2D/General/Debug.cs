@@ -40,8 +40,6 @@ namespace Royale2D
 
         public static string quickStartMapName => Assets.maps.Keys.First();
         public static IntPoint quickStartPos = new IntPoint(300, 300);
-
-        //public static string quickStartMapName = "lightworld";
         //public static IntPoint quickStartPos = new IntPoint(2237, 2865);   // Ledge testing
 
         //public static IntPoint quickStartPos = new IntPoint(2797, 2574);   // Wide area testing
@@ -51,7 +49,7 @@ namespace Royale2D
 
         public static int cpuCount = 0;
         public static bool cpuAttack = false;
-        public static bool skipBattleBus => !FeatureGate.battlebus || false;
+        public static bool skipBattleBus => !FeatureGate.battlebus || true;
         public static int battleBusMaxTime = 30;
         public static bool debugStorm = false;
 

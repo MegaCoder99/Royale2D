@@ -11,6 +11,11 @@
     <DefineConstants>TRACE;WINDOWS</DefineConstants>
   </PropertyGroup>
 
+  <!-- Conditional OutputType for Release mode -->
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <OutputType>WinExe</OutputType>
+  </PropertyGroup>
+  
   <ItemGroup>
     <PackageReference Include="protobuf-net" Version="3.0.101" />
     <PackageReference Include="SFML.Net" Version="2.5.1" />

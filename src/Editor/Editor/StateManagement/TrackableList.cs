@@ -4,6 +4,8 @@ using System.Windows.Data;
 
 namespace Editor;
 
+// Avoid Add(), prefer one bulk Replace() or Append() if adding lots of items in a tight loop
+// Otherwise undo nodes/callbacks will be done for each which will be very slow
 public class TrackableList<T> : ObservableCollection<T>
 {
     private EditorEvent? changeEvent;

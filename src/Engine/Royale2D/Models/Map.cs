@@ -131,10 +131,8 @@ namespace Royale2D
                 tile.texture = textures[tile.imageFileName.Split('.')[0]];
             }
 
-            // ANOW0 exporter to populate. Before we do this, we'll want a streamlined way of mapping from editor contracts to engine objs
-            // Also, entrance relationships are in a similar boat. That leads to debate, should engine populate on import because it's relational data?
             // Populate indoor coordinate mappings to main for each non-main section
-            /*
+            // IMPROVE ideally, editor export would handle this
             Dictionary<string, GridZone> sectionNameToIndoorMapping = new Dictionary<string, GridZone>();
             foreach (MapSection mapSection in sections)
             {
@@ -166,7 +164,6 @@ namespace Royale2D
                 MapSection section = sections.First(s => s.name == sectionName);
                 section.indoorMappingToMain = gridZone.gridRect;
             }
-            */
 
             if (mainSection == null)
             {

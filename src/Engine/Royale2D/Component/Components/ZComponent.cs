@@ -41,6 +41,11 @@
             MoveZAndGetDelta();
         }
 
+        public Fd GetZAcc()
+        {
+            return useGravity ? (customGravity ?? Gravity) : zAcc;
+        }
+
         public override FdPoint GetRenderOffset()
         {
             return new FdPoint(0, -z);
@@ -50,7 +55,7 @@
         {
             Fd prevZ = z;
             
-            zVel += useGravity ? (customGravity ?? Gravity) : zAcc;
+            zVel += GetZAcc();
             z += zVel;
             var velComponent = actor.GetComponent<VelComponent>();
 

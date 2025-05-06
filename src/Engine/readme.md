@@ -2,7 +2,7 @@
 
 To run the engine code locally, open "Royale2D.sln", set Royale2D as startup if not already, and F5 or Ctrl+F5.
 
-This is a WIP and many custom assets (not provided) are required to enable a lot of the features under development. Otherwise, you'll load with a very basic, barebones player experience that tests the basics of exported sprites and maps. (i.e. a character with walk sprites that can walk around in an exported map file/tileset).
+This is a WIP and many custom assets (not provided) are required to enable a lot of the features under development. Otherwise, you'll load with a very basic, barebones player experience that tests the basics of exported sprites and maps. (i.e. a character with exported walk sprites that can walk around in an exported map file/tileset).
 
 ## Patterns
 
@@ -17,7 +17,7 @@ The folder structure is pretty simple and pragmatic:
 - This top-level folder has things like icon resources, build scripts, etc.
 - In Royale2D folder: all C# classes/code files except top-level "entry points" should be put in a folder describing a coherent feature set, module or category that code belongs to
 - If there isn't a folder where a code file makes sense to live (or if it'd only have a few classes in it tops), put it in the "General" folder until clear complex categories emerge.
-- Namespacing to be avoided. At least while under heavy development, I want classes to be fluid and easily moved to different folders as needs arise to adapt to changing dev designs and requirements.
+- Namespacing to be avoided. At least while the project is under heavy development, I want classes to be fluid and easily moved to different folders as needs arise to adapt to changing dev designs and requirements.
 
 ## Build
 

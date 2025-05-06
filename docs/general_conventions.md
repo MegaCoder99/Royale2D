@@ -13,15 +13,15 @@ Same as above, standard C# and no objections here.
 
 ## Field and Property Names camelCase, no matter the visibility
 
-This will be controversial, as it goes against the standard C# convention and practices. But I believe that in game dev, encapsulation isn't terribly important. Development speed (games are a ton of work and deadlines don't care), and performance (games do a lot and need to be fast), are more important, and besides, games tend to be massive real-time simulations of state that have lots of shared dependencies anyway. Oftentimes you'll constantly be shifting fields from public to protected to private, or vice versa. (Or from property to field or vice versa.) Every time you do that, you'd have to change the naming convention which is annoying. Your naming convention would be tied to details in your code that are constantly changing; better to just make these camelCase for consistency and to not have to worry about that and keep them in sync constantly. There are some "corner cases" of this convention:
-
 - For private fields with a public property, use `_field` for the private variable and `field` for the public property
 - For class constants and enums, still use PascalCase for these.
 - Use PascalCase for custom control properties in XAML (not data binding fields but actual custom properties like Text, etc), for consistency with other pre-defined XAML properties since you'll often be looking at them side-by-side with your custom ones
 
-Another reason for camelCase fields is consistency with C++, another widely used game dev language, since often time code needs to be ported between the two languages and C++ generally doesn't use PascalCase for fields. In general, most "C-style" languages use camelCase fields/class variables, and C# is kind of going against the mold here. Other languages like JS/TS also use camelCase and so say if your game or tool is ported to be run in web browser it'd make the transition easier.
+I understand this is a bit different from standard C# conventions which wants (public) fields to be capitalized. I like Java's conventions better for several reasons below.
 
-A third reason is that in JSON, camelCase is the convention for fields, and this makes C# model naming conventions consistent with JSON contents.
+One reason for camelCase fields is consistency with C++, another widely used game dev language, since often time code needs to be ported between the two languages and C++ generally doesn't use PascalCase for fields. In general, most "C-style" languages use camelCase fields/class variables, and C# is kind of going against the mold here. Other languages like JS/TS also use camelCase and so say if your game or tool is ported to be run in web browser it'd make the transition easier.
+
+Another reason is that in JSON, camelCase is the convention for fields, and this makes C# model naming conventions consistent with JSON contents.
 
 Finally, having capital field names can cause them to sometimes conflict with class names (which should always be PascalCase), if they are the same. Even if not, it does look a bit strange to have a `MyClass MyClass;` declaration.
 

@@ -56,4 +56,3 @@ More detailed documentation targeted to specific topics can be found in separate
 - [State Management](docs/state_management.md): Goes into the abstraction system I designed and built for supporting changes in WPF application state, such as data binding/re-rendering abstractions and undo/redo.
 - [MVVM](docs/mvvm.md): Goes into this codebase's implementation/take on WPF's MVVM (Model-View-ViewModel) pattern
 - [Naming Conventions And Patterns](docs/conventions_and_patterns.md)
-- [Tips And Gotchas](docs/conventions_and_patterns.md)

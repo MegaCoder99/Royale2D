@@ -152,6 +152,7 @@ namespace Royale2D
             return GetAllColliders().Where(c => c.isWallCollider).ToList();
         }
 
+        // Main means using the main collider only (usually only one of these)
         public List<ActorCollision> GetMainActorCollisions(FdPoint moveAmount)
         {
             return GetActorCollisions(moveAmount, GetWallColliders());
@@ -162,6 +163,7 @@ namespace Royale2D
             return GetActorCollisions(moveAmount, GetAllColliders());
         }
 
+        // Main means using the main collider only (usually only one of these)
         public List<TileCollision> GetMainTileCollisions(FdPoint moveAmount)
         {
             return GetTileCollisions(moveAmount, GetWallColliders());

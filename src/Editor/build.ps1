@@ -33,6 +33,9 @@ if ($EditorType -eq "se") {
         "SpriteEditor\readme_image.png",
         "SpriteEditor\readme.md"
     )
+    $BuildFilesToRemove = @(
+        "sample_sprite_workspace\workspace_config.json"
+    )
 }
 else {
     $OutputPath = "$OutputPath\Royale2D Map Editor"
@@ -41,6 +44,9 @@ else {
         "MapEditor\sample_map_workspace",
         "MapEditor\readme_image.png",
         "MapEditor\readme.md"
+    )
+    $BuildFilesToRemove = @(
+        "sample_map_workspace\workspace_config.json"
     )
 }
 
@@ -96,4 +102,13 @@ if ($LASTEXITCODE -eq 0) {
 } else {
     Write-Error "Build failed! Check the project configuration and output above."
     exit $LASTEXITCODE
+}
+
+# Remove unwanted files from final output
+foreach ($relativePath in $BuildFilesToRemove) {
+    $fullPath = Join-Path $OutputPath $relativePath
+    if (Test-Path $fullPath -PathType Leaf) {
+        Write-Output "Deleting excluded file '$relativePath'..."
+        Remove-Item $fullPath -Force
+    }
 }
