@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="Editor.FileFolderBrowserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Name="fileFolderBrowserControl">
+    <StackPanel>
+        <Label Content="{Binding Label, ElementName=fileFolderBrowserControl}" Padding="0 5 0 5"/>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox Grid.Column="0"
+                     Text="{Binding SelectedPath, ElementName=fileFolderBrowserControl}"
+                     Margin="0,0,5,0"
+                     VerticalContentAlignment="Center"/>
+
+            <Button Grid.Column="1"
+                    Content="Browse..."
+                    Padding="10,5"
+                    Click="BrowseButton_Click"/>
+        </Grid>
+    </StackPanel>
+</UserControl>

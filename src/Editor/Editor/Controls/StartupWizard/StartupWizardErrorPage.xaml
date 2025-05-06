@@ -1,0 +1,12 @@
+﻿<Page x:Class="Editor.StartupWizardErrorPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="{Binding PageTitle}">
+    <Grid>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="Error loading saved workspace:" FontSize="16" Width="580" Padding="10,0,10,0" Margin="0,0,0,20" TextWrapping="Wrap" />
+            <TextBlock Text="{Binding PagePrompt}" FontSize="16" Width="580" Padding="10,0,10,0" Margin="0,0,0,20" TextWrapping="Wrap" />
+            <StackPanel x:Name="ButtonContainer"/>
+        </StackPanel>
+    </Grid>
+</Page>

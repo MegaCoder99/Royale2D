@@ -1,0 +1,43 @@
+﻿<Window x:Class="MapEditor.ImportSectionDialog" 
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:local="clr-namespace:Editor" 
+        mc:Ignorable="d" 
+        Title="Import Section From Image" 
+        Width="450"
+        WindowStartupLocation="CenterScreen"
+        SizeToContent="Height"
+        WindowStyle="SingleBorderWindow" 
+        ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Margin="10">
+            <StackPanel>
+                <local:FileFolderBrowserControl x:Name="fileBrowserControl" Label="Select a png file to import as a section." />
+            </StackPanel>
+            <TextBlock TextWrapping="Wrap" Margin="0 10 0 5">
+                ATTENTION: After you press OK, the import process will run. A new section will be created and tiles will be bulk added to the tileset. Both these changes will be automatically saved, cannot be undo'd, and your undo history will be cleared. Consider backing up your workspace's tileset file first.
+            </TextBlock>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" 
+                    Orientation="Horizontal" 
+                    HorizontalAlignment="Left"
+                    Margin="10,0,10,15">
+            <Button x:Name="OkButton" 
+                    Content="OK" 
+                    Width="75" 
+                    Click="OkButton_Click" />
+            <Button Content="Cancel" 
+                    Width="75" 
+                    Margin="5,0,0,0" 
+                    Click="CancelButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

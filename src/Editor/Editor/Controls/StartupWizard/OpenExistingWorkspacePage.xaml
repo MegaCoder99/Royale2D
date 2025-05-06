@@ -1,0 +1,18 @@
+﻿<Page x:Class="Editor.OpenExistingWorkspacePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="clr-namespace:Editor"
+      Title="Open Existing Workspace">
+    <Grid>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock x:Name="promptTextBox" Text="Select a existing workspace folder to open." Grid.Row="0" Margin="10,10,10,0" TextWrapping="Wrap" />
+
+            <StackPanel Grid.Row="1" Margin="10">
+                <local:FileFolderBrowserControl x:Name="fileFolderBrowserControl" Width="550" Label="Workspace folder path" />
+            </StackPanel>
+
+            <Button Content="Submit" Click="Next_Click" Width="150" Margin="5"/>
+            <Button x:Name="backButton" Content="Back" Click="Back_Click" Width="150" Margin="5"/>
+        </StackPanel>
+    </Grid>
+</Page>

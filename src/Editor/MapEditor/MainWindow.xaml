@@ -1,0 +1,514 @@
+﻿<Window x:Class="MapEditor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Editor"
+        mc:Ignorable="d"
+        Title="Map Editor">
+    <Window.Resources>
+        <local:BooleanToVisibilityConverter x:Key="BoolToVisConverter"/>
+        <local:InvertedBooleanToVisibilityConverter x:Key="InvertedBoolToVisConverter"/>
+        <local:BoolInvertConverter x:Key="BoolInvertConverter"/>
+        <local:RedrawConverter x:Key="RedrawConverter"/>
+        <local:UndoConverter x:Key="UndoConverter"/>
+        <local:DirtyConverter x:Key="DirtyConverter"/>
+        <local:DirtyRedrawConverter x:Key="DirtyRedrawConverter"/>
+        <Style TargetType="Button">
+            <Setter Property="Padding" Value="10 0 10 0" />
+            <Setter Property="Height" Value="22" />
+        </Style>
+        <Style TargetType="TextBox">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsReadOnly, RelativeSource={RelativeSource Self}}" Value="True">
+                    <Setter Property="Background" Value="#f2f0f0" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="ScrollViewer">
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="local:ScrollViewerHelper.PreventFocusScroll" Value="True" />
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0">
+            <MenuItem Header="File">
+                <MenuItem Header="Save Workspace" Click="OnSaveAllClick" IsEnabled="{Binding canSaveAll}" />
+                <MenuItem Header="Export Workspace" Click="OnExportClick" />
+                <MenuItem Header="Undo" Click="OnUndoClick" IsEnabled="{Binding canUndo}" />
+                <MenuItem Header="Redo" Click="OnRedoClick" IsEnabled="{Binding canRedo}" />
+                <Separator />
+                <MenuItem Header="Recent Workspaces" ItemsSource="{Binding recentWorkspaces}">
+                    <MenuItem.ItemContainerStyle>
+                        <Style TargetType="MenuItem">
+                            <Setter Property="Header" Value="{Binding}" />
+                            <Setter Property="Padding" Value="0" />
+                            <Setter Property="Icon" Value="{x:Null}" />
+                            <EventSetter Event="Click" Handler="OnRecentWorkspaceClick" />
+                        </Style>
+                    </MenuItem.ItemContainerStyle>
+                </MenuItem>
+                <MenuItem Header="Change Workspace" Click="OnChangeWorkspaceClick" />
+                <MenuItem Header="Reload Workspace" Click="OnReloadWorkspaceClick" />
+                <Separator />
+                <MenuItem Header="Open Workspace In Explorer" Click="OnBrowseWorkspaceClick" />
+                <Separator />
+                <MenuItem Header="New Workspace" Click="OnNewWorkspaceClick" />
+                <Separator />
+                <MenuItem Header="Check Version" Click="OnCheckVersionClick" />
+            </MenuItem>
+            <MenuItem Header="{Binding workspaceLabel}" IsEnabled="False" />
+        </Menu>
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Margin="5 0 0 0">
+                    <!-- Map Sections Label and ListBox -->
+                    <Label Content="Map Sections" FontWeight="Bold" Padding="0 5 0 5" />
+                    <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+                        <Button Content="Add" Margin="0 0 5 0" Click="OnAddMapSectionClick" />
+                        <Button Content="Import" Margin="0 0 5 0" Click="OnImportMapSectionClick" />
+                    </StackPanel>
+                    
+                    <local:ListBoxWithFilter
+                        Title="Filter Map Sections:"
+                        ItemsSource="{Binding mapSectionsSC.mapSections, Mode=TwoWay}"
+                        SelectedItem="{Binding mapSectionsSC.selectedMapSection, Mode=TwoWay, Converter={StaticResource RedrawConverter}}"
+                        Filter="{Binding mapSectionsSC.sectionFilterText, Mode=TwoWay, Converter={StaticResource UndoConverter}}"
+                        Width="187" 
+                        Height="800">
+                        <local:ListBoxWithFilter.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding displayName}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </local:ListBoxWithFilter.ItemTemplate>
+                    </local:ListBoxWithFilter>
+
+                </StackPanel>
+
+                <StackPanel Width="205">
+                    
+                    <!-- Paint tile mode display -->
+                    <StackPanel Visibility="{Binding paintTileModeChecked, Converter={StaticResource BoolToVisConverter}}">
+                        <StackPanel>
+                            <Label Content="Paint Tile Hotkeys" FontWeight="Bold" Padding="5" />
+                            <TextBlock Margin="8 0 8 0" Text="{Binding Path=paintTileHotkeyDisplay}" />
+                        </StackPanel>
+
+                        <StackPanel>
+                            <Label Content="Paint Tile Tools" FontWeight="Bold" Padding="5" />
+                            <RadioButton Content="Select Tool" Margin="5 0 5 0" VerticalAlignment="Center" IsChecked="{Binding Path=mapSectionsSC.selectTileToolChecked, Mode=TwoWay}" />
+                            <RadioButton Content="Place Tool" Margin="5 0 5 0" VerticalAlignment="Center" IsChecked="{Binding Path=mapSectionsSC.placeTileToolChecked, Mode=TwoWay}" />
+                            <RadioButton Content="Erase Tool (F)" Margin="5 0 5 0" VerticalAlignment="Center" IsChecked="{Binding Path=mapSectionsSC.eraseTileToolChecked, Mode=TwoWay}" />
+                            <RadioButton Content="Fill Tool (G)" Margin="5 0 5 0" VerticalAlignment="Center" IsChecked="{Binding Path=mapSectionsSC.fillTileToolChecked, Mode=TwoWay}" />
+                        </StackPanel>
+
+                        <StackPanel>
+                            <Label Content="Paint Tile Toggles" FontWeight="Bold" Padding="5" />
+                            <CheckBox Content="Enable Tile Resize (R)" Margin="5 0 5 0" VerticalAlignment="Center" IsChecked="{Binding Path=toggleResizeTiles, Mode=TwoWay}" />
+                            <CheckBox Content="Enable Additive Select (A)" Margin="5 0 5 0" VerticalAlignment="Center" IsChecked="{Binding Path=toggleAdditiveSelect, Mode=TwoWay}" />
+                        </StackPanel>
+                    </StackPanel>
+
+                    <!-- Edit tile mode display -->
+                    <StackPanel Visibility="{Binding editTileDataModeChecked, Converter={StaticResource BoolToVisConverter}}">
+                        <Label Content="Edit Tile Data Hotkeys" FontWeight="Bold" Padding="5" />
+                        <TextBlock Margin="8 0 8 0" Text="{Binding Path=editTileDataHotkeyDisplay}" />
+                        <Label Visibility="{Binding hasPredefinedTileTags, Converter={StaticResource BoolToVisConverter}}"
+                               Content="Predefined Tile Tags" FontWeight="Bold" Padding="5" />
+                        <TextBox Visibility="{Binding hasPredefinedTileTags, Converter={StaticResource BoolToVisConverter}}" 
+                                 Margin="8 0 8 0" Text="{Binding Path=tileTags, Mode=OneWay}" IsReadOnly="True" FocusVisualStyle="{x:Null}" />
+
+                        <TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5 5" Padding="0 5 0 5" x:Name="clumpAnimTabControl">
+                            <!-- Tile clumps -->
+                            <TabItem Header="{Binding tileClumpSC.tileClumpLabel}">
+                                <StackPanel>
+                                    <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+                                        <Button Padding="5 0 5 0" Content="Add (T)" Margin="5 0 0 0" Click="OnAddTileClumpClick" IsEnabled="{Binding tileClumpSC.canAddTileClump}" />
+                                        <Button Content="Remove" Margin="4 0 0 0" Click="OnRemoveTileClumpClick" IsEnabled="{Binding tileClumpSC.canRemoveTileClump}" />
+                                        <Button Padding="5 0 5 0" Content="Sort ABC" Margin="4 0 0 0" Click="OnSortTileClumpClick" />
+                                    </StackPanel>
+                                    <ListBox MinHeight="20" MaxHeight="300" Margin="5 0 5 0" SelectionChanged="ScrollIntoViewHandlerInTab"
+                                             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                             ItemsSource="{Binding tileClumpSC.tileClumps, Mode=TwoWay}"
+                                             SelectedItem="{Binding tileClumpSC.selectedTileClump, Converter={StaticResource RedrawConverter}, Mode=TwoWay}">
+                                        <ListBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel>
+                                                    <TextBlock Text="{Binding name}"/>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ListBox.ItemTemplate>
+                                    </ListBox>
+                                </StackPanel>
+                            </TabItem>
+                            <!-- Second Tab -->
+                            <TabItem Header="{Binding tileAnimationSC.tileAnimationLabel}">
+                                <StackPanel>
+                                    <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+                                        <Button Padding="4 0 4 0" Content="Add From Cells (N)" Margin="5 0 0 0" Click="OnAddTileAnimationClick" IsEnabled="{Binding tileAnimationSC.canAddTileAnimation}" />
+                                        <Button Content="Remove" Margin="5 0 5 0" Click="OnRemoveTileAnimationClick" IsEnabled="{Binding canRemoveTileAnimation}" />
+                                    </StackPanel>
+                                    <ListBox MinHeight="20" MaxHeight="300" Margin="5 0 5 0" SelectionChanged="ScrollIntoViewHandlerInTab"
+                                             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                             ItemsSource="{Binding tileAnimationSC.tileAnimations, Mode=TwoWay}"
+                                             SelectedItem="{Binding tileAnimationSC.selectedTileAnimation, Converter={StaticResource RedrawConverter}, Mode=TwoWay}">
+                                        <ListBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel>
+                                                    <TextBlock Text="{Binding displayName}"/>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ListBox.ItemTemplate>
+                                    </ListBox>
+                                </StackPanel>
+                            </TabItem>
+                        </TabControl>
+                    </StackPanel>
+
+                    <!-- Edit entity mode display -->
+                    <StackPanel Visibility="{Binding editEntityModeChecked, Converter={StaticResource BoolToVisConverter}}">
+                        <StackPanel>
+                            <Label Content="Edit Entity Hotkeys" FontWeight="Bold" Padding="5" />
+                            <TextBlock Margin="8 0 8 0" Text="{Binding Path=editEntityHotkeyDisplay}" />
+                        </StackPanel>
+
+                        <Label Content="Zone Types" FontWeight="Bold" Padding="5" />
+                        <Button Content="Add to Selected Cells (S)" Click="OnAddZoneClick" VerticalAlignment="Center" Margin="5 0 5 0" IsEnabled="{Binding canAddZoneToSelection}"/>
+                        <ListBox Margin="5" MinHeight="20" MaxHeight="150" DisplayMemberPath="."
+                                 ItemsSource="{Binding zoneTypes}"
+                                 SelectedItem="{Binding selectedCreateZoneType, Converter={StaticResource UndoConverter}, Mode=TwoWay}" />
+
+                        <Label Content="Instance Types" FontWeight="Bold" Padding="5" />
+                        <Button Content="Add Selected (A)" Click="OnAddInstanceClick" VerticalAlignment="Center" Margin="5 0 5 0" />
+                        <ListBox Margin="5" MinHeight="20" MaxHeight="250" 
+                                 ItemsSource="{Binding instanceTypes}"
+                                 SelectedItem="{Binding selectedInstanceType, Converter={StaticResource UndoConverter}, Mode=TwoWay}" />
+
+                        <Label Content="Instances" FontWeight="Bold" Padding="5" />
+                        <ListBox Margin="5" MinHeight="20" MaxHeight="500" SelectionChanged="ScrollIntoViewHandler" DisplayMemberPath="listDisplayName"
+                                 ItemsSource="{Binding mapSectionsSC.selectedMapSection.instances, Mode=TwoWay}"
+                                 SelectedItem="{Binding mapSectionsSC.selectedMapSection.selectedInstance, Converter={StaticResource UndoConverter}, Mode=TwoWay}" />
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Vertical">
+                            <Label Content="Map Section Canvas" FontWeight="Bold" Padding="5" />
+                            <local:CanvasControl x:Name="mapCanvasControl" />
+                            <!--Layer + resize control for canvas-->
+                            <WrapPanel Orientation="Horizontal" Margin="0 5 0 2" MaxWidth="{Binding mapCanvasWidth}" HorizontalAlignment="Left">
+                                
+                                <!--Layer management-->
+                                <Label Content="Layers:" VerticalAlignment="Center" />
+                                <ItemsControl ItemsSource="{Binding mapSectionsSC.selectedMapSection.layers}">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel Orientation="Horizontal" />
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal" Margin="0">
+                                                <CheckBox Margin="0,6,0,0" ToolTip="Select/Unselect Layer" 
+                                                          IsChecked="{Binding isSelected, Converter={StaticResource RedrawConverter}, ConverterParameter='Container,Map'}" />
+                                                <Label Content="{Binding displayName}" />
+                                                <Button Style="{x:Null}" Content="⦾" FontSize="8" Foreground="Green" ToolTip="Select Only" Margin="0,2,4,0" Width="16" Height="16" Click="OnSelectLayerClick" />
+                                                <Button Style="{x:Null}" Content="🗙" FontSize="8" Foreground="Red" ToolTip="Delete" Margin="0,2,10,0" Width="16" Height="16" Click="OnRemoveLayerClick" />
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                                <Button Content="Add Layer" Click="OnAddLayerClick" Margin="0 0 10 0" VerticalAlignment="Center" />
+
+                                <!--Misc. Settings and Resize-->
+                                <CheckBox Content="Magenta Bg Color" VerticalAlignment="Center" Margin="20 0 0 0"
+                                          IsChecked="{Binding mapSectionsSC.magentaBgColor, Converter={StaticResource RedrawConverter}, ConverterParameter='Container,Map'}" />
+                                <CheckBox Content="Show Unselected Layers" VerticalAlignment="Center" Margin="20 0 0 0"
+                                          IsChecked="{Binding mapSectionsSC.showUnselectedLayers, Converter={StaticResource RedrawConverter}, ConverterParameter='Container,Map'}" />
+
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Map Section Size: " Padding="0 5 0 0" Margin="20 0 0 0" />
+                                    <TextBox Text="{Binding mapSectionsSC.selectedMapSection.displaySize, Mode=OneWay}" IsReadOnly="True" Height="22" Padding="0 2 0 0" />
+                                    <Button Content="Resize" Click="OnResizeMapSectionClick" Margin="5 0 5 0" VerticalAlignment="Center" />
+                                </StackPanel>
+
+                            </WrapPanel>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Visibility="{Binding hideScratchCanvas, Converter={StaticResource InvertedBoolToVisConverter}}">
+                            <Label Content="Scratch Section Canvas" FontWeight="Bold" Padding="5" />
+                            <local:CanvasControl x:Name="scratchCanvasControl" />
+                            <StackPanel Orientation="Horizontal" Margin="0 7 0 2">
+                                <!--Misc. Settings and Resize-->
+                                <Label Content="Scratch Section Size: " Padding="0 3 0 0" Margin="0 0 0 0" />
+                                <TextBox Text="{Binding scratchSectionsSC.selectedMapSection.displaySize, Mode=OneWay}" IsReadOnly="True" Height="22" Padding="0 2 0 0" />
+                                <Button Content="Resize" Click="OnResizeScratchSectionClick" Margin="5 0 5 0" VerticalAlignment="Center" />
+                                <CheckBox Content="Magenta Bg Color" VerticalAlignment="Center" Margin="20 0 0 0" 
+                                          IsChecked="{Binding scratchSectionsSC.magentaBgColor, Converter={StaticResource RedrawConverter}, ConverterParameter='Container,Scratch'}" />
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <Border Height="1" Background="LightGray" Margin="0 3 0 5" />
+                    
+                    <!-- Bottom Modebar for Save, Show Instances/Show Grid, etc. -->
+                    <StackPanel Orientation="Horizontal">
+                        <Button Content="Save" Click="OnSaveAllClick" VerticalAlignment="Center" Margin="0 0 5 0" IsEnabled="{Binding canSaveAll}" />
+                        <Button Content="Export" Click="OnExportClick" VerticalAlignment="Center" Margin="0 0 5 0" />
+                        <Button Content="Undo" Click="OnUndoClick" VerticalAlignment="Center" Margin="0 0 5 0" IsEnabled="{Binding canUndo}" />
+                        <Button Content="Redo" Click="OnRedoClick" VerticalAlignment="Center" Margin="0 0 5 0" IsEnabled="{Binding canRedo}" />
+                        <!--<Button Content="Debug" Click="OnDebugClick" VerticalAlignment="Center" Margin="0 0 5 0" />-->
+                        <Label Content="Show:" VerticalAlignment="Center" Margin="0 -2 5 0" />
+                        <CheckBox Content="Grid" VerticalAlignment="Center" Margin="0 0 5 0" IsChecked="{Binding showGrid, Converter={StaticResource RedrawConverter}}" />
+                        <CheckBox Content="Entities" VerticalAlignment="Center" Margin="0 0 5 0" IsChecked="{Binding showEntities, Converter={StaticResource RedrawConverter}}" />
+                        <CheckBox Content="Tile Hitboxes" VerticalAlignment="Center" Margin="0 0 5 0" IsChecked="{Binding showTileHitboxes, Converter={StaticResource RedrawConverter}, ConverterParameter='TileHighlight,All'}" />
+                        <CheckBox Content="Same Tiles" VerticalAlignment="Center" Margin="0 0 5 0" IsChecked="{Binding showSameTiles, Converter={StaticResource RedrawConverter}, ConverterParameter='TileHighlight,All'}" />
+                        <CheckBox Content="Tile Z Index" VerticalAlignment="Center" Margin="0 0 5 0" IsChecked="{Binding showTileZIndices, Converter={StaticResource RedrawConverter}, ConverterParameter='TileHighlight,All'}" />
+                        <CheckBox Content="Tile Animations" VerticalAlignment="Center" Margin="0 0 5 0" IsChecked="{Binding showTileAnimations, Converter={StaticResource RedrawConverter}, ConverterParameter='TileHighlight,All'}" />
+                        <CheckBox Content="Tile Clumps" VerticalAlignment="Center" Margin="0 0 5 0" IsChecked="{Binding showTileClumps, Converter={StaticResource RedrawConverter}, ConverterParameter='TileHighlight,All'}" />
+                        <Label Content="Show tiles with tag:" VerticalAlignment="Center" Margin="0 -2 0 0" />
+                        <TextBox Text="{Binding showTilesWithTagsText, Converter={StaticResource RedrawConverter}, ConverterParameter='TileHighlight,All'}" Width="75" VerticalAlignment="Center" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Mode" />
+                        <RadioButton Content="Paint Tiles" Margin="0 2 5 0" VerticalAlignment="Center" IsChecked="{Binding Path=paintTileModeChecked, Converter={StaticResource RedrawConverter}, Mode=TwoWay}" />
+                        <RadioButton Content="Edit Tile Data" Margin="0 2 5 0" VerticalAlignment="Center" IsChecked="{Binding Path=editTileDataModeChecked, Converter={StaticResource RedrawConverter}, Mode=TwoWay}" />
+                        <RadioButton Content="Edit Entities" Margin="0 2 5 0" VerticalAlignment="Center" IsChecked="{Binding Path=editEntityModeChecked, Converter={StaticResource RedrawConverter}, Mode=TwoWay}" />
+                        <Label Margin="20 0 0 0" Content="Script" VerticalAlignment="Center" />
+                        <TextBox x:Name="scriptTextBox" Width="200" Height="20" Margin="0 0 5 0" />
+                        <Button Content="Run Script" Click="OnRunScriptClick" VerticalAlignment="Center" Margin="0 0 25 0" />
+                        
+                        <StackPanel Orientation="Horizontal">
+                            <!--
+                            <Label Content="Selected Coords" Padding="0 5 5 0" />
+                            <TextBox Text="{Binding selectedCellSC.tileCoordsDisplayText, Mode=OneWay}" Width="75" Height="20" IsReadOnly="True" />
+                            -->
+                            <Label Content="Selected Grid Coords" Padding="5" />
+                            <TextBox Text="{Binding selectedCellSC.tileGridCoordsDisplayText, Mode=OneWay}" Width="75" Height="20" IsReadOnly="True" />
+                            <TextBlock x:Name="zoomLevelTextBlock" VerticalAlignment="Center"/>
+                            <Label Content="Mouse Clicked:" VerticalAlignment="Center"/>
+                            <TextBox IsReadOnly="True" Text="{Binding mouseClickedText}" Width="75" VerticalAlignment="Center"/>
+                            <Label Content="Color Clicked:" VerticalAlignment="Center"/>
+                            <TextBox IsReadOnly="True" Text="{Binding colorClickedText}" Width="75" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <Border Height="1" Background="LightGray" Margin="0 3 0 5" />
+                    
+                    <StackPanel Orientation="Horizontal">
+                        <!-- Selected tile data -->
+                        <StackPanel Orientation="Vertical" Margin="0 0 10 0" Visibility="{Binding selectedCellSC.showSelectedTileData, Converter={StaticResource BoolToVisConverter}}">
+                            <Label Content="Selected Tile Data" FontWeight="Bold" Padding="5" />
+
+                            <!-- Columns -->
+                            <StackPanel Orientation="Horizontal">
+                                <!-- Column 1-->
+                                <StackPanel Orientation="Vertical" Width="150" Margin="0 0 5 0">
+
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label Content="Tile Id" Width="75" Padding="5" />
+                                        <Label Content="Layer" Width="75" Margin="5 0" Padding="5" />
+                                    </StackPanel>
+                                    
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBox IsReadOnly="True" Width="75" Text="{Binding selectedCellSC.selectedTileId, Mode=OneWay}" />
+                                        <TextBox IsReadOnly="True" Margin="5 0" Width="70" Text="{Binding selectedCellSC.selectedTileLayer, Mode=OneWay}" />
+                                    </StackPanel>
+
+
+                                    <Label Content="Tags" Padding="5" Width="150" />
+                                    <TextBox Text="{Binding selectedCellSC.selectedTileTags}" />
+
+                                    <Label Content="Z Index Mask Color" Padding="5" />
+                                    <TextBox Text="{Binding selectedCellSC.selectedTileZMaskColor}" />
+                                </StackPanel>
+                                
+                                <!-- Column 2 -->
+                                <StackPanel Orientation="Vertical">
+                                    <Label Content="Hitbox" Padding="5" Width="150" />
+                                    <TextBox IsReadOnly="True" Text="{Binding selectedCellSC.selectedTileHitbox, Mode=OneWay}" />
+
+                                    <Label Content="Tile Animation Id" Padding="5" Width="150" />
+                                    <TextBox IsReadOnly="True" Text="{Binding selectedCellSC.selectedTileAnimationId, Mode=OneWay}" />
+
+                                    <Label Content="Tile Above Id" Padding="5" />
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBox Width="75" Text="{Binding selectedCellSC.selectedTileAboveId}" />
+                                        <CheckBox Content="Use same" IsChecked="{Binding selectedCellSC.selectedTileAboveIdIsSame}" Margin="2 2 0 0" />
+                                    </StackPanel>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <!-- Selected tile animation -->
+                        <StackPanel Orientation="Vertical" Margin="0 0 10 0" Width="300" Visibility="{Binding tileAnimationSC.showSelectedTileAnimation, Converter={StaticResource BoolToVisConverter}}">
+                            <Label Content="Selected Tile Animation" FontWeight="Bold" Padding="5" />
+                            <Label Content="Id" Padding="5" />
+                            <TextBox IsReadOnly="True" Text="{Binding tileAnimationSC.selectedTileAnimation.id, Mode=OneWay}" />
+                            <Label Content="Tile Ids" Padding="5" />
+                            <TextBox IsReadOnly="True" Text="{Binding tileAnimationSC.selectedTileAnimation.tileIdsDisplay, Mode=OneWay}" />
+                            <Label Content="Duration" Padding="5" />
+                            <TextBox Text="{Binding tileAnimationSC.selectedTileAnimation.duration, Converter={StaticResource DirtyConverter}, ConverterParameter='TileAnimation'}" />
+                        </StackPanel>
+
+                        <!-- Selected tile clump -->
+                        <StackPanel Orientation="Vertical" Margin="0 0 10 0" Width="300" Visibility="{Binding tileClumpSC.showSelectedTileClump, Converter={StaticResource BoolToVisConverter}}">
+                            <Label Content="Selected Tile Clump" FontWeight="Bold" Padding="5" />
+                            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                                <StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel Width="150" Margin="0 0 5 0">
+                                            <Label Content="Name" />
+                                            <TextBox Text="{Binding tileClumpSC.selectedTileClump.name, Converter={StaticResource DirtyConverter}, ConverterParameter='TileClump'}" />
+                                        </StackPanel>
+                                        <StackPanel Width="145">
+                                            <Label Content="Tags" />
+                                            <TextBox Text="{Binding tileClumpSC.selectedTileClump.tags, Converter={StaticResource DirtyConverter}, ConverterParameter='TileClump'}" />
+                                        </StackPanel>
+                                    </StackPanel>
+
+                                    <StackPanel Margin="0 0 5 0">
+                                        <Label Content="Transform Tile Clump Names" />
+                                        <TextBox Text="{Binding tileClumpSC.selectedTileClump.transformTileClumpNameCsv, Converter={StaticResource DirtyConverter}, ConverterParameter='TileClump'}" />
+                                    </StackPanel>
+
+                                    <Label Content="Properties" Padding="5" />
+                                    <TextBox Text="{Binding tileClumpSC.selectedTileClump.properties, Converter={StaticResource DirtyConverter}, ConverterParameter='TileClump'}"
+                                             AcceptsReturn="True" TextWrapping="Wrap" Height="40"/>
+
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label Content="Subsections" Padding="5" />
+                                        <Button Content="Add From Sel. Cells" Click="OnAddTcSubsectionClick" Margin="5 0 0 0" Height="20" />
+                                        <Button Content="Remove" Click="OnRemoveTcSubsectionClick" Margin="5 0 0 0" Height="20" />
+                                    </StackPanel>
+
+                                    <ListBox Margin="0 0 5 0" MinHeight="20"
+                                             ItemsSource="{Binding tileClumpSC.selectedTileClump.subsections, Mode=TwoWay}"
+                                             SelectedItem="{Binding tileClumpSC.selectedTileClump.selectedSubsection, Converter={StaticResource RedrawConverter}, Mode=TwoWay}">
+                                        <ListBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel>
+                                                    <TextBlock Text="{Binding displayName}"/>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ListBox.ItemTemplate>
+                                    </ListBox>
+                                </StackPanel>
+                            </ScrollViewer>
+                        </StackPanel>
+
+                        <!-- Selected instance properties -->
+                        <StackPanel Orientation="Vertical" Margin="0 0 10 0" Visibility="{Binding mapSectionsSC.selectedMapSection.showSelectedInstanceProperties, Converter={StaticResource BoolToVisConverter}}">
+                            <Label Content="Selected Instance Properties" FontWeight="Bold" Padding="5" />
+                            
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Name" Padding="5" />
+                                <TextBox Width="125" Height="20" Text="{Binding mapSectionsSC.selectedMapSection.selectedInstance.name, Converter={StaticResource DirtyRedrawConverter}}"/>
+                                <Label Content="Instance Type" Padding="5" />
+                                <TextBox IsReadOnly="True" Width="125" Height="20" Text="{Binding mapSectionsSC.selectedMapSection.selectedInstance.instanceType, Mode=OneWay}"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="X" Padding="5" />
+                                <local:NumericInputControl Value="{Binding mapSectionsSC.selectedMapSection.selectedInstance.pos.x, Converter={StaticResource DirtyRedrawConverter}}"/>
+                                <Label Content="Y" Padding="5" />
+                                <local:NumericInputControl Value="{Binding mapSectionsSC.selectedMapSection.selectedInstance.pos.y, Converter={StaticResource DirtyRedrawConverter}}" />
+                                <Label Content="Layer" Padding="5" />
+                                <local:NumericInputControl Value="{Binding mapSectionsSC.selectedMapSection.selectedInstance.layerIndex, Converter={StaticResource DirtyRedrawConverter}}" />
+                            </StackPanel>
+
+                            <!--Entrance-specific-->
+                            <StackPanel Orientation="Vertical" Visibility="{Binding mapSectionsSC.selectedMapSection.selectedInstance.isEntrance, Converter={StaticResource BoolToVisConverter}}">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Direction" Padding="5" />
+                                    <ComboBox Margin="0,0,5,0" VerticalAlignment="Center"
+                                              ItemsSource="{Binding entranceDirs}" 
+                                              SelectedItem="{Binding mapSectionsSC.selectedMapSection.selectedInstance.entranceData.direction, Converter={StaticResource DirtyRedrawConverter}}">
+                                    </ComboBox>
+                                    <Label Content="Custom Width" Padding="5" />
+                                    <TextBox Width="52" Height="20" Text="{Binding mapSectionsSC.selectedMapSection.selectedInstance.entranceData.width, Converter={StaticResource DirtyRedrawConverter}}"/>
+                                    <Label Content="Custom Height" Padding="5" />
+                                    <TextBox Width="52" Height="20" Text="{Binding mapSectionsSC.selectedMapSection.selectedInstance.entranceData.height, Converter={StaticResource DirtyRedrawConverter}}"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Vertical">
+                                <Label Content="Properties" Padding="5" />
+                                <TextBox Text="{Binding mapSectionsSC.selectedMapSection.selectedInstance.properties, Converter={StaticResource DirtyRedrawConverter}}"
+                                    AcceptsReturn="True"
+                                    TextWrapping="Wrap"
+                                    VerticalScrollBarVisibility="Auto"
+                                    HorizontalScrollBarVisibility="Disabled"     
+                                    Height="70" />
+                                <Label Content="{Binding mapSectionsSC.selectedMapSection.selectedInstance.propertyHelpText}" FontSize="11" />
+                            </StackPanel>
+                        </StackPanel>
+                        <!-- Selected zone-->
+                        <StackPanel Orientation="Vertical" Margin="0 0 10 0" Visibility="{Binding mapSectionsSC.selectedMapSection.showSelectedZoneProperties, Converter={StaticResource BoolToVisConverter}}">
+                            <Label Content="Selected Zone Properties" FontWeight="Bold" Padding="5" />
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Name" Padding="5" />
+                                <TextBox Width="125" Height="20" Text="{Binding mapSectionsSC.selectedMapSection.selectedZone.name, Converter={StaticResource DirtyRedrawConverter}}"/>
+                                <Label Content="Type" Padding="5" />
+                                <TextBox IsReadOnly="True" Width="125" Height="20" Text="{Binding mapSectionsSC.selectedMapSection.selectedZone.zoneType, Mode=OneWay}"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="X1" Padding="5" />
+                                <local:NumericInputControl Value="{Binding mapSectionsSC.selectedMapSection.selectedZone.x1, Converter={StaticResource DirtyRedrawConverter}}"/>
+                                <Label Content="Y1" Padding="5" />
+                                <local:NumericInputControl Value="{Binding mapSectionsSC.selectedMapSection.selectedZone.y1, Converter={StaticResource DirtyRedrawConverter}}" />
+                                <Label Content="X2" Padding="5" />
+                                <local:NumericInputControl Value="{Binding mapSectionsSC.selectedMapSection.selectedZone.x2, Converter={StaticResource DirtyRedrawConverter}}"/>
+                                <Label Content="Y2" Padding="5" />
+                                <local:NumericInputControl Value="{Binding mapSectionsSC.selectedMapSection.selectedZone.y2, Converter={StaticResource DirtyRedrawConverter}}" />
+                            </StackPanel>
+
+                            <StackPanel Orientation="Vertical">
+                                <Label Content="Properties" Padding="5" />
+                                <TextBox Text="{Binding mapSectionsSC.selectedMapSection.selectedZone.properties, Converter={StaticResource DirtyRedrawConverter}}"
+                                    AcceptsReturn="True"
+                                    TextWrapping="Wrap"
+                                    VerticalScrollBarVisibility="Auto"
+                                    HorizontalScrollBarVisibility="Disabled"     
+                                    Height="100" />
+                                <Label Content="{Binding mapSectionsSC.selectedMapSection.selectedZone.propertyHelpText}" FontSize="11" />
+                            </StackPanel>
+
+                        </StackPanel>
+                    </StackPanel>
+
+                </StackPanel>
+
+                <StackPanel>
+                    <!-- Map Sections Label and ListBox -->
+                    <Label Content="Scratch Sections" FontWeight="Bold" Padding="5" />
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="AddScratchSection" Margin="5 0 0 0" Content="Add" Click="OnAddScratchSectionClick" />
+                        <Button Content="Import" Margin="5 0 5 0" Click="OnImportScratchSectionClick" />
+                    </StackPanel>
+                    <ListBox Width="150" Height="484" Margin="5"
+                             ItemsSource="{Binding scratchSectionsSC.mapSections, Mode=TwoWay}" 
+                             SelectedItem="{Binding scratchSectionsSC.selectedMapSection, Converter={StaticResource RedrawConverter}, Mode=TwoWay}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding displayName}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <CheckBox Content="Hide Scratch Canvas" IsChecked="{Binding hideScratchCanvas}" Margin="5 0" />
+                </StackPanel>
+
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>

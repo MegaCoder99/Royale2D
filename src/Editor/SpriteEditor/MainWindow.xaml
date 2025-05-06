@@ -1,0 +1,320 @@
+﻿<Window x:Class="SpriteEditor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Editor"
+        mc:Ignorable="d"
+        Title="Sprite Editor">
+
+    <Window.Resources>
+        <local:BooleanToVisibilityConverter x:Key="BoolToVis"/>
+        <local:UndoConverter x:Key="UndoConverter"/>
+        <local:RedrawConverter x:Key="RedrawConverter"/>
+        <local:DirtyRedrawConverter x:Key="DirtyRedrawConverter"/>
+        <Style TargetType="Button">
+            <Setter Property="Padding" Value="10 0 10 0" />
+            <Setter Property="Height" Value="22" />
+        </Style>
+        <Style TargetType="TextBox">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsReadOnly, RelativeSource={RelativeSource Self}}" Value="True">
+                    <Setter Property="Background" Value="#f2f0f0" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="ScrollViewer">
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="local:ScrollViewerHelper.PreventFocusScroll" Value="True" />
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0">
+            <MenuItem Header="File">
+                <MenuItem Header="Save Workspace" Click="OnSaveAllClick" IsEnabled="{Binding canSaveAll}" />
+                <MenuItem Header="Export Workspace" Click="OnExportClick" />
+                <MenuItem Header="Undo" Click="OnUndoClick" IsEnabled="{Binding canUndo}" />
+                <MenuItem Header="Redo" Click="OnRedoClick" IsEnabled="{Binding canRedo}" />
+                <Separator />
+                <MenuItem Header="Recent Workspaces" ItemsSource="{Binding recentWorkspaces}">
+                    <MenuItem.ItemContainerStyle>
+                        <Style TargetType="MenuItem">
+                            <Setter Property="Header" Value="{Binding}" />
+                            <Setter Property="Padding" Value="0" />
+                            <Setter Property="Icon" Value="{x:Null}" />
+                            <EventSetter Event="Click" Handler="OnRecentWorkspaceClick" />
+                        </Style>
+                    </MenuItem.ItemContainerStyle>
+                </MenuItem>
+                <MenuItem Header="Change Workspace" Click="OnChangeWorkspaceClick" />
+                <MenuItem Header="Reload Workspace" Click="OnReloadWorkspaceClick" />
+                <MenuItem Header="New Workspace" Click="OnNewWorkspaceClick" />
+                <MenuItem Header="Open Workspace In Explorer" Click="OnBrowseWorkspaceClick" />
+                <Separator />
+                <MenuItem Header="Check Version" Click="OnCheckVersionClick" />
+            </MenuItem>
+            <MenuItem Header="{Binding workspaceLabel}" IsEnabled="False" />
+        </Menu>
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Vertical" Width="187" Margin="5">
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Sprites" FontWeight="Bold" FontSize="16"/>
+                        <Button Content="Add" Click="OnAddSpriteClick" />
+                    </StackPanel>
+                    <local:ListBoxWithFilter 
+                        Title="Filter Sprites:"
+                        ItemsSource="{Binding sprites, Mode=TwoWay}"
+                        SelectedItem="{Binding selectedSprite, Mode=TwoWay, Converter={StaticResource RedrawConverter}}"
+                        Filter="{Binding spriteFilterText, Mode=TwoWay, Converter={StaticResource UndoConverter}}"
+                        Width="187" 
+                        Height="800">
+                        <local:ListBoxWithFilter.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding displayName}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </local:ListBoxWithFilter.ItemTemplate>
+                    </local:ListBoxWithFilter>
+                </StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <local:CanvasControl x:Name="spriteCanvasControl" />
+                    <StackPanel Orientation="Horizontal" Margin="0 2 0 0">
+                        <Button Content="Save" Margin="0 0 5 0" Click="OnSaveAllClick" IsEnabled="{Binding canSaveAll}" />
+                        <Button Content="Export" Margin="0 0 5 0" Click="OnExportClick" />
+                        <Button Content="Undo" Margin="0 0 5 0" Click="OnUndoClick" IsEnabled="{Binding canUndo}" />
+                        <Button Content="Redo" Margin="0 0 5 0" Click="OnRedoClick" IsEnabled="{Binding canRedo}" />
+                        <!--<Button Content="Debug" Margin="0 0 5 0" Click="OnDebugClick" />-->
+                        <CheckBox Content="Hide gizmos" Margin="0 0 5 0" IsChecked="{Binding hideGizmos, Converter={StaticResource RedrawConverter}, ConverterParameter='Sprite'}" VerticalAlignment="Center" />
+                        <Label Margin="5 0 0 0" Content="Show Boxes With Tag:" VerticalAlignment="Center" />
+                        <TextBox Width="125" Height="20" Margin="0 0 5 0" Text="{Binding boxTagFilter, Converter={StaticResource RedrawConverter}, ConverterParameter='Sprite'}" />
+                        <Label Margin="20 0 0 0" Content="Script" VerticalAlignment="Center" />
+                        <TextBox x:Name="scriptTextBox" Width="100" Height="20" Margin="0 0 5 0" />
+                        <Button Content="Run Script" Margin="0 0 5 0" Click="OnRunScriptClick" VerticalAlignment="Center" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Spritesheet" />
+                        <ComboBox Height="22" ItemsSource="{Binding spritesheetNames}" SelectedItem="{Binding selectedSprite.spritesheetName, Converter={StaticResource DirtyRedrawConverter}, Mode=TwoWay}"/>
+                        <Label Content="Alignment" />
+                        <ComboBox Height="22" ItemsSource="{Binding alignments}" SelectedItem="{Binding selectedSprite.alignment, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Sprite', Mode=TwoWay}" />
+                        <Label Content="Wrap mode" />
+                        <ComboBox Height="22" ItemsSource="{Binding wrapModes}" SelectedItem="{Binding selectedSprite.wrapMode, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Sprite', Mode=TwoWay}" />
+                    </StackPanel>
+
+                    <!-- Hitbox/drawbox/POI section -->
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="500">
+                        <StackPanel>
+                            <!-- Global hitboxes -->
+                            
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Global Hitboxes" FontWeight="Bold" />
+                                <Button Content="Add" Click="OnAddGlobalHitboxClick" />
+                            </StackPanel>
+
+                            <ItemsControl ItemsSource="{Binding selectedSprite.hitboxes}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border BorderThickness="1" BorderBrush="{Binding border}" HorizontalAlignment="Left" VerticalAlignment="Top">
+                                            <StackPanel Orientation="Horizontal">
+                                                <Label Content="X1" />
+                                                <local:NumericInputControl Value="{Binding rect.x1, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Sprite'}" Width="60" Height="20" HorizontalAlignment="Left" />
+                                                <Label Content="Y1" />
+                                                <local:NumericInputControl Value="{Binding rect.y1, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Sprite'}" Width="60" Height="20" HorizontalAlignment="Left" />
+                                                <Label Content="X2" />
+                                                <local:NumericInputControl Value="{Binding rect.x2, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Sprite'}" Width="60" Height="20" HorizontalAlignment="Left" />
+                                                <Label Content="Y2" />
+                                                <local:NumericInputControl Value="{Binding rect.y2, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Sprite'}" Width="60" Height="20" HorizontalAlignment="Left" />
+                                                <Label Content="Tags" />
+                                                <TextBox Margin="0 0 5 0" Text="{Binding tags, Converter={StaticResource DirtyRedrawConverter}}" Width="60" Height="20" HorizontalAlignment="Left" />
+                                                <Button Margin="0 0 5 0" Click="OnSelectGlobalHitboxClick" Content="Select" />
+                                                <Button Margin="0 0 5 0" Click="OnRemoveGlobalHitboxClick" Content="Remove" />
+                                            </StackPanel>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+
+                            <!--Frame Hitboxes-->
+
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Frame Hitboxes" FontWeight="Bold" />
+                                <Button Content="Add" Click="OnAddFrameHitboxClick" />
+                            </StackPanel>
+
+                            <ItemsControl ItemsSource="{Binding selectedSprite.selectedFrame.hitboxes}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border BorderThickness="1" BorderBrush="{Binding border}" HorizontalAlignment="Left" VerticalAlignment="Top">
+                                            <StackPanel Orientation="Horizontal">
+                                                <Label Content="X1" />
+                                                <local:NumericInputControl Value="{Binding rect.x1, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Sprite'}" Width="60" Height="20" HorizontalAlignment="Left" />
+                                                <Label Content="Y1" />
+                                                <local:NumericInputControl Value="{Binding rect.y1, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Sprite'}" Width="60" Height="20" HorizontalAlignment="Left" />
+                                                <Label Content="X2" />
+                                                <local:NumericInputControl Value="{Binding rect.x2, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Sprite'}" Width="60" Height="20" HorizontalAlignment="Left" />
+                                                <Label Content="Y2" />
+                                                <local:NumericInputControl Value="{Binding rect.y2, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Sprite'}" Width="60" Height="20" HorizontalAlignment="Left" />
+                                                <Label Content="Tags" />
+                                                <TextBox Margin="0 0 5 0" Text="{Binding tags, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Sprite'}" Width="60" Height="20" HorizontalAlignment="Left" />
+                                                <Button Margin="0 0 5 0" Click="OnSelectFrameHitboxClick" Content="Select" />
+                                                <Button Margin="0 0 5 0" Click="OnRemoveFrameHitboxClick" Content="Remove" />
+                                            </StackPanel>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+
+                            <!-- Frame Drawboxes -->
+
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Frame Drawboxes" FontWeight="Bold" />
+                                <Button Content="Add" Click="OnAddFrameDrawboxClick" />
+                            </StackPanel>
+
+                            <ItemsControl ItemsSource="{Binding selectedSprite.selectedFrame.drawboxes}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border BorderThickness="1" BorderBrush="{Binding border}" HorizontalAlignment="Left" VerticalAlignment="Top">
+                                            <StackPanel Orientation="Horizontal">
+                                                <Label Content="X-pos" />
+                                                <local:NumericInputControl Value="{Binding pos.x, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Sprite'}" Width="60" Height="20" HorizontalAlignment="Left" />
+                                                <Label Content="Y-pos" />
+                                                <local:NumericInputControl Value="{Binding pos.y, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Sprite'}" Width="60" Height="20" HorizontalAlignment="Left" />
+                                                <Label Content="Tags" />
+                                                <TextBox Margin="0 0 5 0" Text="{Binding tags, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Sprite'}" Width="60" Height="20" HorizontalAlignment="Left" />
+                                                <Label Content="Z-Index" />
+                                                <local:NumericInputControl Value="{Binding zIndex, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Sprite'}" Width="60" Height="20" HorizontalAlignment="Left" />
+                                                <Button Margin="5 0 5 0" Click="OnSelectFrameDrawboxClick" Content="Select" />
+                                                <Button Margin="0 0 5 0" Click="OnEditFrameDrawboxClick" Content="Edit" />
+                                                <Button Margin="0 0 5 0" Click="OnCopyToAllFramesDrawboxClick" Content="Copy To All Frames" />
+                                                <Button Margin="0 0 5 0" Click="OnRemoveFrameDrawboxClick" Content="Remove" />
+                                            </StackPanel>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+
+                            <!-- Frame POIs -->
+
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Frame POIs" FontWeight="Bold" />
+                                <Button Content="Add" Click="OnAddFramePOIClick" />
+                            </StackPanel>
+
+                            <ItemsControl ItemsSource="{Binding selectedSprite.selectedFrame.POIs}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border BorderThickness="1" BorderBrush="{Binding border}" HorizontalAlignment="Left" VerticalAlignment="Top">
+                                            <StackPanel Orientation="Horizontal">
+                                                <Label Content="X" />
+                                                <local:NumericInputControl Value="{Binding x, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Sprite'}" Width="60" Height="20" HorizontalAlignment="Left" />
+                                                <Label Content="Y" />
+                                                <local:NumericInputControl Value="{Binding y, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Sprite'}" Width="60" Height="20" HorizontalAlignment="Left" />
+                                                <Label Content="Tags" />
+                                                <TextBox Margin="0 0 5 0" Text="{Binding tags, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Sprite'}" Width="60" Height="20" HorizontalAlignment="Left" />
+                                                <Button Margin="0 0 5 0" Click="OnSelectPOIClick" Content="Select" />
+                                                <Button Margin="0 0 5 0" Click="OnRemovePOIClick" Content="Remove" />
+                                            </StackPanel>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+                    </ScrollViewer>
+                    <!-- End Hitbox/drawbox/POI section -->
+                </StackPanel>
+                
+                <StackPanel Orientation="Vertical">
+                    <local:CanvasControl x:Name="spritesheetCanvasControl" />
+                    <StackPanel Orientation="Horizontal">
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0 2 0 0">
+                        <Button x:Name="playButton" Content="Play" Width="53" Click="OnPlayClick" />
+                        <Border Width="0" Background="Gray" VerticalAlignment="Stretch" Margin="15 0 8 0" />
+                        <Label Content="Set bulk duration"/>
+                        <local:NumericInputControl Value="{Binding bulkDuration}"  Width="60"/>
+                        <Button x:Name="bulkDurationApplyButton" Content="Apply" Width="53" Margin="5 0 0 0" Click="OnBulkDurationApplyClick" />
+                        <Border Width="0" Background="Gray" VerticalAlignment="Stretch" Margin="15 0 8 0" />
+                        <Label Content="Loop start frame"/>
+                        <local:NumericInputControl x:Name="loopStartFrameTextBox" Width="60"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="0 2 0 2">
+                        <Button Content="Add Frame (F)" Margin="0 0 0 0" Click="OnAddFrameClick" IsEnabled="{Binding canAddPendingFrame}" />
+                        <Button Content="Replace Frame (R)" Margin="5 0 0 0" Click="OnReplaceFrameClick" IsEnabled="{Binding canReplacePendingFrame}" />
+                        <!--<Button Content="Recompute Frame (P)" Margin="5 0 0 0" Click="OnRecomputeFrameClick" IsEnabled="{Binding canRecomputeSelectedFrame}" />-->
+                    </StackPanel>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="35" />
+                            <ColumnDefinition Width="58" />
+                            <ColumnDefinition Width="69" />
+                            <ColumnDefinition Width="70" />
+                            <ColumnDefinition Width="71" />
+                            <ColumnDefinition Width="66" />
+                            <ColumnDefinition Width="90" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20" />
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Text="Frame" FontWeight="Bold" Grid.Column="0" />
+                        <TextBlock Text="Duration" FontWeight="Bold" Grid.Column="2" />
+                        <TextBlock Text="X-off" FontWeight="Bold" Grid.Column="3" />
+                        <TextBlock Text="Y-off" FontWeight="Bold" Grid.Column="4" />
+                        <TextBlock Text="Tags" FontWeight="Bold" Grid.Column="5" />
+                        <TextBlock Text="Actions" FontWeight="Bold" Grid.Column="6" />
+                    </Grid>
+
+                    <ScrollViewer MaxHeight="445" VerticalScrollBarVisibility="Auto">
+                        <ItemsControl x:Name="framesItemsControl" ItemsSource="{Binding selectedSprite.frames}" AlternationCount="1000">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Width="450" HorizontalAlignment="Left" BorderThickness="1" BorderBrush="{Binding border}">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="35" />
+                                                <ColumnDefinition Width="58" />
+                                                <ColumnDefinition Width="69" />
+                                                <ColumnDefinition Width="70" />
+                                                <ColumnDefinition Width="71" />
+                                                <ColumnDefinition Width="66" />
+                                                <ColumnDefinition Width="90" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <!--<Label Grid.Column="0" FontWeight="Bold" Content="0" />-->
+                                            <Label FontWeight="Bold" Grid.Column="0" Content="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(ItemsControl.AlternationIndex)}" />
+
+                                            <StackPanel Grid.Column="1" Orientation="Horizontal">
+                                                <Button x:Name="selectFrame" Content="Select" Width="55" Height="25" Margin="0 0 4 0" Click="OnSelectFrameClick" />
+                                            </StackPanel>
+
+                                            <local:NumericInputControl Grid.Column="2" Value="{Binding duration, Converter={StaticResource DirtyRedrawConverter}}" Height="20" HorizontalAlignment="Left" />
+                                            <local:NumericInputControl Grid.Column="3" Value="{Binding offset.x, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Sprite'}" Height="20" HorizontalAlignment="Left" />
+                                            <local:NumericInputControl Grid.Column="4" Value="{Binding offset.y, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Sprite'}" Height="20" HorizontalAlignment="Left" />
+                                            <TextBox Grid.Column="5" Text="{Binding tags, Converter={StaticResource DirtyRedrawConverter}}" Width="60" Height="20" HorizontalAlignment="Left" />
+                                            <StackPanel Grid.Column="6" Orientation="Horizontal">
+                                                <Button Style="{x:Null}" Content="↑" ToolTip="Move Up" Width="22" Height="22" Margin="0 0 4 0" Click="OnMoveFrameUpClick" />
+                                                <Button Style="{x:Null}" Content="↓" ToolTip="Move Down" Width="22" Height="22" Margin="0 0 4 0" Click="OnMoveFrameDownClick" />
+                                                <Button Style="{x:Null}" Content="🗑" ToolTip="Delete" Width="22" Height="22" Margin="0 0 4 0" Click="OnDeleteFrameClick" />
+                                            </StackPanel>
+                                        </Grid>
+                                    </Border>
+
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>

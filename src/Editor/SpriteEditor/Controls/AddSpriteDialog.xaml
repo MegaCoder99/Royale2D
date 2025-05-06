@@ -1,0 +1,19 @@
+﻿<Window x:Class="SpriteEditor.AddSpriteDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Add Sprite" Width="300"
+        WindowStartupLocation="CenterScreen"
+        SizeToContent="Height"
+        WindowStyle="SingleBorderWindow" 
+        ResizeMode="NoResize">
+    <StackPanel Grid.Row="0" Margin="10">
+        <Label Margin="0,0,0,5" Content="Sprite Name"/>
+        <TextBox x:Name="InputTextBox" Margin="0,0,0,10" />
+        <Label Margin="0,0,0,5" Content="Spritesheet"/>
+        <ComboBox x:Name="SpritesheetComboBox" ItemsSource="{Binding spritesheetNames}" Margin="0,0,0,10" />
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="OkButton" Content="OK" Margin="0,0,5,0" Width="40" Click="OkButton_Click"/>
+            <Button x:Name="CancelButton" Content="Cancel" Width="60" Click="CancelButton_Click"/>
+        </StackPanel>
+    </StackPanel>
+</Window>

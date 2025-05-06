@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <UseWindowsForms>true</UseWindowsForms>
+    <TargetFramework>net8.0-windows7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Royale2D</RootNamespace>
+    <ApplicationIcon>..\logo.ico</ApplicationIcon>
+    <DefineConstants>TRACE;WINDOWS</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="protobuf-net" Version="3.0.101" />
+    <PackageReference Include="SFML.Net" Version="2.5.1" />
+    <PackageReference Include="SimpleTCP" Version="1.0.24" />
+    <PackageReference Include="SpaceWizards.Lidgren.Network" Version="0.2.7" />
+  </ItemGroup>
+
+  <Import Project="..\..\Shared\Shared.projitems" Label="Shared" />
+
+</Project>

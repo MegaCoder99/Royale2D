@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="Editor.NumericInputControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             d:DesignHeight="30" d:DesignWidth="100">
+    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+        <TextBox x:Name="NumberTextBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" Height="20" 
+                 Text="{Binding Value, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" LostFocus="NumberTextBox_LostFocus"/>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Right">
+            <Button x:Name="IncrementButton" Style="{x:Null}" Content="▲" Width="10" Height="10" FontSize="8" Click="IncrementButton_Click" IsTabStop="False" />
+            <Button x:Name="DecrementButton" Style="{x:Null}" Content="▼" Width="10" Height="10" FontSize="4" Click="DecrementButton_Click" IsTabStop="False" />
+        </StackPanel>
+    </StackPanel>
+</UserControl>

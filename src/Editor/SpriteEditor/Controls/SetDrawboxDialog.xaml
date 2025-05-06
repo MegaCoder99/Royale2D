@@ -1,0 +1,21 @@
+﻿<Window x:Class="SpriteEditor.SetDrawboxDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Add Drawbox" 
+        xmlns:local="clr-namespace:Editor"
+        Width="300"
+        WindowStartupLocation="CenterScreen"
+        SizeToContent="WidthAndHeight"
+        WindowStyle="SingleBorderWindow" 
+        ResizeMode="NoResize">
+    <StackPanel Grid.Row="0" Margin="10">
+        <Label Margin="0,0,0,5" Content="Spritesheet Path"/>
+        <ComboBox x:Name="spritesheetComboBox" ItemsSource="{Binding spritesheetNames}" Margin="0,0,0,5" SelectionChanged="OnSelectionChanged" />
+        <Label Margin="0,0,0,5" Content="Select a pixel clump in the image below:"/>
+        <local:CanvasControl x:Name="drawboxCanvasControl" Margin="0,0,0,10" />
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="OkButton" Content="OK" Margin="0,0,5,0" Width="40" Click="OkButton_Click"/>
+            <Button x:Name="CancelButton" Content="Cancel" Width="60" Click="CancelButton_Click"/>
+        </StackPanel>
+    </StackPanel>
+</Window>

@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>c84ae58c-0bcf-4ede-bfe6-9dd7ff4f3588</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Shared</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Enums.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FilePath.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FolderPath.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GridHelpers.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)JsonHelpers.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Workspaces\MapWorkspace.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\GridCoords.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\GridRect.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Map\InstanceModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Map\MapSectionLayerModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Map\MapSectionModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Map\Tile.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Map\TileAnimationModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Map\TileClumpModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Map\ZoneModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\MyPoint.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\MyRect.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Sprite\DrawboxModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Sprite\FrameModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Sprite\HitboxModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Sprite\POIModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Sprite\SpriteModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Sprite\SpritesheetModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MyMath.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SharedHelpers.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Workspaces\SpriteWorkspace.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Workspaces\IWorkspace.cs" />
+  </ItemGroup>
+</Project>

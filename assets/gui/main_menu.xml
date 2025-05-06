@@ -1,0 +1,19 @@
+<div id="root" image="MainMenu.png" width="256" height="224">
+
+  <vdiv id="skin-and-name" x="50%" y="85" valign="center" halign="center">
+    <image id="skin" width="16" height="12" valign="center" halign="center" />
+    <smalltext id="player-name" valign="center" halign="center" />
+  </vdiv>
+
+  <vdiv id="menu-options" x="40" y="110" spacing="10">
+    <text id="offline-match" text="Offline Match" />
+    <text id="online-match" text="Online Match" />
+    <text id="skins" text="Skins" />
+    <text id="controls" text="Controls" />
+    <text id="options" text="Options" />
+    <text id="quit" text="Options" />
+  </vdiv>
+
+  <image id="menu-option-image" x="130" y="115" />
+
+</div>

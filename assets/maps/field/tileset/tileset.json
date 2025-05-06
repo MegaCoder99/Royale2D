@@ -1,0 +1,1514 @@
+{
+  "0": {
+    "id": 0,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 261,
+      "y": 1
+    }
+  },
+  "9622": {
+    "id": 9622,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 711,
+      "y": 1
+    }
+  },
+  "9623": {
+    "id": 9623,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 721,
+      "y": 1
+    }
+  },
+  "9624": {
+    "id": 9624,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 741,
+      "y": 1
+    }
+  },
+  "9625": {
+    "id": 9625,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 771,
+      "y": 1
+    }
+  },
+  "9641": {
+    "id": 9641,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 671,
+      "y": 1
+    }
+  },
+  "9642": {
+    "id": 9642,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 761,
+      "y": 1
+    }
+  },
+  "9643": {
+    "id": 9643,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 321,
+      "y": 11
+    }
+  },
+  "9644": {
+    "id": 9644,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 731,
+      "y": 1
+    }
+  },
+  "9645": {
+    "id": 9645,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 751,
+      "y": 1
+    }
+  },
+  "9646": {
+    "id": 9646,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 661,
+      "y": 1
+    }
+  },
+  "9657": {
+    "id": 9657,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 691,
+      "y": 1
+    }
+  },
+  "9658": {
+    "id": 9658,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 651,
+      "y": 1
+    }
+  },
+  "9659": {
+    "id": 9659,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 621,
+      "y": 1
+    }
+  },
+  "9660": {
+    "id": 9660,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 631,
+      "y": 1
+    }
+  },
+  "9661": {
+    "id": 9661,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 641,
+      "y": 1
+    }
+  },
+  "9662": {
+    "id": 9662,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 681,
+      "y": 1
+    }
+  },
+  "9676": {
+    "id": 9676,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 701,
+      "y": 1
+    }
+  },
+  "9677": {
+    "id": 9677,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 491,
+      "y": 1
+    }
+  },
+  "11073": {
+    "id": 11073,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 121,
+      "y": 11
+    }
+  },
+  "11109": {
+    "id": 11109,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 61,
+      "y": 1
+    }
+  },
+  "11110": {
+    "id": 11110,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 51,
+      "y": 1
+    }
+  },
+  "11111": {
+    "id": 11111,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 11,
+      "y": 1
+    }
+  },
+  "11112": {
+    "id": 11112,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 41,
+      "y": 1
+    }
+  },
+  "11113": {
+    "id": 11113,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 271,
+      "y": 1
+    }
+  },
+  "11114": {
+    "id": 11114,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 21,
+      "y": 1
+    }
+  },
+  "11115": {
+    "id": 11115,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 1,
+      "y": 1
+    }
+  },
+  "11116": {
+    "id": 11116,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 71,
+      "y": 1
+    }
+  },
+  "11240": {
+    "id": 11240,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 31,
+      "y": 1
+    }
+  },
+  "11241": {
+    "id": 11241,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 321,
+      "y": 1
+    }
+  },
+  "11242": {
+    "id": 11242,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 601,
+      "y": 1
+    }
+  },
+  "11243": {
+    "id": 11243,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 281,
+      "y": 1
+    }
+  },
+  "11335": {
+    "id": 11335,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 931,
+      "y": 1
+    }
+  },
+  "11336": {
+    "id": 11336,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 461,
+      "y": 11
+    }
+  },
+  "11345": {
+    "id": 11345,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 971,
+      "y": 1
+    }
+  },
+  "11346": {
+    "id": 11346,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 501,
+      "y": 11
+    }
+  },
+  "11385": {
+    "id": 11385,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 311,
+      "y": 1
+    }
+  },
+  "11386": {
+    "id": 11386,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 581,
+      "y": 1
+    }
+  },
+  "11477": {
+    "id": 11477,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 941,
+      "y": 1
+    }
+  },
+  "11478": {
+    "id": 11478,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 951,
+      "y": 1
+    }
+  },
+  "11487": {
+    "id": 11487,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 1011,
+      "y": 1
+    }
+  },
+  "11488": {
+    "id": 11488,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 471,
+      "y": 11
+    }
+  },
+  "11526": {
+    "id": 11526,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 551,
+      "y": 1
+    }
+  },
+  "11527": {
+    "id": 11527,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 361,
+      "y": 1
+    }
+  },
+  "11621": {
+    "id": 11621,
+    "hitboxMode": 3,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 911,
+      "y": 1
+    }
+  },
+  "11622": {
+    "id": 11622,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 1,
+      "y": 11
+    }
+  },
+  "11623": {
+    "id": 11623,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 11,
+      "y": 11
+    }
+  },
+  "11624": {
+    "id": 11624,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 861,
+      "y": 1
+    }
+  },
+  "11627": {
+    "id": 11627,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 961,
+      "y": 1
+    }
+  },
+  "11628": {
+    "id": 11628,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 311,
+      "y": 11
+    }
+  },
+  "11629": {
+    "id": 11629,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 301,
+      "y": 11
+    }
+  },
+  "11630": {
+    "id": 11630,
+    "hitboxMode": 2,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 31,
+      "y": 11
+    }
+  },
+  "11668": {
+    "id": 11668,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 541,
+      "y": 1
+    }
+  },
+  "11669": {
+    "id": 11669,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 431,
+      "y": 1
+    }
+  },
+  "11670": {
+    "id": 11670,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 421,
+      "y": 1
+    }
+  },
+  "11671": {
+    "id": 11671,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 591,
+      "y": 1
+    }
+  },
+  "11672": {
+    "id": 11672,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 441,
+      "y": 1
+    }
+  },
+  "11673": {
+    "id": 11673,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 381,
+      "y": 1
+    }
+  },
+  "11761": {
+    "id": 11761,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 121,
+      "y": 1
+    }
+  },
+  "11762": {
+    "id": 11762,
+    "hitboxMode": 3,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 901,
+      "y": 1
+    }
+  },
+  "11763": {
+    "id": 11763,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 261,
+      "y": 11
+    }
+  },
+  "11764": {
+    "id": 11764,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 781,
+      "y": 1
+    }
+  },
+  "11767": {
+    "id": 11767,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 231,
+      "y": 11
+    }
+  },
+  "11768": {
+    "id": 11768,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 291,
+      "y": 11
+    }
+  },
+  "11769": {
+    "id": 11769,
+    "hitboxMode": 2,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 481,
+      "y": 11
+    }
+  },
+  "11770": {
+    "id": 11770,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 821,
+      "y": 1
+    }
+  },
+  "11806": {
+    "id": 11806,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 521,
+      "y": 1
+    }
+  },
+  "11807": {
+    "id": 11807,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 391,
+      "y": 1
+    }
+  },
+  "11808": {
+    "id": 11808,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 481,
+      "y": 1
+    }
+  },
+  "11809": {
+    "id": 11809,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 451,
+      "y": 1
+    }
+  },
+  "11810": {
+    "id": 11810,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 471,
+      "y": 1
+    }
+  },
+  "11811": {
+    "id": 11811,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 611,
+      "y": 1
+    }
+  },
+  "11812": {
+    "id": 11812,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 401,
+      "y": 1
+    }
+  },
+  "11813": {
+    "id": 11813,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 351,
+      "y": 1
+    }
+  },
+  "11942": {
+    "id": 11942,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 531,
+      "y": 1
+    }
+  },
+  "11943": {
+    "id": 11943,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 411,
+      "y": 1
+    }
+  },
+  "11944": {
+    "id": 11944,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 301,
+      "y": 1
+    }
+  },
+  "11945": {
+    "id": 11945,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 371,
+      "y": 1
+    }
+  },
+  "11946": {
+    "id": 11946,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 291,
+      "y": 1
+    }
+  },
+  "11947": {
+    "id": 11947,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 461,
+      "y": 1
+    }
+  },
+  "12058": {
+    "id": 12058,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 511,
+      "y": 1
+    }
+  },
+  "12059": {
+    "id": 12059,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 331,
+      "y": 1
+    }
+  },
+  "12060": {
+    "id": 12060,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 341,
+      "y": 1
+    }
+  },
+  "12061": {
+    "id": 12061,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 501,
+      "y": 1
+    }
+  },
+  "12126": {
+    "id": 12126,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 891,
+      "y": 1
+    }
+  },
+  "12127": {
+    "id": 12127,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 241,
+      "y": 11
+    }
+  },
+  "12226": {
+    "id": 12226,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 491,
+      "y": 11
+    }
+  },
+  "12227": {
+    "id": 12227,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 921,
+      "y": 1
+    }
+  },
+  "12935": {
+    "id": 12935,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 161,
+      "y": 1
+    }
+  },
+  "12936": {
+    "id": 12936,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 211,
+      "y": 1
+    }
+  },
+  "12937": {
+    "id": 12937,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 201,
+      "y": 1
+    }
+  },
+  "12938": {
+    "id": 12938,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 241,
+      "y": 1
+    }
+  },
+  "12939": {
+    "id": 12939,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 231,
+      "y": 1
+    }
+  },
+  "12940": {
+    "id": 12940,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 251,
+      "y": 1
+    }
+  },
+  "12941": {
+    "id": 12941,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 221,
+      "y": 1
+    }
+  },
+  "12942": {
+    "id": 12942,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 181,
+      "y": 1
+    }
+  },
+  "13039": {
+    "id": 13039,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 151,
+      "y": 1
+    }
+  },
+  "13040": {
+    "id": 13040,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 61,
+      "y": 11
+    }
+  },
+  "13041": {
+    "id": 13041,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 511,
+      "y": 11
+    }
+  },
+  "13042": {
+    "id": 13042,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 411,
+      "y": 11
+    }
+  },
+  "13043": {
+    "id": 13043,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 541,
+      "y": 11
+    }
+  },
+  "13044": {
+    "id": 13044,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 391,
+      "y": 11
+    }
+  },
+  "13045": {
+    "id": 13045,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 521,
+      "y": 11
+    }
+  },
+  "13046": {
+    "id": 13046,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 331,
+      "y": 11
+    }
+  },
+  "13129": {
+    "id": 13129,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 171,
+      "y": 1
+    }
+  },
+  "13130": {
+    "id": 13130,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 431,
+      "y": 11
+    }
+  },
+  "13131": {
+    "id": 13131,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 641,
+      "y": 11
+    }
+  },
+  "13132": {
+    "id": 13132,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 531,
+      "y": 11
+    }
+  },
+  "13133": {
+    "id": 13133,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 51,
+      "y": 11
+    }
+  },
+  "13134": {
+    "id": 13134,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 631,
+      "y": 11
+    }
+  },
+  "13135": {
+    "id": 13135,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 421,
+      "y": 11
+    }
+  },
+  "13136": {
+    "id": 13136,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 561,
+      "y": 1
+    }
+  },
+  "13217": {
+    "id": 13217,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 191,
+      "y": 1
+    }
+  },
+  "13218": {
+    "id": 13218,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 381,
+      "y": 11
+    }
+  },
+  "13219": {
+    "id": 13219,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 621,
+      "y": 11
+    }
+  },
+  "13220": {
+    "id": 13220,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 611,
+      "y": 11
+    }
+  },
+  "13221": {
+    "id": 13221,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 441,
+      "y": 11
+    }
+  },
+  "13222": {
+    "id": 13222,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 651,
+      "y": 11
+    }
+  },
+  "13223": {
+    "id": 13223,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 371,
+      "y": 11
+    }
+  },
+  "13224": {
+    "id": 13224,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 361,
+      "y": 11
+    }
+  },
+  "13257": {
+    "id": 13257,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 101,
+      "y": 11
+    }
+  },
+  "13258": {
+    "id": 13258,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 111,
+      "y": 11
+    }
+  },
+  "13293": {
+    "id": 13293,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 71,
+      "y": 11
+    }
+  },
+  "13294": {
+    "id": 13294,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 221,
+      "y": 11
+    }
+  },
+  "13295": {
+    "id": 13295,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 561,
+      "y": 11
+    }
+  },
+  "13296": {
+    "id": 13296,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 601,
+      "y": 11
+    }
+  },
+  "13297": {
+    "id": 13297,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 591,
+      "y": 11
+    }
+  },
+  "13298": {
+    "id": 13298,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 571,
+      "y": 11
+    }
+  },
+  "13299": {
+    "id": 13299,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 581,
+      "y": 11
+    }
+  },
+  "13300": {
+    "id": 13300,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 41,
+      "y": 11
+    }
+  },
+  "13317": {
+    "id": 13317,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 81,
+      "y": 11
+    }
+  },
+  "13318": {
+    "id": 13318,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 91,
+      "y": 11
+    }
+  },
+  "13353": {
+    "id": 13353,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 131,
+      "y": 1
+    }
+  },
+  "13354": {
+    "id": 13354,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 351,
+      "y": 11
+    }
+  },
+  "13355": {
+    "id": 13355,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 131,
+      "y": 11
+    }
+  },
+  "13356": {
+    "id": 13356,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 401,
+      "y": 11
+    }
+  },
+  "13357": {
+    "id": 13357,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 551,
+      "y": 11
+    }
+  },
+  "13358": {
+    "id": 13358,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 571,
+      "y": 1
+    }
+  },
+  "13359": {
+    "id": 13359,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 211,
+      "y": 11
+    }
+  },
+  "13360": {
+    "id": 13360,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 151,
+      "y": 11
+    }
+  },
+  "13410": {
+    "id": 13410,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 141,
+      "y": 1
+    }
+  },
+  "13411": {
+    "id": 13411,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 181,
+      "y": 11
+    }
+  },
+  "13412": {
+    "id": 13412,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 191,
+      "y": 11
+    }
+  },
+  "13413": {
+    "id": 13413,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 141,
+      "y": 11
+    }
+  },
+  "13414": {
+    "id": 13414,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 201,
+      "y": 11
+    }
+  },
+  "13415": {
+    "id": 13415,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 341,
+      "y": 11
+    }
+  },
+  "13416": {
+    "id": 13416,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 171,
+      "y": 11
+    }
+  },
+  "13417": {
+    "id": 13417,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 161,
+      "y": 11
+    }
+  },
+  "13549": {
+    "id": 13549,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 1001,
+      "y": 1
+    }
+  },
+  "13550": {
+    "id": 13550,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 851,
+      "y": 1
+    }
+  },
+  "13551": {
+    "id": 13551,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 841,
+      "y": 1
+    }
+  },
+  "13552": {
+    "id": 13552,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 831,
+      "y": 1
+    }
+  },
+  "13553": {
+    "id": 13553,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 871,
+      "y": 1
+    }
+  },
+  "13554": {
+    "id": 13554,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 791,
+      "y": 1
+    }
+  },
+  "13555": {
+    "id": 13555,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 881,
+      "y": 1
+    }
+  },
+  "13556": {
+    "id": 13556,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 271,
+      "y": 11
+    }
+  },
+  "13557": {
+    "id": 13557,
+    "hitboxMode": 5,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 91,
+      "y": 1
+    }
+  },
+  "13558": {
+    "id": 13558,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 251,
+      "y": 11
+    }
+  },
+  "13559": {
+    "id": 13559,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 101,
+      "y": 1
+    }
+  },
+  "13560": {
+    "id": 13560,
+    "hitboxMode": 5,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 81,
+      "y": 1
+    }
+  },
+  "13561": {
+    "id": 13561,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 451,
+      "y": 11
+    }
+  },
+  "13562": {
+    "id": 13562,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 21,
+      "y": 11
+    }
+  },
+  "13563": {
+    "id": 13563,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 981,
+      "y": 1
+    }
+  },
+  "13564": {
+    "id": 13564,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 281,
+      "y": 11
+    }
+  },
+  "13565": {
+    "id": 13565,
+    "hitboxMode": 1,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 991,
+      "y": 1
+    }
+  },
+  "13566": {
+    "id": 13566,
+    "hitboxMode": 4,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 801,
+      "y": 1
+    }
+  },
+  "13567": {
+    "id": 13567,
+    "hitboxMode": 4,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 811,
+      "y": 1
+    }
+  },
+  "13568": {
+    "id": 13568,
+    "hitboxMode": 0,
+    "imageFileName": "packaged.png",
+    "imageTopLeftPos": {
+      "x": 111,
+      "y": 1
+    }
+  }
+}

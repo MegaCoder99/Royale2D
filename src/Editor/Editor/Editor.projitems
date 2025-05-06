@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>2a5352a5-0c6a-4c1a-8076-84807ffde5d9</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Editor</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)ApplicationExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)BaseCanvas.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Config.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\ListBoxWithFilter.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>ListBoxWithFilter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\StartupWizard\CreateNewWorkspacePage.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>CreateNewWorkspacePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\StartupWizard\FirstTimeSetupPage.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>FirstTimeSetupPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\StartupWizard\OpenExistingWorkspacePage.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>OpenExistingWorkspacePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\StartupWizard\StartupWizardErrorPage.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>StartupWizardErrorPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\StartupWizard\StartupWizardNavigationWindow.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>StartupWizardNavigationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ImagePacker.cs" />
+    <Compile Include="..\Editor\BaseStartupFactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)BitmapHelpers\BitmapHelpers.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)BitmapHelpers\LockedBitmap.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CanvasTools\CanvasTool.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CanvasTools\PlaceTool.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CanvasTools\ResizeDir.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CanvasTools\ResizeTool.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CanvasTools\SelectTool.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\CanvasControl.xaml.cs">
+      <DependentUpon>CanvasControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\FileFolderBrowserControl.xaml.cs">
+      <DependentUpon>FileFolderBrowserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\NumericInputControl.xaml.cs">
+      <DependentUpon>NumericInputControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\OptionsDialog.xaml.cs">
+      <DependentUpon>OptionsDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\SelectFileFolderDialog.xaml.cs">
+      <DependentUpon>SelectFileFolderDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\TextInputDialog.xaml.cs">
+      <DependentUpon>TextInputDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)DpiHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Drawer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LaunchArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Logger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MyShape.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Prompt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ScreenHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Script.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ScriptManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ScrollViewHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)StateComponents\GridRectSC.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)StateComponents\PointSC.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)StateComponents\RectSC.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)StateManagement\CommitContext.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)StateManagement\EditorContext.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)StateManagement\IEditorState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)StateManagement\SideEffectConverters.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)StateManagement\StateComponent.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)StateManagement\Trackable.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)StateManagement\TrackableList.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)StateManagement\UndoManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UISizes.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WpfConverters.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\CanvasControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\FileFolderBrowserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\ListBoxWithFilter.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\NumericInputControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\OptionsDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\SelectFileFolderDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\StartupWizard\CreateNewWorkspacePage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\StartupWizard\FirstTimeSetupPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\StartupWizard\OpenExistingWorkspacePage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\StartupWizard\StartupWizardErrorPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\StartupWizard\StartupWizardNavigationWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\TextInputDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>

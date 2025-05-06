@@ -1,0 +1,88 @@
+<div id="root" width="256" height="224">
+
+  <vdiv id="health-magic" x="2" y="2" spacing="2">
+    <hdiv id="hearts" spacing="2" hidden="true">
+      <image id="heart" sprite="hud_heart"/>
+      <image id="heart" sprite="hud_heart"/>
+      <image id="heart" sprite="hud_heart"/>
+      <image id="heart" sprite="hud_heart"/>
+      <image id="heart" sprite="hud_heart"/>
+      <image id="heart" sprite="hud_heart"/>
+      <image id="heart" sprite="hud_heart"/>
+      <image id="heart" sprite="hud_heart"/>
+      <image id="heart" sprite="hud_heart"/>
+      <image id="heart" sprite="hud_heart"/>
+    </hdiv>
+    <image id="magic-meter" sprite="hud_magic_meter_big" />
+  </vdiv>
+
+  <hdiv x="136" y="2" id="inventory" spacing="2">
+    <image id="item1" sprite="hud_item_box" />
+    <image id="item2" sprite="hud_item_box" />
+    <image id="item3" sprite="hud_item_box" />
+    <image id="item4" sprite="hud_item_box" />
+    <image id="item5" sprite="hud_item_box" />
+  </hdiv>
+
+  <hdiv x="136" y="30">
+    <image id="kills" sprite="hud_kill" valign="center" />
+    <numbertext id="kills-text" text="99" valign="center" width="17" />
+
+    <image id="alive" sprite="hud_remaining" valign="center" />
+    <numbertext id="alive-text" text="99" valign="center" width="17" />
+
+    <image id="rupees" sprite="hud_rupee" valign="center" />
+    <numbertext id="rupees-text" text="999" valign="center" width="25" />
+
+    <image id="arrows" sprite="hud_arrows" valign="center" />
+    <numbertext id="arrows-text" text="99" valign="center" width="17" />
+  </hdiv>
+
+  <vdiv id="map-shown" x="254" y="222" halign="right" valign="bottom" hidden="true">
+    <image id="map" sprite="map_small" />
+    <smalltext id="hide-map" x="-70" y="-178" text="tab: hide map" />
+    <hdiv x="-30" y="-284">
+      <image id="clock" sprite="hud_clock" valign="center" />
+      <smalltext id="clock-text" text="1:30" valign="center" width="24" />
+    </hdiv>
+  </vdiv>
+
+  <vdiv id="map-hidden" x="254" y="222" hidden="true">
+    <smalltext id="show-map" text="tab: show map" halign="right" valign="bottom" />
+    <hdiv x="-30" y="-28">
+      <image id="clock" sprite="hud_clock" valign="center" />
+      <smalltext id="clock-text" text="1:30" valign="center" width="24" />
+    </hdiv>
+  </vdiv>
+
+  <vdiv id="chatfeed" x="2" y="25">
+    <hdiv id="chatfeed1"></hdiv>
+    <hdiv id="chatfeed2" y="10"></hdiv>
+    <hdiv id="chatfeed3" y="20"></hdiv>
+    <hdiv id="chatfeed4" y="30"></hdiv>
+    <hdiv id="chatfeed5" y="40"></hdiv>
+  </vdiv>
+
+  <vdiv id="killfeed" x="2" y="175">
+    <hdiv id="killfeed1"></hdiv>
+    <hdiv id="killfeed2" y="10"></hdiv>
+    <hdiv id="killfeed3" y="20"></hdiv>
+    <hdiv id="killfeed4" y="30"></hdiv>
+    <hdiv id="killfeed5" y="40"></hdiv>
+  </vdiv>
+
+  <vdiv id="alerts" x="50%" y="75">
+    <smalltext id="alert1" text="WARNING: Twilight now moving!" halign="center" />
+    <smalltext id="alert2" text="Not enough magic" halign="center" y="5" />
+  </vdiv>
+
+  <smalltext id="match-over-text" text="" halign="center" x="50%" y="180" />
+
+  <image id="text-box-image" sprite="hud_text_box" halign="center" x="50%" y="152" />
+  <vdiv id="text-box" halign="center" hidden="true" x="40" y="159" spacing="2">
+    <text id="line1" />
+    <text id="line2" />
+    <text id="line3" />
+  </vdiv>
+
+</div>

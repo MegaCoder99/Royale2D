@@ -1,0 +1,19 @@
+﻿<Page x:Class="Editor.CreateNewWorkspacePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="clr-namespace:Editor"
+      Title="Create New Workspace"
+      Width="600">
+    <Grid>
+        <StackPanel Width="560" Margin="20,10,20,0" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock x:Name="promptTextBox" Text="To create a new workspace, first select an empty folder. This will represent your workspace and contain all your workspace files." Grid.Row="0" TextWrapping="Wrap" />
+
+            <StackPanel Margin="0,10,20,10">
+                <local:FileFolderBrowserControl x:Name="fileFolderBrowserControl" Label="Workspace folder path" />
+            </StackPanel>
+
+            <Button Content="Next" Click="Next_Click" Width="150" Margin="5"/>
+            <Button x:Name="backButton" Content="Back" Click="Back_Click" Width="150" Margin="5"/>
+        </StackPanel>
+    </Grid>
+</Page>

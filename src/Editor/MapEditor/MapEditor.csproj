@@ -1,0 +1,64 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <ApplicationIcon>resources\logo.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <!-- Conditional OutputType for Release mode -->
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <OutputType>WinExe</OutputType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="resources\bucket_cursor.cur" />
+    <None Remove="resources\default_instance.png" />
+    <None Remove="resources\entrance.png" />
+    <None Remove="resources\eraser_cursor.cur" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="resources\logo.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Controls\FileFolderBrowserControl.xaml.cs">
+      <DependentUpon>FileFolderBrowserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Controls\ImportSectionDialog.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\InitialImportPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\ResizeMapDialog.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\SelectFileFolderDialog.xaml.cs">
+      <DependentUpon>SelectFileFolderDialog.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SkiaSharp" Version="2.88.9" />
+    <PackageReference Include="SkiaSharp.Views.WPF" Version="2.88.9" />
+    <PackageReference Include="System.Drawing.Common" Version="8.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="resources\bucket_cursor.cur" />
+    <Resource Include="resources\default_instance.png" />
+    <Resource Include="resources\entrance.png" />
+    <Resource Include="resources\eraser_cursor.cur" />
+  </ItemGroup>
+
+  <Import Project="..\Editor\Editor.projitems" Label="Shared" />
+
+  <Import Project="..\..\Shared\Shared.projitems" Label="Shared" />
+
+</Project>
