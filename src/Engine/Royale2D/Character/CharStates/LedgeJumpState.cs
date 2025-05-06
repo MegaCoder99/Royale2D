@@ -1,4 +1,5 @@
-﻿namespace Royale2D
+﻿
+namespace Royale2D
 {
     public class LedgeJumpState : CharState
     {
@@ -6,8 +7,8 @@
         IntPoint ledgeDir;
         int ledgeHeight;
         FdPoint startPos;
+        public FdPoint destPos;
         int freezeFrameIndex;
-        List<FdPoint3d> jumpPath;
 
         public LedgeJumpState(Character character, TileInstance tileInstance, CharState prevState) : base(character)
         {
@@ -15,163 +16,121 @@
             freezeFrameIndex = character.frameIndex == 0 ? 1 : character.frameIndex;
             this.prevState = prevState;
             enterSound = "fall";
-            startPos = character.pos;
             canEnterAsBunny = true;
             superArmor = true;
 
             ledgeDir = tileInstance.GetLedgeDir();
             ledgeHeight = tileInstance.GetTileLedgeHeight(ledgeDir.x, ledgeDir.y);
+            startPos = character.pos;
 
-            jumpPath = GetJumpPath(ledgeDir, ledgeHeight);
+            if (ledgeDir.x == 0 && ledgeDir.y > 0)
+            {
+                InitDownJump();
+            }
+            else if (ledgeDir.x != 0 && ledgeDir.y == 0)
+            {
+                InitSideJump(isDown: false);
+            }
+            else if (ledgeDir.x != 0 && ledgeDir.y > 0)
+            {
+                InitSideJump(isDown: true);
+            }
+            else if (ledgeDir.x == 0 && ledgeDir.y < 0)
+            {
+                InitUpJump(isSide: false);
+            }
+            else if (ledgeDir.x != 0 && ledgeDir.y < 0)
+            {
+                InitUpJump(isSide: true);
+            }
         }
 
         public override void Update()
         {
             base.Update();
-            character.frameSpeed = 0;
-            character.ChangeFrameIndex(freezeFrameIndex);
 
-            if (time >= jumpPath.Count)
+            if (character.zComponent.HasLanded())
             {
                 OnLand();
             }
+        }
+
+        public void InitDownJump()
+        {
+            destPos = startPos + (ledgeDir.ToFdPoint() * (ledgeHeight + Fd.New(3, 50)) * 8);
+        }
+
+        public void OnEnterDownJump()
+        {
+            character.pos = destPos;
+            character.zComponent.z = destPos.y - startPos.y;
+            character.zComponent.zVel = Fd.New(0, 75);
+            character.zComponent.useGravity = true;
+        }
+
+        public void InitSideJump(bool isDown)
+        {
+            destPos.x = startPos.x + (ledgeDir.x * (ledgeHeight + Fd.New(3, 50)) * 8);
+
+            destPos.y = isDown ?
+                startPos.y + (ledgeHeight + Fd.New(3, 50)) * 8 :
+                startPos.y + ledgeHeight * 8;
+        }
+
+        public void OnEnterSideJump(bool isDown)
+        {
+            character.pos.y = destPos.y;
+            character.zComponent.z = destPos.y - startPos.y;
+            character.zComponent.zVel = 1;
+            character.zComponent.useGravity = true;
+
+            // We need to calculate the amount of time it will take for char to fall to ground to determine the right xVel to reach destPos.x at the exact right time
+            Fd? timeToFall = TimeToGround(character.zComponent.z, character.zComponent.zVel, character.zComponent.GetZAcc());
+
+            character.velComponent.vel.x = (destPos.x - startPos.x) / timeToFall!.Value;
+        }
+
+        public void InitUpJump(bool isSide)
+        {
+            destPos = !isSide ?
+                startPos + (ledgeDir.ToFdPoint() * (ledgeHeight + Fd.New(3, 50)) * 8) :
+                startPos + (ledgeDir.ToFdPoint() * (ledgeHeight + 3) * 8);
+        }
+
+        public void OnEnterUpJump(bool isSide)
+        {
+            character.zComponent.zVel = Fd.New(1, 75);
+            character.zComponent.useGravity = true;
+
+            Fd? timeToFall = TimeToGround(character.zComponent.z, character.zComponent.zVel, character.zComponent.GetZAcc());
+
+            if (!isSide)
+            {
+                Fd moveVel = (destPos.y - startPos.y) / timeToFall!.Value;
+                character.velComponent.vel.y = moveVel;
+            }
             else
             {
-                character.pos.x += jumpPath[time].x;
-                character.pos.y += jumpPath[time].y;
-                character.zComponent.z += jumpPath[time].z;
+                character.velComponent.vel = (destPos - startPos) / timeToFall!.Value;
             }
         }
 
-        // PERF pre-computing is done all at once in one frame and may spike the CPU for a moment
-        public List<FdPoint3d> GetJumpPath(IntPoint ledgeDir, int height)
+        // Deterime the amount of time it will take to hit the ground given initial z position, initial z vel, and gravity, using physics kinematic equations
+        public static Fd? TimeToGround(Fd initialZPos, Fd initialZVel, Fd gravity)
         {
-            int xDir = ledgeDir.x;
-            int yDir = ledgeDir.y;
-
-            Fd maxDist;
-            FdPoint destPoint;
-            bool teleportDown = false;
-
-            Fd tilesLeftOrRight = ledgeDir.x * height;
-            Fd tilesUpOrDown = ledgeDir.y * height;
-
-            bool upLeft = false;
-            Fd gravity = Fd.New(0, 10);
-
-            Fd zVel = 0;
-            Fd z = 0;
-            FdPoint vel = FdPoint.Zero;
-
-            //Up left/right
-            if ((xDir == -1 && yDir == -1) || (xDir == 1 && yDir == -1))
+            gravity *= -1;
+            if (gravity <= 0)
             {
-                upLeft = true;
+                return null;
             }
-            //Up
-            else if (xDir == 0 && yDir == -1)
+            Fd discriminant = (initialZVel * initialZVel) + (2 * gravity * initialZPos);
+            if (discriminant < 0)
             {
-                tilesUpOrDown *= Fd.New(1, 13);
+                // No real solution — won't hit ground
+                return null;
             }
-            //down
-            else if (xDir == 0 && yDir == 1)
-            {
-                teleportDown = true;
-                zVel = 1;
-            }
-            //Sides
-            else if ((xDir == -1 && yDir == 0) || (xDir == 1 && yDir == 0))
-            {
-                teleportDown = true;
-                zVel = 1;
-                tilesLeftOrRight *= Fd.New(1, 25);
-                tilesUpOrDown = (tilesLeftOrRight.abs * Fd.New(0, 63));
-            }
-            //down left / right
-            else
-            {
-                teleportDown = true;
-                zVel = 1;
-                tilesLeftOrRight *= Fd.New(1, 13);
-                tilesUpOrDown = tilesLeftOrRight.abs;
-            }
-
-            FdPoint pos = FdPoint.Zero;
-            FdPoint offset = new FdPoint(tilesLeftOrRight * 8, tilesUpOrDown * 8);
-            destPoint = pos + offset.IncMag(8);
-
-            if (teleportDown)
-            {
-                z = destPoint.y - pos.y;
-                pos.y = destPoint.y;
-                Fd v = zVel;
-                Fd g = gravity;
-                Fd d = z;
-                LongFd valToSqrt = (v.longFd * v.longFd) + (2 * g.longFd * d.longFd);
-                Fd t = (v + NetcodeSafeMath.Sqrt(valToSqrt)) / g;
-                Fd velX = (pos.x - destPoint.x).abs / t;
-                vel.x = velX * tilesLeftOrRight.sign;
-                maxDist = 0;
-            }
-            else
-            {
-                Fd speed = 1;
-                if (upLeft) speed = Fd.OnePoint5;
-                Fd dist = pos.DistanceTo(destPoint);
-                Fd t = dist / speed;
-                zVel = Fd.Point5 * gravity * t;
-                z = Fd.Point1;
-                vel = pos.DirTo(destPoint) * speed;
-                maxDist = pos.DistanceTo(destPoint);
-            }
-
-            var points = new List<FdPoint3d>();
-            points.Add(new FdPoint3d(pos.x, pos.y, z));
-
-            Fd distTravelled = 0;
-            bool once = false;
-
-            while (true)
-            {
-                Fd MoveZAndGetDelta()
-                {
-                    Fd prevZ = z;
-                    z += zVel;
-                    zVel -= gravity;
-                    if (z < 0) z = 0;
-                    return z - prevZ;
-                };
-
-                MoveZAndGetDelta();
-                FdPoint moveAmount = vel;
-                pos += moveAmount;
-
-                points.Add(new FdPoint3d(pos.x, pos.y, z));
-
-                Fd inc = vel.Magnitude();
-                distTravelled += inc;
-                if (!once && (distTravelled > maxDist - inc || maxDist == 0))
-                {
-                    once = true;
-                    if (!teleportDown) vel = FdPoint.Zero;
-                    if (!teleportDown) pos = destPoint;
-                }
-                if (once && z == 0)
-                {
-                    break;
-                }
-            }
-
-            var diffPoints = new List<FdPoint3d>();
-            diffPoints.Add(points[0]);
-            for (int i = 1; i < points.Count; i++)
-            {
-                var oldPoint = points[i - 1];
-                var newPoint = points[i];
-                diffPoints.Add(new FdPoint3d(newPoint.x - oldPoint.x, newPoint.y - oldPoint.y, newPoint.z - oldPoint.z));
-            }
-
-            return diffPoints;
+            Fd time = (initialZVel + NetcodeSafeMath.Sqrt(discriminant.longFd)) / gravity;
+            return time >= 0 ? time : null;
         }
 
         public void OnLand()
@@ -210,6 +169,29 @@
             character.zComponent = character.ResetComponent(new ZComponent(character));
             character.wadeComponent.disabled = true;
             character.colliderComponent.disableWallCollider = true;
+            character.frameSpeed = 0;
+            character.ChangeFrameIndex(freezeFrameIndex);
+
+            if (ledgeDir.x == 0 && ledgeDir.y > 0)
+            {
+                OnEnterDownJump();
+            }
+            else if (ledgeDir.x != 0 && ledgeDir.y == 0)
+            {
+                OnEnterSideJump(isDown: false);
+            }
+            else if (ledgeDir.x != 0 && ledgeDir.y > 0)
+            {
+                OnEnterSideJump(isDown: true);
+            }
+            else if (ledgeDir.x == 0 && ledgeDir.y < 0)
+            {
+                OnEnterUpJump(isSide: false);
+            }
+            else if (ledgeDir.x != 0 && ledgeDir.y < 0)
+            {
+                OnEnterUpJump(isSide: true);
+            }
         }
 
         public override void OnExit()

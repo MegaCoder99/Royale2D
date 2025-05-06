@@ -134,6 +134,7 @@ namespace Royale2D
             return td1?.hitboxMode != TileHitboxMode.FullTile && td2?.hitboxMode == TileHitboxMode.None;
         }
 
+        // Returns the number of tiles with FullTile collision mode in the xDir and yDir specified assuming this TileInstance is a ledge tile
         public int GetTileLedgeHeight(int xDir, int yDir)
         {
             int height = 0;
@@ -162,7 +163,7 @@ namespace Royale2D
                 if (!solidTileFound) break;
             }
 
-            return height + 2;
+            return height;
         }
 
         public bool CanLedgeJump()
@@ -170,7 +171,7 @@ namespace Royale2D
             IntPoint ledgeDir = GetLedgeDir();
             if (ledgeDir.IsZero()) return false;
             int tileHeight = GetTileLedgeHeight(ledgeDir.x, ledgeDir.y);
-            if (tileHeight <= 2) return false;
+            if (tileHeight <= 0) return false;
             return true;
         }
 

@@ -66,9 +66,10 @@
                 lastLedgeHitFrames++;
                 if (lastLedgeHitFrames >= LedgeJumpFrameRequirement)
                 {
-                    if (FeatureGate.ledgeJump)
+                    var ledgeJumpState = new LedgeJumpState(character, lastLedgeHit!.Value, character.charState);
+                    if (character.colliderComponent.GetMainTileCollisions(ledgeJumpState.destPos - character.pos).Count == 0)
                     {
-                        character.ChangeState(new LedgeJumpState(character, lastLedgeHit!.Value, character.charState));
+                        character.ChangeState(ledgeJumpState);
                     }
                     lastLedgeHitFrames = 0;
                     lastLedgeHit = null;

@@ -17,10 +17,12 @@ public class InstanceTypes
     [
         Entrance,
         Generic,
+        Fairy,
+        BigFairy,
         WorldNumber,
         FightersSword,
         ShopItem,
-        Npc
+        Npc,
     ];
 
     public static InstanceType GetInstanceTypeObj(string instanceTypeName)

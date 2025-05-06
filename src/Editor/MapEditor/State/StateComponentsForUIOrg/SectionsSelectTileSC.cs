@@ -188,17 +188,20 @@ public partial class SectionsSC
         {
             if (alwaysAddMode || IsSelectAddModeOn())
             {
+                List<GridCoords> copiedSelectedTileCoords = new List<GridCoords>(selectedTileCoords);
+                HashSet<GridCoords> selectedTileCoordsHash = new HashSet<GridCoords>(copiedSelectedTileCoords);
                 foreach (GridCoords newSelectedCell in newSelectedCells)
                 {
-                    if (!selectedTileCoords.Contains(newSelectedCell))
+                    if (!selectedTileCoordsHash.Contains(newSelectedCell))
                     {
-                        selectedTileCoords.Add(newSelectedCell);
+                        copiedSelectedTileCoords.Add(newSelectedCell);
                     }
                     else if (removeIfAdded)
                     {
-                        selectedTileCoords.Remove(newSelectedCell);
+                        copiedSelectedTileCoords.Remove(newSelectedCell);
                     }
                 }
+                selectedTileCoords.Replace(copiedSelectedTileCoords);
             }
             else
             {

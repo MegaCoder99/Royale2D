@@ -91,9 +91,9 @@
                         <Button Content="Undo" Margin="0 0 5 0" Click="OnUndoClick" IsEnabled="{Binding canUndo}" />
                         <Button Content="Redo" Margin="0 0 5 0" Click="OnRedoClick" IsEnabled="{Binding canRedo}" />
                         <!--<Button Content="Debug" Margin="0 0 5 0" Click="OnDebugClick" />-->
-                        <CheckBox Content="Hide gizmos" Margin="0 0 5 0" IsChecked="{Binding hideGizmos, Converter={StaticResource RedrawConverter}, ConverterParameter='Sprite'}" VerticalAlignment="Center" />
+                        <CheckBox Content="Hide gizmos" Margin="0 0 5 0" IsChecked="{Binding hideGizmos, Converter={StaticResource RedrawConverter}, ConverterParameter='Default,Sprite'}" VerticalAlignment="Center" />
                         <Label Margin="5 0 0 0" Content="Show Boxes With Tag:" VerticalAlignment="Center" />
-                        <TextBox Width="125" Height="20" Margin="0 0 5 0" Text="{Binding boxTagFilter, Converter={StaticResource RedrawConverter}, ConverterParameter='Sprite'}" />
+                        <TextBox Width="125" Height="20" Margin="0 0 5 0" Text="{Binding boxTagFilter, Converter={StaticResource RedrawConverter}, ConverterParameter='Default,Sprite'}" />
                         <Label Margin="20 0 0 0" Content="Script" VerticalAlignment="Center" />
                         <TextBox x:Name="scriptTextBox" Width="100" Height="20" Margin="0 0 5 0" />
                         <Button Content="Run Script" Margin="0 0 5 0" Click="OnRunScriptClick" VerticalAlignment="Center" />
@@ -102,9 +102,9 @@
                         <Label Content="Spritesheet" />
                         <ComboBox Height="22" ItemsSource="{Binding spritesheetNames}" SelectedItem="{Binding selectedSprite.spritesheetName, Converter={StaticResource DirtyRedrawConverter}, Mode=TwoWay}"/>
                         <Label Content="Alignment" />
-                        <ComboBox Height="22" ItemsSource="{Binding alignments}" SelectedItem="{Binding selectedSprite.alignment, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Sprite', Mode=TwoWay}" />
+                        <ComboBox Height="22" ItemsSource="{Binding alignments}" SelectedItem="{Binding selectedSprite.alignment, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Sprite,Default', Mode=TwoWay}" />
                         <Label Content="Wrap mode" />
-                        <ComboBox Height="22" ItemsSource="{Binding wrapModes}" SelectedItem="{Binding selectedSprite.wrapMode, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Sprite', Mode=TwoWay}" />
+                        <ComboBox Height="22" ItemsSource="{Binding wrapModes}" SelectedItem="{Binding selectedSprite.wrapMode, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Sprite,Default', Mode=TwoWay}" />
                     </StackPanel>
 
                     <!-- Hitbox/drawbox/POI section -->
@@ -123,13 +123,13 @@
                                         <Border BorderThickness="1" BorderBrush="{Binding border}" HorizontalAlignment="Left" VerticalAlignment="Top">
                                             <StackPanel Orientation="Horizontal">
                                                 <Label Content="X1" />
-                                                <local:NumericInputControl Value="{Binding rect.x1, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Sprite'}" Width="60" Height="20" HorizontalAlignment="Left" />
+                                                <local:NumericInputControl Value="{Binding rect.x1, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Default,Sprite'}" Width="60" Height="20" HorizontalAlignment="Left" />
                                                 <Label Content="Y1" />
-                                                <local:NumericInputControl Value="{Binding rect.y1, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Sprite'}" Width="60" Height="20" HorizontalAlignment="Left" />
+                                                <local:NumericInputControl Value="{Binding rect.y1, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Default,Sprite'}" Width="60" Height="20" HorizontalAlignment="Left" />
                                                 <Label Content="X2" />
-                                                <local:NumericInputControl Value="{Binding rect.x2, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Sprite'}" Width="60" Height="20" HorizontalAlignment="Left" />
+                                                <local:NumericInputControl Value="{Binding rect.x2, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Default,Sprite'}" Width="60" Height="20" HorizontalAlignment="Left" />
                                                 <Label Content="Y2" />
-                                                <local:NumericInputControl Value="{Binding rect.y2, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Sprite'}" Width="60" Height="20" HorizontalAlignment="Left" />
+                                                <local:NumericInputControl Value="{Binding rect.y2, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Default,Sprite'}" Width="60" Height="20" HorizontalAlignment="Left" />
                                                 <Label Content="Tags" />
                                                 <TextBox Margin="0 0 5 0" Text="{Binding tags, Converter={StaticResource DirtyRedrawConverter}}" Width="60" Height="20" HorizontalAlignment="Left" />
                                                 <Button Margin="0 0 5 0" Click="OnSelectGlobalHitboxClick" Content="Select" />
@@ -153,15 +153,15 @@
                                         <Border BorderThickness="1" BorderBrush="{Binding border}" HorizontalAlignment="Left" VerticalAlignment="Top">
                                             <StackPanel Orientation="Horizontal">
                                                 <Label Content="X1" />
-                                                <local:NumericInputControl Value="{Binding rect.x1, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Sprite'}" Width="60" Height="20" HorizontalAlignment="Left" />
+                                                <local:NumericInputControl Value="{Binding rect.x1, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Default,Sprite'}" Width="60" Height="20" HorizontalAlignment="Left" />
                                                 <Label Content="Y1" />
-                                                <local:NumericInputControl Value="{Binding rect.y1, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Sprite'}" Width="60" Height="20" HorizontalAlignment="Left" />
+                                                <local:NumericInputControl Value="{Binding rect.y1, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Default,Sprite'}" Width="60" Height="20" HorizontalAlignment="Left" />
                                                 <Label Content="X2" />
-                                                <local:NumericInputControl Value="{Binding rect.x2, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Sprite'}" Width="60" Height="20" HorizontalAlignment="Left" />
+                                                <local:NumericInputControl Value="{Binding rect.x2, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Default,Sprite'}" Width="60" Height="20" HorizontalAlignment="Left" />
                                                 <Label Content="Y2" />
-                                                <local:NumericInputControl Value="{Binding rect.y2, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Sprite'}" Width="60" Height="20" HorizontalAlignment="Left" />
+                                                <local:NumericInputControl Value="{Binding rect.y2, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Default,Sprite'}" Width="60" Height="20" HorizontalAlignment="Left" />
                                                 <Label Content="Tags" />
-                                                <TextBox Margin="0 0 5 0" Text="{Binding tags, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Sprite'}" Width="60" Height="20" HorizontalAlignment="Left" />
+                                                <TextBox Margin="0 0 5 0" Text="{Binding tags, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Default,Sprite'}" Width="60" Height="20" HorizontalAlignment="Left" />
                                                 <Button Margin="0 0 5 0" Click="OnSelectFrameHitboxClick" Content="Select" />
                                                 <Button Margin="0 0 5 0" Click="OnRemoveFrameHitboxClick" Content="Remove" />
                                             </StackPanel>
@@ -183,13 +183,13 @@
                                         <Border BorderThickness="1" BorderBrush="{Binding border}" HorizontalAlignment="Left" VerticalAlignment="Top">
                                             <StackPanel Orientation="Horizontal">
                                                 <Label Content="X-pos" />
-                                                <local:NumericInputControl Value="{Binding pos.x, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Sprite'}" Width="60" Height="20" HorizontalAlignment="Left" />
+                                                <local:NumericInputControl Value="{Binding pos.x, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Default,Sprite'}" Width="60" Height="20" HorizontalAlignment="Left" />
                                                 <Label Content="Y-pos" />
-                                                <local:NumericInputControl Value="{Binding pos.y, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Sprite'}" Width="60" Height="20" HorizontalAlignment="Left" />
+                                                <local:NumericInputControl Value="{Binding pos.y, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Default,Sprite'}" Width="60" Height="20" HorizontalAlignment="Left" />
                                                 <Label Content="Tags" />
-                                                <TextBox Margin="0 0 5 0" Text="{Binding tags, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Sprite'}" Width="60" Height="20" HorizontalAlignment="Left" />
+                                                <TextBox Margin="0 0 5 0" Text="{Binding tags, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Default,Sprite'}" Width="60" Height="20" HorizontalAlignment="Left" />
                                                 <Label Content="Z-Index" />
-                                                <local:NumericInputControl Value="{Binding zIndex, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Sprite'}" Width="60" Height="20" HorizontalAlignment="Left" />
+                                                <local:NumericInputControl Value="{Binding zIndex, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Default,Sprite'}" Width="60" Height="20" HorizontalAlignment="Left" />
                                                 <Button Margin="5 0 5 0" Click="OnSelectFrameDrawboxClick" Content="Select" />
                                                 <Button Margin="0 0 5 0" Click="OnEditFrameDrawboxClick" Content="Edit" />
                                                 <Button Margin="0 0 5 0" Click="OnCopyToAllFramesDrawboxClick" Content="Copy To All Frames" />
@@ -213,11 +213,11 @@
                                         <Border BorderThickness="1" BorderBrush="{Binding border}" HorizontalAlignment="Left" VerticalAlignment="Top">
                                             <StackPanel Orientation="Horizontal">
                                                 <Label Content="X" />
-                                                <local:NumericInputControl Value="{Binding x, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Sprite'}" Width="60" Height="20" HorizontalAlignment="Left" />
+                                                <local:NumericInputControl Value="{Binding x, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Default,Sprite'}" Width="60" Height="20" HorizontalAlignment="Left" />
                                                 <Label Content="Y" />
-                                                <local:NumericInputControl Value="{Binding y, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Sprite'}" Width="60" Height="20" HorizontalAlignment="Left" />
+                                                <local:NumericInputControl Value="{Binding y, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Default,Sprite'}" Width="60" Height="20" HorizontalAlignment="Left" />
                                                 <Label Content="Tags" />
-                                                <TextBox Margin="0 0 5 0" Text="{Binding tags, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Sprite'}" Width="60" Height="20" HorizontalAlignment="Left" />
+                                                <TextBox Margin="0 0 5 0" Text="{Binding tags, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Default,Sprite'}" Width="60" Height="20" HorizontalAlignment="Left" />
                                                 <Button Margin="0 0 5 0" Click="OnSelectPOIClick" Content="Select" />
                                                 <Button Margin="0 0 5 0" Click="OnRemovePOIClick" Content="Remove" />
                                             </StackPanel>
@@ -298,8 +298,8 @@
                                             </StackPanel>
 
                                             <local:NumericInputControl Grid.Column="2" Value="{Binding duration, Converter={StaticResource DirtyRedrawConverter}}" Height="20" HorizontalAlignment="Left" />
-                                            <local:NumericInputControl Grid.Column="3" Value="{Binding offset.x, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Sprite'}" Height="20" HorizontalAlignment="Left" />
-                                            <local:NumericInputControl Grid.Column="4" Value="{Binding offset.y, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Sprite'}" Height="20" HorizontalAlignment="Left" />
+                                            <local:NumericInputControl Grid.Column="3" Value="{Binding offset.x, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Default,Sprite'}" Height="20" HorizontalAlignment="Left" />
+                                            <local:NumericInputControl Grid.Column="4" Value="{Binding offset.y, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Default,Sprite'}" Height="20" HorizontalAlignment="Left" />
                                             <TextBox Grid.Column="5" Text="{Binding tags, Converter={StaticResource DirtyRedrawConverter}}" Width="60" Height="20" HorizontalAlignment="Left" />
                                             <StackPanel Grid.Column="6" Orientation="Horizontal">
                                                 <Button Style="{x:Null}" Content="↑" ToolTip="Move Up" Width="22" Height="22" Margin="0 0 4 0" Click="OnMoveFrameUpClick" />

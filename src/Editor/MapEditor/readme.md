@@ -37,6 +37,8 @@ On launch, you'll be prompted to either create a new workspace or open an existi
 
 Creating a new workspace lets you import map section images. The import images prompt accepts a folder, and all PNG images in this folder will be processed, so if you have multiple tilesets (or map PNGs) put them in the same folder. Use the "Scratch/Tileset" folder browse button for importing to scratch sections and use the "Map Section Images Folder" to import to map sections. Both options will create a tileset.
 
+If you want to quickly get started to play around, there should be an provided sample workspace, **sample_map_workspace**, that you can open.
+
 ## The Map Editor Interface
 
 ![Alt Text](readme_image.png "Optional Title")
