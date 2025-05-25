@@ -14,8 +14,9 @@
 
     public class BattleBusScreen : BigMinimapScreen
     {
-        public int remainingTime = Debug.battleBusMaxTime * 60;
+        public int remainingTime = (Debug.main?.battleBusMaxTime ?? 30) * 60;
         public bool mainPlayerDropped;
+        public int immediateDropGuard;
 
         public BattleBusScreen(World world, Storm storm) : base(world, storm, world.map.minimapSpriteData, "battle_bus_screen")
         {
@@ -24,7 +25,7 @@
                 character.battleBusData.dropIFloat = gridHeight / 2;
                 character.battleBusData.dropJFloat = gridWidth / 2;
 
-                if (Debug.skipBattleBus)
+                if (Debug.main?.skipBattleBus == true)
                 {
                     character.battleBusData.dropped = true;
                 }
@@ -60,7 +61,7 @@
                             dropI -= section.mapSection.mainSectionChildPos.Value.i;
                             dropJ -= section.mapSection.mainSectionChildPos.Value.j;
                         }
-                        Point landPos = new Point(4 + dropJ * 8, 4 + dropI * 8);
+                        Point landPos = new Point(8 + (dropJ * 8), 8 + (dropI * 8));
                         character.pos = landPos.ToFdPoint();
                         character.ChangeState(new LandState(character));
                     }
@@ -101,11 +102,14 @@
                     if (battleBusData.dropIFloat >= gridHeight) battleBusData.dropIFloat = gridHeight - 1;
                 }
 
-                if (character.input.IsPressed(Control.Action) && CanLand(battleBusData.dropI, battleBusData.dropJ))
+                if (immediateDropGuard > 5 && character.input.IsPressed(Control.Action) && CanLand(battleBusData.dropI, battleBusData.dropJ))
                 {
                     battleBusData.droppingTime = 1;
                 }
             }
+
+            // Stops IsPressed and drop from being detected immediately from previous menu press if match loads quickly
+            immediateDropGuard++;
         }
 
         public void Render(Drawer drawer)

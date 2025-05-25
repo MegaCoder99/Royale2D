@@ -29,9 +29,12 @@ namespace Royale2D
             config.ConnectionTimeout = Game.ConnectionTimeoutSeconds;
             config.AcceptIncomingConnections = true;
 #if DEBUG
-            config.SimulatedMinimumLatency = Debug.simulatedLatency;
-            config.SimulatedLoss = Debug.simulatedPacketLoss;
-            config.SimulatedDuplicatesChance = Debug.simulatedDuplicates;
+            if (Debug.main != null)
+            {
+                config.SimulatedMinimumLatency = Debug.main.simulatedLatency;
+                config.SimulatedLoss = Debug.main.simulatedPacketLoss;
+                config.SimulatedDuplicatesChance = Debug.main.simulatedDuplicates;
+            }
 #endif
             client = new NetClient(config);
             client.Start();

@@ -50,8 +50,11 @@
                 hitWallLastFrame = true;
             }
 
+            VelComponent? velComponent = actor.GetComponent<VelComponent>();
+            ZComponent? zComponent = actor.GetComponent<ZComponent>();
+
             // Bouncing off walls behavior for things with both z- and vel-components
-            if (!hitWallLastFrame && !bouncedWall && tileCollisions.Count > 0 && actor.GetComponent<VelComponent>() is VelComponent velComponent && velComponent.vel.IsNonZero() && actor.GetComponent<ZComponent>() is ZComponent zComponent && zComponent.useGravity)
+            if (!hitWallLastFrame && !bouncedWall && tileCollisions.Count > 0 && velComponent != null && velComponent.vel.IsNonZero() && zComponent != null && zComponent.useGravity)
             {
                 hitDist++;  // This will be incremented once per pixel of movement
                 int hitDistBeforeBounce = 6;

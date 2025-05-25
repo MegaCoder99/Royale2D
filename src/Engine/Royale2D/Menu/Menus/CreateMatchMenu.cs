@@ -7,7 +7,8 @@
         List<string> mapList = Assets.maps.Keys.ToList();
         int mapIndex;
 
-        MatchSettings matchSettings => new MatchSettings(mapList[mapIndex], Debug.quickStartMatchName);
+        // TODO make this customizable
+        MatchSettings matchSettings => new MatchSettings(mapList[mapIndex], Debug.main?.quickStartMatchName ?? "match1");
 
         public CreateMatchMenu(Menu? prevMenu, bool isOffline, bool inGame) : base(prevMenu)
         {

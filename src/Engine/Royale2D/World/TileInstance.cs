@@ -26,10 +26,10 @@ namespace Royale2D
 
         public void Render(Drawer drawer)
         {
-            if (Debug.showHitboxes && collider != null)
+            if (Debug.main != null && Debug.main.showHitboxes == true && collider != null)
             {
                 var color = Colors.DebugBlue;
-                if (i == Debug.hitTileCoords?.i && j == Debug.hitTileCoords?.j) color = Colors.DebugRed;
+                if (i == Debug.main.hitTileCoords?.i && j == Debug.main.hitTileCoords?.j) color = Colors.DebugRed;
                 drawer.DrawPolygon(collider.GetTileInstanceWorldShape(this).GetPoints(), color, true, ZIndex.UIGlobal);
             }
         }

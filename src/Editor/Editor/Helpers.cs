@@ -58,7 +58,9 @@ public class Helpers : SharedHelpers
             e.Handled = true;
             return true;
         }
-        if (focusedElement is TextBox textBox && textBox.IsEnabled && !textBox.IsReadOnly)
+        // Comment out the right part to allow copy-pasting disabled text field contents.
+        // Not sure why it was there in the first place but leaving it commented for now.
+        if (focusedElement is TextBox /*textBox && textBox.IsEnabled && !textBox.IsReadOnly*/)
         {
             return false;
         }

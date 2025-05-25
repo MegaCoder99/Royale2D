@@ -43,10 +43,10 @@ namespace Royale2D
         }
 
         // PERF don't render stuff outside camera
-        // REFACTOR childFrameTagsToHide can now hide parent frame too, rename parameter
+        // REFACTOR drawboxTagsToHide can now hide parent frame too, rename parameter
         public void Render(Drawer drawer, float x, float y, ZIndex zIndex, 
             int xDir = 1, int yDir = 1, float xScale = 1, float yScale = 1, float alpha = 1, IntPoint? spriteOffset = null, 
-            List<string>? childFrameTagsToHide = null, string overrideTexture = "", ShaderInstance? shaderInstance = null)
+            List<string>? drawboxTagsToHide = null, string overrideTexture = "", ShaderInstance? shaderInstance = null)
         {
             Point pos = new Point(x, y);
             Frame currentFrame = sprite.frames[frameIndex];
@@ -70,7 +70,7 @@ namespace Royale2D
                 return;
             }
 
-            if (childFrameTagsToHide == null || !childFrameTagsToHide.Contains(currentFrame.tags))
+            if (drawboxTagsToHide == null || !drawboxTagsToHide.Contains(currentFrame.tags))
             {
                 drawer.DrawTexture(
                     texture: texture,
@@ -89,10 +89,17 @@ namespace Royale2D
 
             foreach (Drawbox drawbox in currentFrame.drawboxes)
             {
-                if (childFrameTagsToHide != null && childFrameTagsToHide.Contains(drawbox.tags)) continue;
+                if (drawboxTagsToHide != null && drawboxTagsToHide.Contains(drawbox.tags)) continue;
 
                 ZIndex childZ = zIndex;
-                childZ.childSpriteOffset += drawbox.zIndex * 10; // We multiply by 10 to give leeway to insert more z-indicies in between, like wadable
+
+                // In principle, this should have been done in editor, but I'm not manually changing 1000's of textboxes at this point!
+                if (drawbox.tags.Contains("sword") && drawbox.zIndex == 0)
+                {
+                    drawbox.zIndex = 1;
+                }
+
+                childZ.drawboxOffset += drawbox.zIndex * 10; // We multiply by 10 to give leeway to insert more z-indicies in between, like wadable
 
                 drawer.DrawTexture(
                     texture: drawbox.texture,
@@ -116,14 +123,14 @@ namespace Royale2D
             frameIndex = newFrameIndex;
         }
 
-        public List<Collider> GetFrameColliders(List<string> childFrameTagsToHide)
+        public List<Collider> GetFrameColliders(List<string> drawboxTagsToHide)
         {
             var colliders = new List<Collider>();
             Frame currentFrame = sprite.frames[frameIndex];
 
             foreach (Hitbox hitbox in currentFrame.hitboxes)
             {
-                if (childFrameTagsToHide.Contains(hitbox.tags)) continue;
+                if (drawboxTagsToHide.Contains(hitbox.tags)) continue;
                 colliders.Add(hitbox.ToCollider());
             }
 

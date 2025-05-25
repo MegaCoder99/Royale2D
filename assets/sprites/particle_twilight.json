@@ -1,0 +1,76 @@
+{
+  "frames": [
+    {
+      "rect": {
+        "x1": 84,
+        "y1": 1,
+        "x2": 90,
+        "y2": 7
+      },
+      "duration": 7,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 97,
+        "y1": 1,
+        "x2": 102,
+        "y2": 7
+      },
+      "duration": 7,
+      "offset": {
+        "x": -1,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 92,
+        "y1": 1,
+        "x2": 95,
+        "y2": 7
+      },
+      "duration": 7,
+      "offset": {
+        "x": -1,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 118,
+        "y1": 1,
+        "x2": 122,
+        "y2": 7
+      },
+      "duration": 7,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    }
+  ],
+  "hitboxes": [],
+  "loopStartFrame": 0,
+  "alignment": "center",
+  "wrapMode": "loop"
+}

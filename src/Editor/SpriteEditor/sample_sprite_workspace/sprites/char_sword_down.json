@@ -1,0 +1,243 @@
+{
+  "spritesheetName": "character.png",
+  "frames": [
+    {
+      "rect": {
+        "x1": 6,
+        "y1": 297,
+        "x2": 32,
+        "y2": 320
+      },
+      "duration": 2,
+      "offset": {
+        "x": -4,
+        "y": 0
+      },
+      "hitboxes": [
+        {
+          "tags": "sword1",
+          "rect": {
+            "x1": -19,
+            "y1": -5,
+            "x2": -3,
+            "y2": 11
+          }
+        }
+      ],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 54,
+        "y1": 297,
+        "x2": 81,
+        "y2": 320
+      },
+      "duration": 2,
+      "offset": {
+        "x": -6,
+        "y": 0
+      },
+      "hitboxes": [
+        {
+          "tags": "sword1",
+          "rect": {
+            "x1": -21,
+            "y1": -1,
+            "x2": -5,
+            "y2": 15
+          }
+        }
+      ],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 104,
+        "y1": 297,
+        "x2": 129,
+        "y2": 326
+      },
+      "duration": 1,
+      "offset": {
+        "x": -5,
+        "y": 3
+      },
+      "hitboxes": [
+        {
+          "tags": "sword1",
+          "rect": {
+            "x1": -18,
+            "y1": 3,
+            "x2": -2,
+            "y2": 19
+          }
+        }
+      ],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 153,
+        "y1": 297,
+        "x2": 176,
+        "y2": 330
+      },
+      "duration": 1,
+      "offset": {
+        "x": -4,
+        "y": 5
+      },
+      "hitboxes": [
+        {
+          "tags": "sword1",
+          "rect": {
+            "x1": -18,
+            "y1": 6,
+            "x2": -2,
+            "y2": 22
+          }
+        }
+      ],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 206,
+        "y1": 298,
+        "x2": 224,
+        "y2": 331
+      },
+      "duration": 1,
+      "offset": {
+        "x": -1,
+        "y": 6
+      },
+      "hitboxes": [
+        {
+          "tags": "sword1",
+          "rect": {
+            "x1": -12,
+            "y1": 7,
+            "x2": 4,
+            "y2": 23
+          }
+        }
+      ],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 256,
+        "y1": 298,
+        "x2": 272,
+        "y2": 336
+      },
+      "duration": 1,
+      "offset": {
+        "x": 0,
+        "y": 9
+      },
+      "hitboxes": [
+        {
+          "tags": "sword1",
+          "rect": {
+            "x1": -8,
+            "y1": 12,
+            "x2": 8,
+            "y2": 28
+          }
+        }
+      ],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 355,
+        "y1": 297,
+        "x2": 374,
+        "y2": 330
+      },
+      "duration": 2,
+      "offset": {
+        "x": 3,
+        "y": 5
+      },
+      "hitboxes": [
+        {
+          "tags": "sword1",
+          "rect": {
+            "x1": -1,
+            "y1": 7,
+            "x2": 15,
+            "y2": 23
+          }
+        }
+      ],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 403,
+        "y1": 297,
+        "x2": 423,
+        "y2": 328
+      },
+      "duration": 2,
+      "offset": {
+        "x": 4,
+        "y": 4
+      },
+      "hitboxes": [
+        {
+          "tags": "sword1",
+          "rect": {
+            "x1": -1,
+            "y1": 5,
+            "x2": 15,
+            "y2": 21
+          }
+        }
+      ],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 450,
+        "y1": 297,
+        "x2": 473,
+        "y2": 326
+      },
+      "duration": 2,
+      "offset": {
+        "x": 4,
+        "y": 3
+      },
+      "hitboxes": [
+        {
+          "tags": "sword1",
+          "rect": {
+            "x1": 2,
+            "y1": 3,
+            "x2": 18,
+            "y2": 19
+          }
+        }
+      ],
+      "drawboxes": [],
+      "POIs": []
+    }
+  ],
+  "hitboxes": [],
+  "loopStartFrame": 0,
+  "alignment": "center",
+  "wrapMode": "loop"
+}

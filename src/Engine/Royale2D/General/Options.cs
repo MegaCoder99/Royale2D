@@ -7,7 +7,7 @@ namespace Royale2D
     {
         public string playerName = "player1";
         public Guid playerGuid = Guid.NewGuid();    // IMPROVE move to separate file so it has less chance of erasure
-        public string skin = "char";
+        public string skin = "";
         //public float musicVolume = 1;
         //public float soundVolume = 1;
         //public bool showFPS = false;

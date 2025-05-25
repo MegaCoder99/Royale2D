@@ -11,8 +11,8 @@
 
             //menuOptions.Add(new SliderMenuOption("Toss Rupees: {0}", 0, 0, (int)world.mainCharacter.rupees.value, (sliderValue) => { }));
             //menuOptions.Add(new SliderMenuOption("Toss Arrows: {0}", 0, 0, (int)world.mainCharacter.arrows.value, (sliderValue) => { }));
-            menuOptions.Add(new MenuOption("Pause Game", () => { }));
-            menuOptions.Add(new MenuOption("Spectate", () => { }));
+            //menuOptions.Add(new MenuOption("Pause Game", () => { }));
+            //menuOptions.Add(new MenuOption("Spectate", () => { }));
             menuOptions.Add(new MenuOption("Leave Match", () => { Match.current?.Leave(); }));
         }
 

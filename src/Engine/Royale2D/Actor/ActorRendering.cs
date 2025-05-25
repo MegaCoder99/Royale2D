@@ -46,7 +46,7 @@
                 yScale: 1,
                 alpha,
                 spriteOffset,
-                GetChildFrameTagsToHide(),
+                GetDrawboxTagsToHide(),
                 GetOverrideTexture(),
                 GetShaderInstance()
             );
@@ -104,7 +104,7 @@
             return null;
         }
 
-        public virtual List<string> GetChildFrameTagsToHide()
+        public virtual List<string> GetDrawboxTagsToHide()
         {
             return [];
         }

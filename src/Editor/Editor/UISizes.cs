@@ -29,7 +29,7 @@ public class UISizes
                 spritesheetCanvasHeight = 782,
                 mapCanvasWidth = 1200,
                 scratchCanvasWidth = 750,
-                mapCanvasHeight = 980,
+                mapCanvasHeight = 950,
             };
         }
         else

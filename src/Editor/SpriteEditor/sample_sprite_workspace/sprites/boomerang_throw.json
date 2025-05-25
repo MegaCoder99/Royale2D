@@ -1,0 +1,146 @@
+{
+  "spritesheetName": "objects.png",
+  "frames": [
+    {
+      "rect": {
+        "x1": 99,
+        "y1": 34,
+        "x2": 111,
+        "y2": 46
+      },
+      "duration": 3,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 115,
+        "y1": 35,
+        "x2": 127,
+        "y2": 43
+      },
+      "duration": 3,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 131,
+        "y1": 34,
+        "x2": 143,
+        "y2": 46
+      },
+      "duration": 3,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 150,
+        "y1": 34,
+        "x2": 158,
+        "y2": 46
+      },
+      "duration": 3,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 99,
+        "y1": 50,
+        "x2": 111,
+        "y2": 62
+      },
+      "duration": 3,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 115,
+        "y1": 53,
+        "x2": 127,
+        "y2": 61
+      },
+      "duration": 3,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 131,
+        "y1": 50,
+        "x2": 143,
+        "y2": 62
+      },
+      "duration": 3,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 148,
+        "y1": 50,
+        "x2": 156,
+        "y2": 62
+      },
+      "duration": 3,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    }
+  ],
+  "hitboxes": [
+    {
+      "rect": {
+        "x1": -4,
+        "y1": -4,
+        "x2": 4,
+        "y2": 4
+      }
+    }
+  ],
+  "loopStartFrame": 0,
+  "alignment": "center",
+  "wrapMode": "loop"
+}

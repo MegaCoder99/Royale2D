@@ -22,13 +22,13 @@
         // Level 3: within each level 2 sub-layer, y-position determines z-index
         public int yPosition;
 
-        // Level 4: within each level 3, different child spritess have different z indices (sword, shield, head, etc)
-        public int childSpriteOffset;
+        // Level 4: within each level 3, different draw boxes have different z indices (sword, shield, etc)
+        public int drawboxOffset;
 
-        public const int ChildOffsetWade = 1;
-        public const int ChildOffsetBurn = 11;
-        public const int ChildOffsetPoof = 12;
-        public const int ChildOffsetUI = 20;
+        public const int DrawboxOffsetWade = 1;
+        public const int DrawboxOffsetBurn = 11;
+        public const int DrawboxOffsetPoof = 12;
+        public const int DrawboxOffsetUI = 20;
 
         // Pre-made constants
         public static ZIndex FxGlobalBelow = new ZIndex(-1, 0, 0, 0);
@@ -40,7 +40,7 @@
             this.layerIndex = layerIndex;
             this.layerOffset = layerOffset;
             this.yPosition = yPosition;
-            this.childSpriteOffset = childSpriteOffset;
+            this.drawboxOffset = childSpriteOffset;
         }
 
         public static ZIndex FromLayerIndex(int layerIndex, int layerOffset)
@@ -62,9 +62,9 @@
             {
                 return yPosition - zIndex.yPosition;
             }
-            if (childSpriteOffset != zIndex.childSpriteOffset)
+            if (drawboxOffset != zIndex.drawboxOffset)
             {
-                return childSpriteOffset - zIndex.childSpriteOffset;
+                return drawboxOffset - zIndex.drawboxOffset;
             }
             return 0;
         }

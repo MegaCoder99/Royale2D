@@ -67,8 +67,6 @@ namespace Royale2D
 
         public void Render(Drawer drawer)
         {
-            if (!FeatureGate.hud) return;
-
             gui.SetNodeText("clock-text", storm.GetStormDisplayTime());
             gui.SetNodeText("kills-text", character.kills.ToString("00"));
             gui.SetNodeText("alive-text", world.gameMode.GetCharactersLeft().ToString("00"));

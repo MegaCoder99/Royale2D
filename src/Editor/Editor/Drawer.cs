@@ -552,6 +552,21 @@ public class BitmapDrawer : Drawer, IDisposable
         skBitmap.SetPixel(x, y, new SKColor(color.R, color.G, color.B, color.A));
     }
 
+    public void ReplaceColor(Color oldColor, Color newColor)
+    {
+        for (int y = 0; y < skBitmap.Height; y++)
+        {
+            for (int x = 0; x < skBitmap.Width; x++)
+            {
+                SKColor pixel = skBitmap.GetPixel(x, y);
+                if (pixel.Alpha > 0 && pixel.Red == oldColor.R && pixel.Green == oldColor.G && pixel.Blue == oldColor.B)
+                {
+                    skBitmap.SetPixel(x, y, new SKColor(newColor.R, newColor.G, newColor.B, newColor.A));
+                }
+            }
+        }
+    }
+
     private bool _disposed = false;
 
     // If possible, call Dispose() manually when done with the drawer to free up memory/resources.

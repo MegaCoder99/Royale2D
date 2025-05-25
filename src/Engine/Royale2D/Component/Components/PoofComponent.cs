@@ -30,7 +30,7 @@
             if (showPoof)
             {
                 Point renderPos = actor.GetRenderFloatPos();
-                poofSpriteInstance.Render(drawer, renderPos.x, renderPos.y, actor.GetRenderZIndex(ZIndex.ChildOffsetPoof));
+                poofSpriteInstance.Render(drawer, renderPos.x, renderPos.y, actor.GetRenderZIndex(ZIndex.DrawboxOffsetPoof));
             }
         }
 

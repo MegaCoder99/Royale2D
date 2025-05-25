@@ -19,6 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Controls\ChangeRectDialog.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Controls\AddSpriteDialog.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

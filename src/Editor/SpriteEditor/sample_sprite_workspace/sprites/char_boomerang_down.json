@@ -1,0 +1,69 @@
+{
+  "spritesheetName": "character.png",
+  "frames": [
+    {
+      "rect": {
+        "x1": 345,
+        "y1": 117,
+        "x2": 365,
+        "y2": 141
+      },
+      "duration": 4,
+      "offset": {
+        "x": -2,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 373,
+        "y1": 118,
+        "x2": 389,
+        "y2": 141
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [
+        {
+          "tags": "boomerang",
+          "x": -3,
+          "y": 5
+        }
+      ]
+    },
+    {
+      "rect": {
+        "x1": 397,
+        "y1": 119,
+        "x2": 413,
+        "y2": 149
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 5
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [
+        {
+          "tags": "boomerang",
+          "x": -2,
+          "y": 17
+        }
+      ]
+    }
+  ],
+  "hitboxes": [],
+  "loopStartFrame": 0,
+  "alignment": "center",
+  "wrapMode": "loop"
+}

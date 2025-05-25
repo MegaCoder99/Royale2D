@@ -141,6 +141,7 @@
                 if (character.directionComponent.direction == Direction.Left) off = 2;
                 if (character.directionComponent.direction == Direction.Right) off = 6;
 
+                if (character.frameIndex == 0) return character.pos;
                 if (character.frameIndex == 2) return character.pos + contactPosArr[(0 + off) % 8];
                 if (character.frameIndex == 3) return character.pos + contactPosArr[(1 + off) % 8];
                 if (character.frameIndex == 4) return character.pos + contactPosArr[(2 + off) % 8];
@@ -156,7 +157,7 @@
 
         public InputMoveData BasicWalkMoveCode(int speedModifier = 1)
         {
-            if (Debug.debug && speedModifier == 1) speedModifier = Debug.charSpeedModifier;
+            if (Debug.main != null && speedModifier == 1) speedModifier = Debug.main.charSpeedModifier;
 
             FdPoint moveAmount = FdPoint.Zero;
 

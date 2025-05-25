@@ -33,10 +33,12 @@
 
                 if (tileInstances.All(t => t != null && t.Value.collider == null))
                 {
+                    /*
                     layer.TransformTile(i, j, 6343);
                     layer.TransformTile(i, j + 1, 6346);
                     layer.TransformTile(i + 1, j, 6359);
                     layer.TransformTile(i + 1, j + 1, 6360);
+                    */
 
                     character.PlaySound("dig");
                     FdPoint collectablePos = new FdPoint((j + 1) * 8, (i + 1) * 8);

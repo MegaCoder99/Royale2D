@@ -1,0 +1,25 @@
+{
+  "spritesheetName": "character.png",
+  "frames": [
+    {
+      "rect": {
+        "x1": 2,
+        "y1": 111,
+        "x2": 19,
+        "y2": 134
+      },
+      "duration": 10000,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    }
+  ],
+  "hitboxes": [],
+  "loopStartFrame": 0,
+  "alignment": "center",
+  "wrapMode": "once"
+}

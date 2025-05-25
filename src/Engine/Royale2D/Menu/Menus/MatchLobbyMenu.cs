@@ -106,16 +106,21 @@
     {
         SyncedPlayerData player;
         MatchLobbyMenu matchLobbyMenu;
+        SpriteInstance skinSprite;
         public LobbyPlayerMenuOption(SyncedPlayerData player, MatchLobbyMenu matchLobbyMenu) : 
             base("   " + player.name)
         {
             this.player = player;
             this.matchLobbyMenu = matchLobbyMenu;
+            skinSprite = new SpriteInstance("char_idle_down");
         }
 
         public override void Render(Drawer drawer, int x, int y)
         {
             base.Render(drawer, x, y);
+
+            skinSprite.Render(drawer, x, y + 6, ZIndex.UIGlobal, drawboxTagsToHide: ["shield1", "shield2", "shield3"], overrideTexture: Options.main.skin);
+
             drawer.DrawText("No", matchLobbyMenu.header1X.x, y);
             drawer.DrawText(Helpers.BoolToYesNo(player.id == 0), matchLobbyMenu.middleHeaderX.x, y);
             drawer.DrawText(player.ping.ToString(), matchLobbyMenu.endHeaderX.x, y);

@@ -41,7 +41,7 @@
             if (burnTime > 0)
             {
                 Point renderPos = actor.GetRenderFloatPos();
-                burnSpriteInstance.Render(drawer, renderPos.x, renderPos.y, actor.GetRenderZIndex(ZIndex.ChildOffsetBurn));
+                burnSpriteInstance.Render(drawer, renderPos.x, renderPos.y, actor.GetRenderZIndex(ZIndex.DrawboxOffsetBurn));
             }
         }
 

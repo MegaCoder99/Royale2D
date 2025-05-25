@@ -52,7 +52,10 @@ namespace Royale2D
 
         public override void Update()
         {
-            if (Debug.paused && !Debug.frameAdvance) return;
+            if (Debug.main != null)
+            {
+                if (Debug.main.paused && !Debug.main.frameAdvance) return;
+            }
             localPlayerInputState.Update();
             world.UpdateNonSyncedInputs();
             world.Update(frameNum);

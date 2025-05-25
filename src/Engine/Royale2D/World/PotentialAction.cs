@@ -288,6 +288,8 @@
         {
             if (fieldItem == null) return null;
             if (!character.inventory.HasEmptySlot()) return null;
+            if (!fieldItem.zComponent.HasLanded()) return null;
+            if (!character.IsFacingAndCloseToPos(fieldItem.pos, 10, 10)) return null;
             return fieldItem.pos.DistanceTo(character.pos) / 16;
         }
 

@@ -380,7 +380,11 @@
                                         <TextBox Text="{Binding tileClumpSC.selectedTileClump.transformTileClumpNameCsv, Converter={StaticResource DirtyConverter}, ConverterParameter='TileClump'}" />
                                     </StackPanel>
 
-                                    <Label Content="Properties" Padding="5" />
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label Content="Properties" Padding="5" />
+                                        <TextBlock Text="liftsprite=sprite1 \n breaksprite=sprite2" FontStyle="Italic" VerticalAlignment="Center" />
+                                    </StackPanel>
+
                                     <TextBox Text="{Binding tileClumpSC.selectedTileClump.properties, Converter={StaticResource DirtyConverter}, ConverterParameter='TileClump'}"
                                              AcceptsReturn="True" TextWrapping="Wrap" Height="40"/>
 

@@ -72,7 +72,7 @@
             }
         }
 
-        public override List<string> GetChildFrameTagsToHide()
+        public override List<string> GetDrawboxTagsToHide()
         {
             if (!showChar) return ["l"];
             return [];

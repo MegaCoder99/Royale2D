@@ -1,0 +1,25 @@
+{
+  "spritesheetName": "hud.png",
+  "frames": [
+    {
+      "rect": {
+        "x1": 87,
+        "y1": 35,
+        "x2": 94,
+        "y2": 44
+      },
+      "duration": 10,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    }
+  ],
+  "hitboxes": [],
+  "loopStartFrame": 0,
+  "alignment": "topleft",
+  "wrapMode": "loop"
+}

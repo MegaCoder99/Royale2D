@@ -8,7 +8,6 @@
         {
             baseSpriteName = "char_hurt";
             recoilVel = recoilUnitVec * 2;
-            idleOnAnimEnd = true;
             intangible = true;
             canEnterAsBunny = true;
         }

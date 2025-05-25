@@ -13,7 +13,7 @@
         {
             base.Render(drawer);
             Point renderPos = actor.GetRenderFloatPos();
-            drawer.DrawText(quantity.ToString(), renderPos.x + 1, renderPos.y + 3, fontType: FontType.NumberWorld, zIndex: actor.GetRenderZIndex(ZIndex.ChildOffsetUI));
+            drawer.DrawText(quantity.ToString(), renderPos.x + 1, renderPos.y + 3, fontType: FontType.NumberWorld, zIndex: actor.GetRenderZIndex(ZIndex.DrawboxOffsetUI));
         }
     }
 }

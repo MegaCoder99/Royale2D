@@ -1,8 +1,40 @@
 ﻿using Editor;
 using Shared;
+using System.Drawing;
 using System.IO;
 
 namespace SpriteEditor;
+
+public record SpritePaletteVariant
+{
+    public string spriteName;
+    public string suffix;
+    public string[] colorSwaps;
+
+    public SpritePaletteVariant(string spriteName, string suffix, params string[] colorSwaps)
+    {
+        this.spriteName = spriteName;
+        this.suffix = suffix;
+        this.colorSwaps = colorSwaps;
+    }
+
+    public void ReplaceColors(BitmapDrawer drawer)
+    {
+        foreach (string colorSwap in colorSwaps)
+        {
+            string[] colors = colorSwap.Split(',');
+            if (colors.Length != 2)
+            {
+                continue; // Invalid color swap format
+            }
+
+            Color oldColor = Helpers.HexStringToColor(colors[0]);
+            Color newColor = Helpers.HexStringToColor(colors[1]);
+
+            drawer.ReplaceColor(oldColor, newColor);
+        }
+    }
+}
 
 public class Exporter
 {
@@ -14,13 +46,11 @@ public class Exporter
     public SpriteWorkspace exportWorkspace;
     public int maxImageSize = 1024;
 
-    // If you have "ball.png" and "ball_red.png" spritesheet which are just color swaps,
-    // put "ball" as key and ["red"] as value to clone all sprites using "ball", i.e. "ball.json" to also have a cloned sprite variant using "ball_red.png" called "ball_red.json"
-    public Dictionary<string, List<string>> spritesheetPaletteVariants = new()
-    {
-        { "boomerang", ["red"] },
-        { "arrow", ["silver"] }
-    };
+
+    public List<SpritePaletteVariant> spritesheetPaletteVariants = [
+        new("boomerang_throw", "red", "5068a8,b02828", "90a8e8,e07070"),
+        new("stone_break", "black", "e8e8e8,7bbd94", "a0a0a0,7bbd94"),
+    ];
 
     // You can put names of spritesheet files here (without extension) that you do not want to package as part of export. These will have their raw spritesheet files remain intact.
     public List<string> spritesheetsToNotPack =
@@ -59,6 +89,7 @@ public class Exporter
 
         exportWorkspace.RecreateFolders();
 
+        Dictionary<SpriteModel, SpritePaletteVariant> spriteModelToPaletteVariants = new();
         List<SpriteModel> allClonedSprites = [];
         foreach (Sprite sprite in state.sprites.ToList())
         {
@@ -70,16 +101,16 @@ public class Exporter
 
             SpriteModel newSprite = sprite.ToModel();
             allClonedSprites.Add(newSprite);
-            string spritesheetNameNoExt = Path.GetFileNameWithoutExtension(sprite.spritesheetName);
 
-            List<string>? matches = spritesheetPaletteVariants.GetValueOrDefault(spritesheetNameNoExt);
-            if (matches != null)
+            List<SpritePaletteVariant> matches = spritesheetPaletteVariants.Where(spv => spv.spriteName == sprite.name).ToList();
+            foreach (SpritePaletteVariant match in matches)
             {
-                foreach (string match in matches)
+                SpriteModel clonedPaletteSprite = newSprite with
                 {
-                    SpriteModel clonedPaletteSprite = sprite.ToModel() with { name = $"{sprite.name}_{match}" };
-                    allClonedSprites.Add(clonedPaletteSprite);
-                }
+                    name = $"{newSprite.name}_{match.suffix}"
+                };
+                allClonedSprites.Add(clonedPaletteSprite);
+                spriteModelToPaletteVariants[clonedPaletteSprite] = match;
             }
         }
 
@@ -87,19 +118,26 @@ public class Exporter
 
         foreach (SpriteModel sprite in allClonedSprites)
         {
+            SpritePaletteVariant? variant = spriteModelToPaletteVariants.GetValueOrDefault(sprite);
+
             foreach (FrameModel frame in sprite.frames)
             {
-                string frameHash = GetFrameHash(sprite.spritesheetName, frame.rect);
+                string frameHash = GetFrameHash(sprite.spritesheetName, frame.rect, variant);
                 if (!hashToExportedFrames.ContainsKey(frameHash))
                 {
                     BitmapDrawer drawer = new(frame.rect.w, frame.rect.h);
                     drawer.DrawImage(GetSpritesheetDrawer(sprite.spritesheetName), 0, 0, frame.rect.x1, frame.rect.y1, frame.rect.w, frame.rect.h);
+                    variant?.ReplaceColors(drawer);
+
+                    // This idea is useful for getting a visualization background in editor only for frame rects
+                    drawer.ReplaceColor(Color.Magenta, Color.Transparent);
+
                     hashToExportedFrames[frameHash] = new ExportedPixelRect(drawer);
                 }
 
                 foreach (DrawboxModel drawbox in frame.drawboxes)
                 {
-                    string drawboxHash = GetFrameHash(drawbox.spritesheetName, drawbox.rect);
+                    string drawboxHash = GetFrameHash(drawbox.spritesheetName, drawbox.rect, null);
                     if (!hashToExportedFrames.ContainsKey(drawboxHash))
                     {
                         BitmapDrawer drawer = new(drawbox.rect.w, drawbox.rect.h);
@@ -115,14 +153,16 @@ public class Exporter
 
         foreach (SpriteModel sprite in allClonedSprites)
         {
+            SpritePaletteVariant? variant = spriteModelToPaletteVariants.GetValueOrDefault(sprite);
+
             List<FrameModel> newFrames = sprite.frames.SelectList((FrameModel frame) =>
             {
-                string frameHash = GetFrameHash(sprite.spritesheetName, frame.rect);
+                string frameHash = GetFrameHash(sprite.spritesheetName, frame.rect, variant);
                 ExportedPixelRect exportedFrame = hashToExportedFrames[frameHash];
 
                 List<DrawboxModel> newDrawboxes = frame.drawboxes.SelectList((DrawboxModel drawbox) =>
                 {
-                    string drawboxHash = GetFrameHash(drawbox.spritesheetName, drawbox.rect);
+                    string drawboxHash = GetFrameHash(drawbox.spritesheetName, drawbox.rect, variant);
                     ExportedPixelRect exportedDrawbox = hashToExportedFrames[drawboxHash];
 
                     return drawbox with
@@ -154,9 +194,9 @@ public class Exporter
         }
     }
 
-    private string GetFrameHash(string spritesheetPath, MyRect rect)
+    private string GetFrameHash(string spritesheetPath, MyRect rect, SpritePaletteVariant? variant)
     {
-        return spritesheetPath + "_" + rect.ToString();
+        return spritesheetPath + "_" + rect.ToString() + "_" + (variant?.suffix ?? "");
     }
 
     private static void CopyFile(string oldPath, string newPath)

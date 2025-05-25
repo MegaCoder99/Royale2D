@@ -1,0 +1,251 @@
+{
+  "frames": [
+    {
+      "rect": {
+        "x1": 596,
+        "y1": 25,
+        "x2": 622,
+        "y2": 48
+      },
+      "duration": 2,
+      "offset": {
+        "x": -4,
+        "y": 0
+      },
+      "hitboxes": [
+        {
+          "tags": "sword1",
+          "rect": {
+            "x1": -19,
+            "y1": -5,
+            "x2": -3,
+            "y2": 11
+          }
+        }
+      ],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 624,
+        "y1": 25,
+        "x2": 651,
+        "y2": 48
+      },
+      "duration": 2,
+      "offset": {
+        "x": -6,
+        "y": 0
+      },
+      "hitboxes": [
+        {
+          "tags": "sword1",
+          "rect": {
+            "x1": -21,
+            "y1": -1,
+            "x2": -5,
+            "y2": 15
+          }
+        }
+      ],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 407,
+        "y1": 51,
+        "x2": 432,
+        "y2": 80
+      },
+      "duration": 1,
+      "offset": {
+        "x": -5,
+        "y": 3
+      },
+      "hitboxes": [
+        {
+          "tags": "sword1",
+          "rect": {
+            "x1": -18,
+            "y1": 3,
+            "x2": -2,
+            "y2": 19
+          }
+        }
+      ],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 629,
+        "y1": 51,
+        "x2": 652,
+        "y2": 84
+      },
+      "duration": 1,
+      "offset": {
+        "x": -4,
+        "y": 5
+      },
+      "hitboxes": [
+        {
+          "tags": "sword1",
+          "rect": {
+            "x1": -18,
+            "y1": 6,
+            "x2": -2,
+            "y2": 22
+          }
+        }
+      ],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 654,
+        "y1": 51,
+        "x2": 672,
+        "y2": 84
+      },
+      "duration": 1,
+      "offset": {
+        "x": -1,
+        "y": 6
+      },
+      "hitboxes": [
+        {
+          "tags": "sword1",
+          "rect": {
+            "x1": -12,
+            "y1": 7,
+            "x2": 4,
+            "y2": 23
+          }
+        }
+      ],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 695,
+        "y1": 51,
+        "x2": 711,
+        "y2": 89
+      },
+      "duration": 1,
+      "offset": {
+        "x": 0,
+        "y": 9
+      },
+      "hitboxes": [
+        {
+          "tags": "sword1",
+          "rect": {
+            "x1": -8,
+            "y1": 12,
+            "x2": 8,
+            "y2": 28
+          }
+        }
+      ],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 674,
+        "y1": 51,
+        "x2": 693,
+        "y2": 84
+      },
+      "duration": 2,
+      "offset": {
+        "x": 3,
+        "y": 5
+      },
+      "hitboxes": [
+        {
+          "tags": "sword1",
+          "rect": {
+            "x1": -1,
+            "y1": 7,
+            "x2": 15,
+            "y2": 23
+          }
+        }
+      ],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 513,
+        "y1": 51,
+        "x2": 533,
+        "y2": 82
+      },
+      "duration": 2,
+      "offset": {
+        "x": 4,
+        "y": 4
+      },
+      "hitboxes": [
+        {
+          "tags": "sword1",
+          "rect": {
+            "x1": -1,
+            "y1": 5,
+            "x2": 15,
+            "y2": 21
+          }
+        }
+      ],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 434,
+        "y1": 51,
+        "x2": 457,
+        "y2": 80
+      },
+      "duration": 2,
+      "offset": {
+        "x": 4,
+        "y": 3
+      },
+      "hitboxes": [
+        {
+          "tags": "sword1",
+          "rect": {
+            "x1": 2,
+            "y1": 3,
+            "x2": 18,
+            "y2": 19
+          }
+        }
+      ],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    }
+  ],
+  "hitboxes": [],
+  "loopStartFrame": 0,
+  "alignment": "center",
+  "wrapMode": "loop"
+}

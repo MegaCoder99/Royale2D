@@ -361,7 +361,10 @@ public abstract class BaseCanvas
 
     public virtual void OnMouseEnter()
     {
-        Focus();
+        // Focusing when hovering mouse over canvas causes a lot of problems with power users using hotkeys like Ctrl+C
+        // For example if you Ctrl+C to copy a text field but quickly hover over a canvas as you press C, you lose focus on the text field and lose your copy pasted text
+        // On the other hand, uncommenting this does prevent a lot of annoying extra clicks you have to do in some cases to regain focus on the canvas so it's a tradeoff
+        //Focus();
     }
 
     private void OnMouseLeaveRawHandler(object sender, MouseEventArgs e)

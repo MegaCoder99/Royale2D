@@ -1,0 +1,57 @@
+{
+  "spritesheetName": "objects.png",
+  "frames": [
+    {
+      "rect": {
+        "x1": 53,
+        "y1": 140,
+        "x2": 59,
+        "y2": 151
+      },
+      "duration": 2,
+      "offset": {
+        "x": -1,
+        "y": 2
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 88,
+        "y1": 140,
+        "x2": 94,
+        "y2": 151
+      },
+      "duration": 2,
+      "offset": {
+        "x": 2,
+        "y": 2
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 71,
+        "y1": 139,
+        "x2": 76,
+        "y2": 151
+      },
+      "duration": 240,
+      "offset": {
+        "x": 0,
+        "y": 2
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    }
+  ],
+  "hitboxes": [],
+  "loopStartFrame": 0,
+  "alignment": "center",
+  "wrapMode": "once"
+}

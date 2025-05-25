@@ -35,7 +35,7 @@ namespace Royale2D
             this.prevMenu = prevMenu;
             devPositions = new List<MenuPos> { footerPos, titlePos, startPos };
             backgroundTextureName = "secondary_menu";
-            fairyCursor = new SpriteInstance("fairy");
+            fairyCursor = new SpriteInstance("cursor");
         }
 
         public virtual void Update()
@@ -85,7 +85,7 @@ namespace Royale2D
                 }
             }
 
-            if (Debug.menuDev)
+            if (Debug.main?.menuDev == true)
             {
                 DevControls();
             }
@@ -115,7 +115,7 @@ namespace Royale2D
                 fairyCursor.Render(drawer, startPos.x - cursorXOff, startPos.y + (cursorY * ySpacing) + 6, ZIndex.UIGlobal);
             }
 
-            if (Debug.menuDev)
+            if (Debug.main?.menuDev == true)
             {
                 MenuPos devPosition = devPositions[devPosIndex];
                 drawer.DrawText(devPosition.x + "," + devPosition.y, Game.ScreenW, 0, AlignX.Right);

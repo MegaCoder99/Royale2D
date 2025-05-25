@@ -55,12 +55,12 @@
                     ChangeSpecChar(character);
                 }
 
-                if (Debug.skipBattleBus)
+                if (Debug.main?.skipBattleBus == true)
                 {
                     character.battleBusData.dropped = true;
                     int offX = player.id * 16;
                     int offY = 0;
-                    character.pos = Debug.quickStartPos.ToFdPoint().AddXY(offX, offY);
+                    character.pos = Debug.main.quickStartPos.ToFdPoint().AddXY(offX, offY);
                     character.ChangeState(new IdleState(character));
                 }
             }
@@ -73,9 +73,9 @@
             camera = new Camera(specCharacter.pos.ToFloatPoint(), specCharacter.section);
             hud = new HUD(specCharacter, storm);
 
-            if (Debug.debug && specCharacter != null)
+            if (Debug.main != null && specCharacter != null)
             {
-                Debug.AddDebugActors(mainSection, specCharacter.pos);
+                Debug.main.AddDebugActors(mainSection, specCharacter.pos);
             }
         }
 
@@ -105,7 +105,10 @@
             fluteScreen.Update();
             gameMode.Update();
 
-            Debug.frameAdvance = false;
+            if (Debug.main != null)
+            {
+                Debug.main.frameAdvance = false;
+            }
         }
 
         public void Render()

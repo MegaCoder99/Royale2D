@@ -16,7 +16,16 @@ namespace Royale2D
             }
 
             Game.Init();
-            Game.StartGameLoop();
+
+            try
+            {
+                Game.StartGameLoop();
+            }
+            catch
+            {
+                Match.current?.Leave("User encountered an unhandled exception.");
+                throw;
+            }
         }
     }
 }

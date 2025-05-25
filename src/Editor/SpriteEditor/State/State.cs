@@ -204,9 +204,21 @@ public partial class State : StateComponent, IEditorState
 
     public void SelectGlobalHitboxCommit(Hitbox hitbox)
     {
-        RedrawDirtyCommit(() =>
+        RedrawCommit(() =>
         {
             selection = hitbox;
+        });
+    }
+
+    public void MoveGlobalHitboxCommit(Hitbox hitbox, int dir)
+    {
+        RedrawDirtyCommit(() =>
+        {
+            var index = selectedSprite.hitboxes.IndexOf(hitbox);
+            if (index + dir < 0 || index + dir >= selectedSprite.hitboxes.Count) return;
+            var temp = selectedSprite.hitboxes[index];
+            selectedSprite.hitboxes[index] = selectedSprite.hitboxes[index + dir];
+            selectedSprite.hitboxes[index + dir] = temp;
         });
     }
 
@@ -230,7 +242,7 @@ public partial class State : StateComponent, IEditorState
 
     public void SelectFrameHitboxCommit(Hitbox hitbox)
     {
-        RedrawDirtyCommit(() =>
+        RedrawCommit(() =>
         {
             selection = hitbox;
         });
@@ -268,7 +280,7 @@ public partial class State : StateComponent, IEditorState
     public void SelectFrameDrawboxCommit(Drawbox drawbox)
     {
         if (selection == drawbox) return;
-        RedrawDirtyCommit(() =>
+        RedrawCommit(() =>
         {
             selection = drawbox;
         });
@@ -344,10 +356,11 @@ public partial class State : StateComponent, IEditorState
 
         RedrawDirtyCommit(() =>
         {
-            pendingFrame.duration = selectedFrame.duration;
+            var pendingFrameClone = new Frame(context, pendingFrame.ToModel());
+            pendingFrameClone.duration = selectedFrame.duration;
             int selectedFrameIndex = selectedSprite.frames.IndexOf(selectedFrame);
-            selectedSprite.frames[selectedFrameIndex] = pendingFrame;
-            selectedSprite.selectedFrame = pendingFrame;
+            selectedSprite.frames[selectedFrameIndex] = pendingFrameClone;
+            selectedSprite.selectedFrame = pendingFrameClone;
         });
     }
 
@@ -469,6 +482,17 @@ public partial class State : StateComponent, IEditorState
                 selectedSprite.frames[index] = selectedSprite.frames[index + 1];
                 selectedSprite.frames[index + 1] = temp;
             }
+        });
+    }
+
+    public void OnChangeFrameRectClick(Frame frame, int x1, int y1, int x2, int y2)
+    {
+        RedrawDirtyCommit(() =>
+        {
+            frame.rect.x1 = x1;
+            frame.rect.y1 = y1;
+            frame.rect.x2 = x2;
+            frame.rect.y2 = y2;
         });
     }
 

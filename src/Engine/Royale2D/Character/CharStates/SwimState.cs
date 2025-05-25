@@ -31,7 +31,7 @@
                 swimStrokeTime = 1;
                 character.ChangeFrameIndex(3);
                 character.spriteInstance.currentFrameTime = 0;
-                character.childFrameTagsToHide.Remove("swimstroke");
+                character.drawboxTagsToHide.Remove("swimstroke");
             }
             if (swimStrokeTime > 0)
             {
@@ -40,7 +40,7 @@
                 {
                     swimCooldown = 1;
                     swimStrokeTime = 0;
-                    character.childFrameTagsToHide.Add("swimstroke");
+                    character.drawboxTagsToHide.Add("swimstroke");
                 }
             }
             if (swimCooldown > 0)
@@ -65,7 +65,7 @@
                 return;
             }
 
-            character.childFrameTagsToHide.Add("swimstroke");
+            character.drawboxTagsToHide.Add("swimstroke");
             character.shadowComponent.disabled = true;
             character.wadeComponent.disabled = true;
         }
@@ -73,7 +73,7 @@
         public override void OnExit()
         {
             base.OnExit();
-            character.childFrameTagsToHide.Remove("swimstroke");
+            character.drawboxTagsToHide.Remove("swimstroke");
             character.shadowComponent.disabled = false;
             character.wadeComponent.disabled = false;
             character.colliderComponent.disabled = false;

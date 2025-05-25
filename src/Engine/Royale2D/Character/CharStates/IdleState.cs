@@ -22,7 +22,7 @@
                 character.world.hud.SetAlert1("Press X to " + paText, 2);
             }
 
-            if (FeatureGate.attack && input.IsPressed(Control.Attack) || (Debug.cpuAttack && character.player.isBot && Game.frameCount % 60 == 0))
+            if (character.inventory.HasSword() && input.IsPressed(Control.Attack) || (Debug.main?.cpuAttack == true && character.player.isBot && Game.frameCount % 60 == 0))
             {
                 character.ChangeState(new SwordSwingState(character));
             }

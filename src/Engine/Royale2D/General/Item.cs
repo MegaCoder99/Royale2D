@@ -17,7 +17,7 @@
         public Item(ItemType itemType, int spriteIndex, string name, int spawnOddsWeight, bool usesQuantity = false, int maxQuantity = 1, bool immediate = false, Action<Character>? useAction = null, ItemType? itemToBecome = null, int? shopSpriteIndex = null)
         {
             this.itemType = itemType;
-            this.spriteIndex = spriteIndex - 1;
+            this.spriteIndex = spriteIndex;
             this.name = name;
             this.usesQuantity = usesQuantity;
             this.maxQuantity = maxQuantity;

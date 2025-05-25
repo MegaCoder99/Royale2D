@@ -32,7 +32,7 @@
             base.Update();
 
             // This covers cases like planting a bomb right into the water
-            if (useGravity)
+            if (!useGravity)
             {
                 if (time == 3) CheckDestroyOnLand();
                 time++;
@@ -67,7 +67,18 @@
                     if (!CheckDestroyOnLand())
                     {
                         actor.OnLand();
-                        if (playLandSound) actor.PlaySound("land");
+                        if (playLandSound)
+                        {
+                            var cc = actor.GetComponent<ColliderComponent>();
+                            if (cc?.IsInTileWithTag(TileTag.ShallowWater) == true)
+                            {
+                                actor.PlaySound("walk water");
+                            }
+                            else
+                            {
+                                actor.PlaySound("land");
+                            }
+                        }
                     }
 
                     if (bounce && !bouncedGround)

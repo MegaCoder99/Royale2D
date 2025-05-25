@@ -13,7 +13,7 @@
             this.nextMenu = nextMenu;
             this.title = title;
             this.caption = caption;
-            this.message = Helpers.InsertNewlines(message, 20);
+            this.message = Helpers.InsertNewlines(message, 40);
             //menuOptions.Add(new MenuOption("OK", () => { }));
             footer = "X: Continue";
 

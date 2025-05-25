@@ -1,0 +1,905 @@
+{
+  "spritesheetName": "objects.png",
+  "frames": [
+    {
+      "rect": {
+        "x1": 233,
+        "y1": 6,
+        "x2": 249,
+        "y2": 22
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 0,
+        "y1": 0,
+        "x2": 1,
+        "y2": 1
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 0,
+        "y1": 0,
+        "x2": 1,
+        "y2": 1
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 0,
+        "y1": 0,
+        "x2": 1,
+        "y2": 1
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 0,
+        "y1": 0,
+        "x2": 1,
+        "y2": 1
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 0,
+        "y1": 0,
+        "x2": 1,
+        "y2": 1
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 0,
+        "y1": 0,
+        "x2": 1,
+        "y2": 1
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 0,
+        "y1": 0,
+        "x2": 1,
+        "y2": 1
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 0,
+        "y1": 0,
+        "x2": 1,
+        "y2": 1
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 0,
+        "y1": 0,
+        "x2": 1,
+        "y2": 1
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 0,
+        "y1": 0,
+        "x2": 1,
+        "y2": 1
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 0,
+        "y1": 0,
+        "x2": 1,
+        "y2": 1
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 0,
+        "y1": 0,
+        "x2": 1,
+        "y2": 1
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 0,
+        "y1": 0,
+        "x2": 1,
+        "y2": 1
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 0,
+        "y1": 0,
+        "x2": 1,
+        "y2": 1
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 175,
+        "y1": 25,
+        "x2": 191,
+        "y2": 41
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 254,
+        "y1": 6,
+        "x2": 270,
+        "y2": 22
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 0,
+        "y1": 0,
+        "x2": 1,
+        "y2": 1
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 194,
+        "y1": 6,
+        "x2": 210,
+        "y2": 22
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 0,
+        "y1": 0,
+        "x2": 1,
+        "y2": 1
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 0,
+        "y1": 0,
+        "x2": 1,
+        "y2": 1
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 0,
+        "y1": 0,
+        "x2": 1,
+        "y2": 1
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 0,
+        "y1": 0,
+        "x2": 1,
+        "y2": 1
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 0,
+        "y1": 0,
+        "x2": 1,
+        "y2": 1
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 0,
+        "y1": 0,
+        "x2": 1,
+        "y2": 1
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 0,
+        "y1": 0,
+        "x2": 1,
+        "y2": 1
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 0,
+        "y1": 0,
+        "x2": 1,
+        "y2": 1
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 0,
+        "y1": 0,
+        "x2": 1,
+        "y2": 1
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 0,
+        "y1": 0,
+        "x2": 1,
+        "y2": 1
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 0,
+        "y1": 0,
+        "x2": 1,
+        "y2": 1
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 0,
+        "y1": 0,
+        "x2": 1,
+        "y2": 1
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 0,
+        "y1": 0,
+        "x2": 1,
+        "y2": 1
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 0,
+        "y1": 0,
+        "x2": 1,
+        "y2": 1
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 0,
+        "y1": 0,
+        "x2": 1,
+        "y2": 1
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 0,
+        "y1": 0,
+        "x2": 1,
+        "y2": 1
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 0,
+        "y1": 0,
+        "x2": 1,
+        "y2": 1
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 0,
+        "y1": 0,
+        "x2": 1,
+        "y2": 1
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 0,
+        "y1": 0,
+        "x2": 1,
+        "y2": 1
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 0,
+        "y1": 0,
+        "x2": 1,
+        "y2": 1
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 0,
+        "y1": 0,
+        "x2": 1,
+        "y2": 1
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 0,
+        "y1": 0,
+        "x2": 1,
+        "y2": 1
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 0,
+        "y1": 0,
+        "x2": 1,
+        "y2": 1
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 0,
+        "y1": 0,
+        "x2": 1,
+        "y2": 1
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 0,
+        "y1": 0,
+        "x2": 1,
+        "y2": 1
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 0,
+        "y1": 0,
+        "x2": 1,
+        "y2": 1
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 0,
+        "y1": 0,
+        "x2": 1,
+        "y2": 1
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 0,
+        "y1": 0,
+        "x2": 1,
+        "y2": 1
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 0,
+        "y1": 0,
+        "x2": 1,
+        "y2": 1
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 213,
+        "y1": 6,
+        "x2": 229,
+        "y2": 22
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 0,
+        "y1": 0,
+        "x2": 1,
+        "y2": 1
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 0,
+        "y1": 0,
+        "x2": 1,
+        "y2": 1
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 0,
+        "y1": 0,
+        "x2": 1,
+        "y2": 1
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 0,
+        "y1": 0,
+        "x2": 1,
+        "y2": 1
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 0,
+        "y1": 0,
+        "x2": 1,
+        "y2": 1
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 0,
+        "y1": 0,
+        "x2": 1,
+        "y2": 1
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 6,
+        "y1": 106,
+        "x2": 11,
+        "y2": 121
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    }
+  ],
+  "hitboxes": [],
+  "loopStartFrame": 0,
+  "alignment": "center",
+  "wrapMode": "once"
+}

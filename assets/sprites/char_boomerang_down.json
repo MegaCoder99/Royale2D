@@ -1,0 +1,71 @@
+{
+  "frames": [
+    {
+      "rect": {
+        "x1": 19,
+        "y1": 51,
+        "x2": 39,
+        "y2": 75
+      },
+      "duration": 4,
+      "offset": {
+        "x": -2,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 389,
+        "y1": 25,
+        "x2": 405,
+        "y2": 48
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [
+        {
+          "tags": "boomerang",
+          "x": -3,
+          "y": 5
+        }
+      ],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 475,
+        "y1": 51,
+        "x2": 491,
+        "y2": 81
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 5
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [
+        {
+          "tags": "boomerang",
+          "x": -2,
+          "y": 17
+        }
+      ],
+      "spritesheetName": "packaged.png"
+    }
+  ],
+  "hitboxes": [],
+  "loopStartFrame": 0,
+  "alignment": "center",
+  "wrapMode": "loop"
+}

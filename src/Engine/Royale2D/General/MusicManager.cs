@@ -161,7 +161,7 @@ namespace Royale2D
 
         private float GetVolumeModifier()
         {
-            if (Debug.disableMusic) return 0;
+            if (Debug.main?.disableMusic == true) return 0;
             float baseModifier = 1;
             if (overlayMusicInstance.musicName != "") baseModifier *= baseMusicVolumeModifierWhenOverlay;
             // TODO multiply music setting here too
@@ -170,7 +170,7 @@ namespace Royale2D
 
         private float GetOverlayVolumeModifier()
         {
-            if (Debug.disableMusic) return 0;
+            if (Debug.main?.disableMusic == true) return 0;
             float baseModifier = 1;
             // TODO multiply music setting here too
             return baseModifier;

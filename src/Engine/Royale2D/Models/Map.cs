@@ -99,8 +99,7 @@ namespace Royale2D
             foreach (TileClump tileClump in tileClumpsList)
             {
                 tileClumps.Add(tileClump.name, tileClump);
-                tileClump.AutoSetFieldsFromNamingConventions();
-                tileClump.ParseFromProperties();
+                tileClump.Init();
             }
 
             var mapSectionFilePaths = workspace.mapSectionFolderPath.GetFiles(true, "json");

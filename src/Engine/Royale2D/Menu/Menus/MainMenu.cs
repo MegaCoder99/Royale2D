@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Royale2D
+﻿namespace Royale2D
 {
     public class MainMenu : Menu
     {
@@ -15,12 +13,13 @@ namespace Royale2D
         {
             gui = Assets.guis["main_menu"];
 
-            //menuOptions.Add(new TransitionMenuOption("Join Match", () => new JoinMatchMenu(this)));
-            //menuOptions.Add(new TransitionMenuOption("Host Match", () => new CreateMatchMenu(this, false, false)));
-            menuOptions.Add(new TransitionMenuOption("Battle Royale!", () => new CreateMatchMenu(this, true, false)).AddOptions(["Offline", "LAN", "Online"]));
-            menuOptions.Add(new TransitionMenuOption("Skins", () => new SkinsMenu(this)));
-            menuOptions.Add(new TransitionMenuOption("Options", () => new OptionsMenu(this)));
-            menuOptions.Add(new MenuOption("Controls", Debug.CreateAndStartOfflineMatch).AddOptions(["Keyboard", "Controller"]));
+            menuOptions.Add(new TransitionMenuOption("Create offline", () => new CreateMatchMenu(this, true, false)));
+            menuOptions.Add(new TransitionMenuOption("Join Match", () => new JoinMatchMenu(this)));
+            menuOptions.Add(new TransitionMenuOption("Host Match", () => new CreateMatchMenu(this, false, false)));
+            //menuOptions.Add(new TransitionMenuOption("Battle Royale!", (string option) => new CreateMatchMenu(this, option == "Offline", false)).AddOptions(["Offline", "LAN" /*,"Online"*/]));
+            //menuOptions.Add(new TransitionMenuOption("Skins", () => new SkinsMenu(this)));
+            //menuOptions.Add(new TransitionMenuOption("Options", () => new OptionsMenu(this)));
+            //menuOptions.Add(new MenuOption("Controls", () => new ControlsMenu()).AddOptions(["Keyboard", "Controller"]));
             menuOptions.Add(new MenuOption("Quit", () => Game.window.Close()));
 
             Div menuOptionsDiv = gui.GetNodeById("menu-options") as Div;
@@ -53,7 +52,7 @@ namespace Royale2D
             ImageNode menuOptionImage = gui.GetNodeById("menu-option-image") as ImageNode;
             Point menuOptionImagePos = menuOptionImage.GetPos();
 
-            skinSprite.Render(drawer, skinPos.x, skinPos.y, ZIndex.UIGlobal, childFrameTagsToHide: ["shield1", "shield2", "shield3"], overrideTexture: Options.main.skin);
+            skinSprite.Render(drawer, skinPos.x, skinPos.y, ZIndex.UIGlobal, drawboxTagsToHide: ["shield1", "shield2", "shield3"], overrideTexture: Options.main.skin);
 
             drawer.DrawText(Options.main.playerName, textPos.x, textPos.y, alignX: textNode.hAlign, alignY: textNode.vAlign, fontType: FontType.Small);
         }

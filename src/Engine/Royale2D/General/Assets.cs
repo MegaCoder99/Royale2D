@@ -10,8 +10,8 @@ namespace Royale2D
     public static class Assets
     {
 #if DEBUG
-        public static readonly FolderPath assetPath = Debug.customAssets ?
-            new FolderPath(Debug.customAssetsPath) :
+        public static readonly FolderPath assetPath = Debug.main?.customAssets == true ?
+            new FolderPath(Debug.main.customAssetsPath) :
             new FolderPath("../../../../../../assets");
 #else
         public static readonly FolderPath assetPath = new FolderPath("./assets");

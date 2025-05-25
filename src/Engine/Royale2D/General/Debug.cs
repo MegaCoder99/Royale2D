@@ -15,68 +15,134 @@ namespace Royale2D
     }
 
     // Contains useful code only for local testing.
-    public static class Debug
+    public class Debug
     {
 #if DEBUG
+        public static Debug? main = null; //new Debug();
         public static bool debug = true;
 #else
+        // The Debug singleton should never be set in release mode. Only for quick local dev testing.
+        public static Debug? main = null;
         public static bool debug = false;
 #endif
 
-        //public static string customAssetsPath = "C:/users/username/desktop/assets_custom";
-        public static string customAssetsPath = "";
-        public static bool customAssets => customAssetsPath.IsSet();
-        public static bool menuDev = false;
-        public static bool unlimitedFPS = false;
-        public static bool showHitboxes = false;
-        public static bool breakpoint = false;
-        public static GridCoords? hitTileCoords = null;
-        public static bool showActorGrid = false;
-        public static int charSpeedModifier = 1;
+        #region field definitions
+        public string customAssetsPath;
+        public bool customAssets => customAssetsPath.IsSet();
+        public bool menuDev;
+        public bool unlimitedFPS;
+        public bool showHitboxes;
+        public bool breakpoint;
+        public GridCoords? hitTileCoords;
+        public bool showActorGrid;
+        public int charSpeedModifier;
 
-        public static QuickStartType quickStartType = QuickStartType.Offline;
-        public static bool dontLoadSkins = true;
-        public static bool disableMusic = true;
+        public QuickStartType quickStartType;
+        public bool dontLoadSkins;
+        public bool disableMusic;
 
-        public static string quickStartMapName => Assets.maps.Keys.First();
-        public static IntPoint quickStartPos = new IntPoint(300, 300);
-        //public static IntPoint quickStartPos = new IntPoint(2237, 2865);   // Ledge testing
+        public string quickStartMapName => Assets.maps.Keys.First();
+        public IntPoint quickStartPos;
 
-        //public static IntPoint quickStartPos = new IntPoint(2797, 2574);   // Wide area testing
-        //public static IntPoint quickStartPos = new IntPoint(2047, 1893);   // Entrance testing
-        //public static IntPoint quickStartPos = new IntPoint(2056, 3478);   // Wade testing
-        //public static IntPoint quickStartPos = new IntPoint(606, 199);     // Mountain testing
+        public int cpuCount;
+        public bool cpuAttack;
+        public bool skipBattleBus;
+        public int? battleBusMaxTime;
+        public bool debugStorm;
 
-        public static int cpuCount = 0;
-        public static bool cpuAttack = false;
-        public static bool skipBattleBus => !FeatureGate.battlebus || true;
-        public static int battleBusMaxTime = 30;
-        public static bool debugStorm = false;
+        public string quickStartMatchName;
+        public string quickStartMapSection;
 
-        public static string quickStartMatchName = "Test Match";
-        public static string quickStartMapSection = "main";
+        public bool oneShotKill;
+        public int startRupees;
+        public int startArrows;
 
-        public static bool oneShotKill = true;
-        public static int startRupees = 0;
-        public static int startArrows = 90;
+        public int? sword;
+        public int? shield;
 
-        public static int? sword = 1;
-        public static int? shield = 1;
+        public bool hasEverything;
 
-        public static bool hasEverything = false;
+        public int delayFrames;
+        public bool frameAdvance;
+        public int maxDelayFrames;
+        public bool paused;
+        public float simulatedDuplicates;
+        public float simulatedLatency;
+        public float simulatedPacketLoss;
+        #endregion
 
-        public static int delayFrames = 3;
-        public static bool frameAdvance;
-        public static int maxDelayFrames = 30;
-        public static bool paused;
-        public static float simulatedDuplicates = 0;
-        public static float simulatedLatency = 0;
-        public static float simulatedPacketLoss = 0;
-
-        public static List<InventoryItem?> GetDebugItems()
+        public Debug()
         {
-            return [null, null, null, null, null];
-            /*
+            //customAssetsPath = "C:/users/username/desktop/ZBR assets/assets_custom";
+            customAssetsPath = "";
+
+            menuDev = false;
+            unlimitedFPS = false;
+            showHitboxes = false;
+            breakpoint = false;
+
+            hitTileCoords = null;
+            showActorGrid = false;
+            charSpeedModifier = 1;
+
+            quickStartType = QuickStartType.Offline;
+            dontLoadSkins = true;
+            disableMusic = true;
+
+            if (customAssetsPath.IsSet())
+            {
+                quickStartPos = new IntPoint(2237, 2865);   // Ledge testing
+
+                //quickStartPos = new IntPoint(2797, 2574);   // Wide area testing
+                //quickStartPos = new IntPoint(2047, 1893);   // Entrance testing
+                //quickStartPos = new IntPoint(2056, 3478);   // Wade testing
+                //quickStartPos = new IntPoint(606, 199);     // Mountain testing
+            }
+            else
+            {
+                quickStartPos = new IntPoint(300, 300);
+            }
+
+            cpuCount = 1;
+            skipBattleBus = true;
+            cpuAttack = false;
+
+            battleBusMaxTime = 30;
+            debugStorm = false;
+
+            quickStartMatchName = "Test Match";
+            quickStartMapSection = "main";
+
+            oneShotKill = false;
+            startRupees = 0;
+            startArrows = 1;
+
+            sword = 1;
+            shield = 1;
+
+            hasEverything = false;
+
+            delayFrames = 3;
+            maxDelayFrames = 30;
+            simulatedDuplicates = 0;
+            simulatedLatency = 0;
+            simulatedPacketLoss = 0;
+        }
+
+        public List<InventoryItem?> GetDebugItems()
+        {
+            if (!customAssetsPath.IsSet())
+            {
+                //return null;
+                return [
+                    new InventoryItem(ItemType.heartPiece, 3),
+                    new InventoryItem(ItemType.sword1),
+                    null,
+                    null,
+                    null
+                ];
+            }
+
             return [
                 new InventoryItem(ItemType.caneOfSomaria),
                 new InventoryItem(ItemType.bow),
@@ -84,11 +150,10 @@ namespace Royale2D
                 new InventoryItem(ItemType.hammer),
                 new InventoryItem(ItemType.bombs, 99),
             ];
-            */
         }
 
-        static int debugPresetIndex = -1;
-        public static List<List<InventoryItem?>> GetDebugItemsPresets()
+        int debugPresetIndex = -1;
+        public List<List<InventoryItem?>> GetDebugItemsPresets()
         {
             return [
                 [
@@ -128,7 +193,7 @@ namespace Royale2D
             ];
         }
 
-        public static void AddDebugActors(WorldSection section, FdPoint charPos)
+        public void AddDebugActors(WorldSection section, FdPoint charPos)
         {
             //new Fairy(section, charPos.AddXY(32, 32), true);
             //new Bee(section, charPos.AddXY(48, 32), null);
@@ -139,9 +204,9 @@ namespace Royale2D
             //Collectables.CreateSmallMagic(section, charPos.AddXY(32, 32), false);
         }
 
-        public static void Start()
+        public void Start()
         {
-            if (quickStartType == QuickStartType.Offline || !FeatureGate.menu)
+            if (quickStartType == QuickStartType.Offline)
             {
                 CreateAndStartOfflineMatch();
             }
@@ -178,7 +243,7 @@ namespace Royale2D
             }
         }
 
-        static void QuickCreateServer()
+        void QuickCreateServer()
         {
             Helpers.ThrowWhenDebugging(() =>
             {
@@ -188,7 +253,7 @@ namespace Royale2D
             }, "Failed to quick create server");
         }
 
-        static void QuickJoinServer()
+        void QuickJoinServer()
         {
             Helpers.ThrowWhenDebugging(() =>
             {
@@ -198,18 +263,13 @@ namespace Royale2D
             }, "Failed to quick join server");
         }
 
-        static bool started;
-        public static void Update()
+        bool started;
+        public void Update()
         {
             if (!started)
             {
                 Start();
                 started = true;
-            }
-
-            if (!customAssets)
-            {
-                return;
             }
 
             // Check if sfml key pressed
@@ -296,7 +356,7 @@ namespace Royale2D
                 }
                 else if (Game.input.IsKeyPressed(Keyboard.Key.F6))
                 {
-                    Debug.cpuAttack = !Debug.cpuAttack;
+                    cpuAttack = !cpuAttack;
                 }
                 else if (Game.input.IsKeyPressed(Keyboard.Key.E))
                 {
@@ -321,6 +381,10 @@ namespace Royale2D
                 else if (Game.input.IsKeyPressed(Keyboard.Key.H))
                 {
                     chr.health.value = chr.health.maxValue;
+                }
+                else if (Game.input.IsKeyPressed(Keyboard.Key.J))
+                {
+                    chr.health.value = 2;
                 }
                 else if (Game.input.IsKeyPressed(Keyboard.Key.B))
                 {
@@ -367,26 +431,26 @@ namespace Royale2D
             }
         }
 
-        public static void CreateAndStartOfflineMatch()
+        public void CreateAndStartOfflineMatch()
         {
             Match.current = OfflineMatch.Create(new MatchSettings(quickStartMapName, ""));
             Match.current.Start();
         }
 
         // TODO once HUD work has started, make showFPS "official"
-        public static float lastFps;
-        public static List<float> fpsQueue = new List<float>();
-        public static float timer;
-        public static string debugString1 = "";
-        public static string debugString2 = "";
-        public static string debugString3 = "";
-        public static bool waitingForPlayers;
+        public float lastFps;
+        public List<float> fpsQueue = new List<float>();
+        public float timer;
+        public string debugString1 = "";
+        public string debugString2 = "";
+        public string debugString3 = "";
+        public bool waitingForPlayers;
 
-        public static void RenderToWorld(Drawer drawer, ColliderGrid colliderGrid)
+        public void RenderToWorld(Drawer drawer, ColliderGrid colliderGrid)
         {
         }
 
-        public static void RenderToScreen(Drawer drawer)
+        public void RenderToScreen(Drawer drawer)
         {
             if (!debug) return;
 

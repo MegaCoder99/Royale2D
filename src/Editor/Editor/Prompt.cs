@@ -9,7 +9,7 @@ public static class Prompt
 {
     public static string SelectFile(string title, string initialDirectory, string fileExtensionFilter)
     {
-        if (!Path.Exists(initialDirectory)) initialDirectory = "";
+        if (!Path.Exists(initialDirectory) || initialDirectory.StartsWith(".")) initialDirectory = "";
         initialDirectory = initialDirectory.Replace("/", "\\");
 
         var fileDialog = new OpenFileDialog
@@ -30,7 +30,7 @@ public static class Prompt
 
     public static string SelectFolder(string title, string initialDirectory)
     {
-        if (!Path.Exists(initialDirectory)) initialDirectory = "";
+        if (!Path.Exists(initialDirectory) || initialDirectory.StartsWith(".")) initialDirectory = "";
         initialDirectory = initialDirectory.Replace("/", "\\");
 
         var folderDialog = new OpenFolderDialog

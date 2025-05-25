@@ -9,7 +9,7 @@
         public FieldItem(WorldSection section, FdPoint pos, InventoryItem inventoryItem, FdPoint velDir, bool launchUp) 
             : base(section, pos, "field_item")
         {
-            colliderComponent =AddComponent(new ColliderComponent(this, false, false));
+            colliderComponent = AddComponent(new ColliderComponent(this, false, false));
             AddComponent(new ShadowComponent(this, ShadowType.Small));
             AddComponent(new WadeComponent(this));
             if (inventoryItem.quantity > 1)
@@ -32,6 +32,9 @@
                 // Don't do this while it's being tossed, only after landing
                 zLayerOffset = ZIndex.LayerOffsetActorBelow;
             }
+
+            colliderComponent.ChangeMoveStrategy(new ProjMoveStrategy(colliderComponent));
+            zComponent.useZForWallCollisions = false;
 
             this.inventoryItem = inventoryItem;
             frameSpeed = 0;

@@ -91,9 +91,9 @@
                         <Button Content="Undo" Margin="0 0 5 0" Click="OnUndoClick" IsEnabled="{Binding canUndo}" />
                         <Button Content="Redo" Margin="0 0 5 0" Click="OnRedoClick" IsEnabled="{Binding canRedo}" />
                         <!--<Button Content="Debug" Margin="0 0 5 0" Click="OnDebugClick" />-->
-                        <CheckBox Content="Hide gizmos" Margin="0 0 5 0" IsChecked="{Binding hideGizmos, Converter={StaticResource RedrawConverter}, ConverterParameter='Default,Sprite'}" VerticalAlignment="Center" />
+                        <CheckBox Content="Hide gizmos" Margin="0 0 5 0" IsChecked="{Binding hideGizmos, Converter={StaticResource RedrawConverter}, ConverterParameter='Sprite'}" VerticalAlignment="Center" />
                         <Label Margin="5 0 0 0" Content="Show Boxes With Tag:" VerticalAlignment="Center" />
-                        <TextBox Width="125" Height="20" Margin="0 0 5 0" Text="{Binding boxTagFilter, Converter={StaticResource RedrawConverter}, ConverterParameter='Default,Sprite'}" />
+                        <TextBox Width="125" Height="20" Margin="0 0 5 0" Text="{Binding boxTagFilter, Converter={StaticResource RedrawConverter}, ConverterParameter='Sprite'}" />
                         <Label Margin="20 0 0 0" Content="Script" VerticalAlignment="Center" />
                         <TextBox x:Name="scriptTextBox" Width="100" Height="20" Margin="0 0 5 0" />
                         <Button Content="Run Script" Margin="0 0 5 0" Click="OnRunScriptClick" VerticalAlignment="Center" />
@@ -102,9 +102,9 @@
                         <Label Content="Spritesheet" />
                         <ComboBox Height="22" ItemsSource="{Binding spritesheetNames}" SelectedItem="{Binding selectedSprite.spritesheetName, Converter={StaticResource DirtyRedrawConverter}, Mode=TwoWay}"/>
                         <Label Content="Alignment" />
-                        <ComboBox Height="22" ItemsSource="{Binding alignments}" SelectedItem="{Binding selectedSprite.alignment, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Sprite,Default', Mode=TwoWay}" />
+                        <ComboBox Height="22" ItemsSource="{Binding alignments}" SelectedItem="{Binding selectedSprite.alignment, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Default,Sprite', Mode=TwoWay}" />
                         <Label Content="Wrap mode" />
-                        <ComboBox Height="22" ItemsSource="{Binding wrapModes}" SelectedItem="{Binding selectedSprite.wrapMode, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Sprite,Default', Mode=TwoWay}" />
+                        <ComboBox Height="22" ItemsSource="{Binding wrapModes}" SelectedItem="{Binding selectedSprite.wrapMode, Converter={StaticResource DirtyRedrawConverter}, ConverterParameter='Default,Sprite', Mode=TwoWay}" />
                     </StackPanel>
 
                     <!-- Hitbox/drawbox/POI section -->
@@ -133,7 +133,9 @@
                                                 <Label Content="Tags" />
                                                 <TextBox Margin="0 0 5 0" Text="{Binding tags, Converter={StaticResource DirtyRedrawConverter}}" Width="60" Height="20" HorizontalAlignment="Left" />
                                                 <Button Margin="0 0 5 0" Click="OnSelectGlobalHitboxClick" Content="Select" />
-                                                <Button Margin="0 0 5 0" Click="OnRemoveGlobalHitboxClick" Content="Remove" />
+                                                <Button Style="{x:Null}" Content="↑" ToolTip="Move Up" Width="22" Height="22" Margin="0 0 4 0" Click="OnMoveGlobalHitboxUpClick" />
+                                                <Button Style="{x:Null}" Content="↓" ToolTip="Move Down" Width="22" Height="22" Margin="0 0 4 0" Click="OnMoveGlobalHitboxDownClick" />
+                                                <Button Margin="0 0 5 0" Click="OnRemoveGlobalHitboxClick" Content="Delete" />
                                             </StackPanel>
                                         </Border>
                                     </DataTemplate>
@@ -278,7 +280,7 @@
                         <ItemsControl x:Name="framesItemsControl" ItemsSource="{Binding selectedSprite.frames}" AlternationCount="1000">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <Border Width="450" HorizontalAlignment="Left" BorderThickness="1" BorderBrush="{Binding border}">
+                                    <Border Width="475" HorizontalAlignment="Left" BorderThickness="1" BorderBrush="{Binding border}">
                                         <Grid>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="35" />
@@ -287,7 +289,7 @@
                                                 <ColumnDefinition Width="70" />
                                                 <ColumnDefinition Width="71" />
                                                 <ColumnDefinition Width="66" />
-                                                <ColumnDefinition Width="90" />
+                                                <ColumnDefinition Width="120" />
                                             </Grid.ColumnDefinitions>
 
                                             <!--<Label Grid.Column="0" FontWeight="Bold" Content="0" />-->
@@ -304,6 +306,7 @@
                                             <StackPanel Grid.Column="6" Orientation="Horizontal">
                                                 <Button Style="{x:Null}" Content="↑" ToolTip="Move Up" Width="22" Height="22" Margin="0 0 4 0" Click="OnMoveFrameUpClick" />
                                                 <Button Style="{x:Null}" Content="↓" ToolTip="Move Down" Width="22" Height="22" Margin="0 0 4 0" Click="OnMoveFrameDownClick" />
+                                                <Button Style="{x:Null}" Content="▯" ToolTip="Change Rect" Width="22" Height="22" Margin="0 0 4 0" Click="OnChangeFrameRectClick" />
                                                 <Button Style="{x:Null}" Content="🗑" ToolTip="Delete" Width="22" Height="22" Margin="0 0 4 0" Click="OnDeleteFrameClick" />
                                             </StackPanel>
                                         </Grid>

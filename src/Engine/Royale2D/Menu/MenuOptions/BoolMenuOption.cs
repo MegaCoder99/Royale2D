@@ -24,5 +24,4 @@
             drawer.DrawText(text + (getValue() ? "yes" : "no"), x, y);
         }
     }
-
 }

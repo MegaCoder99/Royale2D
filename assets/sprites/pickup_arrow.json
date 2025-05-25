@@ -1,0 +1,34 @@
+{
+  "frames": [
+    {
+      "rect": {
+        "x1": 771,
+        "y1": 1,
+        "x2": 776,
+        "y2": 16
+      },
+      "duration": 10,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    }
+  ],
+  "hitboxes": [
+    {
+      "rect": {
+        "x1": -3,
+        "y1": -8,
+        "x2": 4,
+        "y2": 8
+      }
+    }
+  ],
+  "loopStartFrame": 0,
+  "alignment": "center",
+  "wrapMode": "loop"
+}

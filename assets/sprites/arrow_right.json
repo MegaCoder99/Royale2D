@@ -1,0 +1,42 @@
+{
+  "frames": [
+    {
+      "rect": {
+        "x1": 21,
+        "y1": 1,
+        "x2": 36,
+        "y2": 6
+      },
+      "duration": 2,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    }
+  ],
+  "hitboxes": [
+    {
+      "rect": {
+        "x1": -6,
+        "y1": -1,
+        "x2": 7,
+        "y2": 1
+      }
+    },
+    {
+      "rect": {
+        "x1": -6,
+        "y1": -3,
+        "x2": 7,
+        "y2": 3
+      }
+    }
+  ],
+  "loopStartFrame": 0,
+  "alignment": "center",
+  "wrapMode": "once"
+}

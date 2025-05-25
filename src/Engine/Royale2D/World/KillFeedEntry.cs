@@ -41,7 +41,7 @@
                 (string spriteName, int frameIndex) = damager.Value.GetKillfeedSpriteAndIndex();
                 Sprite sprite = Assets.GetSprite(spriteName);
                 int spriteWidth = sprite.frames[frameIndex].rect.w;
-                float spritePosXOff = killerNameWidth + (spriteWidth / 2) + 5;
+                float spritePosXOff = killerNameWidth + (spriteWidth / 2) + 12;
                 float victimPosXOff = spritePosXOff + (spriteWidth / 2) + 5;
                 sprite.Render(drawer, pos.x + spritePosXOff, pos.y, frameIndex);
                 drawer.DrawText(victim.player.name, pos.x + victimPosXOff, pos.y, AlignX.Left, AlignY.Middle, fontType: FontType.Small, letterSpacing: -1);

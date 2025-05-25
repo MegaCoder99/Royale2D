@@ -103,7 +103,7 @@ namespace Royale2D
 
         public override void Render(Drawer drawer)
         {
-            if (Debug.showHitboxes)
+            if (Debug.main?.showHitboxes == true)
             {
                 foreach (Collider collider in GetAllColliders())
                 {
@@ -142,7 +142,7 @@ namespace Royale2D
         public List<Collider> GetAllColliders()
         {
             var colliders = new List<Collider>(globalColliders);
-            colliders.AddRange(actor.spriteInstance.GetFrameColliders(actor.GetChildFrameTagsToHide()));
+            colliders.AddRange(actor.spriteInstance.GetFrameColliders(actor.GetDrawboxTagsToHide()));
             return colliders;
         }
 
@@ -332,7 +332,7 @@ namespace Royale2D
                     }
                 }
 
-                if (totalArea > 0 && actorRect.area / totalArea <= 2) return true;
+                if (totalArea > 0 && Fd.New(actorRect.area) / Fd.New(totalArea) <= Fd.New(2)) return true;
             }
 
             return false;

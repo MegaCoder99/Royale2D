@@ -371,7 +371,7 @@ namespace Royale2D
                 sprites.Clear();
                 if (textW > maxTextW) maxTextW = textW;
                 textW = 0;
-                textH += charH + paddingY;
+                textH += (charH + paddingY) * fontScale;
             }
 
             return maxTextW / Game.windowScale;

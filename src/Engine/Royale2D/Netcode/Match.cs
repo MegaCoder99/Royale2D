@@ -39,6 +39,9 @@ namespace Royale2D
         {
             current = null;
 
+            SoundManager.soundPool.Clear();
+            worldHost?.textureManager?.Cleanup();
+
             Console.WriteLine("Leaving match. Reason: " + forceLeaveMessage);
 
             if (string.IsNullOrEmpty(forceLeaveMessage))

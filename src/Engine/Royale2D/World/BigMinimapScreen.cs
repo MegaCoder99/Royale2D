@@ -105,20 +105,30 @@
                 newJ = j - section.mapSection.mainSectionChildPos.Value.j;
             }
 
+            TileData[,] tileGrid = section.firstTileGrid;
+            for (int index = 0; index < section.layers.Count; index++)
+            {
+                if (index == section.mapSection.startLayer)
+                {
+                    tileGrid = section.layers[index].tileGrid;
+                    break;
+                }
+            }
+
             // There must be a 2x2 area of tiles that all can land
             if (i > 0 && j > 0 &&
-                section.firstTileGrid[newI - 1, newJ - 1].CanLand() &&
-                section.firstTileGrid[newI - 1, newJ].CanLand() &&
-                section.firstTileGrid[newI, newJ - 1].CanLand() &&
-                section.firstTileGrid[newI, newJ].CanLand())
+                tileGrid[newI - 1, newJ - 1].CanLand() &&
+                tileGrid[newI - 1, newJ].CanLand() &&
+                tileGrid[newI, newJ - 1].CanLand() &&
+                tileGrid[newI, newJ].CanLand())
             {
                 return true;
             }
             if (i < gridHeight - 1 && j < gridWidth - 1 &&
-                section.firstTileGrid[newI + 1, newJ + 1].CanLand() &&
-                section.firstTileGrid[newI + 1, newJ].CanLand() &&
-                section.firstTileGrid[newI, newJ + 1].CanLand() &&
-                section.firstTileGrid[newI, newJ].CanLand())
+                tileGrid[newI + 1, newJ + 1].CanLand() &&
+                tileGrid[newI + 1, newJ].CanLand() &&
+                tileGrid[newI, newJ + 1].CanLand() &&
+                tileGrid[newI, newJ].CanLand())
             {
                 return true;
             }

@@ -7,7 +7,6 @@ namespace Royale2D
     {
         public List<SoundInstance> soundInstances = [];
 
-        // CLEANUP world destroyed => soundPool destroyed
         public static Dictionary<int, Sound> soundPool = new Dictionary<int, Sound>();
         public static int autoIncSoundId;
 

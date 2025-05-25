@@ -121,7 +121,7 @@
                 if (fxLayer.isForeground) fxLayer.Render(drawer);
             }
 
-            Debug.RenderToWorld(drawer, colliderGrid);
+            Debug.main?.RenderToWorld(drawer, colliderGrid);
         }
 
         public void AddActor(Actor actor)

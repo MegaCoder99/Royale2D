@@ -6,7 +6,7 @@
         {
         }
 
-        // REFACTOR "ApplyQueuedMoveAndCheckCollision"
+        // REFACTOR consider renaming to "ApplyQueuedMoveAndCheckCollision"
         public override void ApplyMove(FdPoint moveAmount)
         {
             (List<TileCollision> tileCollisions, List<ActorCollision> actorCollisions) = MoveIncremental(moveAmount, false);

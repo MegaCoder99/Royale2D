@@ -105,7 +105,7 @@ namespace Royale2D
             {
                 TileInstance tileInstance = collision.other.tileInstance;
                 TileClumpInstance? tileClumpInstance = tileInstance.GetTileClumpInstanceFromTag(TileClumpTags.Bush);
-                if (tileClumpInstance != null)
+                if (tileClumpInstance != null && character.IsFacingAndCloseToTileClump(tileClumpInstance.Value))
                 {
                     character.ChangeState(new PokeState(character, this, false));
                     character.layer.TransformTileClumpWithAnim(tileClumpInstance.Value, character);

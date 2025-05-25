@@ -21,7 +21,7 @@ public partial class State
             foreach (Frame frame in selectedSprite.frames)
             {
                 drawer.DrawRect(frame.rect, null, Color.Blue, 4.0f / spriteCanvas.zoom);
-                drawer.DrawText((i + 1).ToString(), frame.rect.x1, frame.rect.y1, Color.Red, Color.Black, 12);
+                drawer.DrawText(i.ToString(), frame.rect.x1, frame.rect.y1, Color.Red, Color.Black, 12);
                 i++;
             }
         }
@@ -59,20 +59,12 @@ public partial class State
 
     public void SpritesheetCanvasLeftMouseDown(double mouseX, double mouseY)
     {
-        RedrawCommit(() =>
-        {
-            if (selectedSprite == null || selectedSpritesheet == null) return;
-
-            MyRect? rect = selectedSpritesheet.GetPixelClumpRect((float)mouseX, (float)mouseY);
-            if (rect != null)
-            {
-                pendingFrame = new Frame(context, rect.Value, 10, new MyPoint(0, 0));
-            }
-        });
     }
 
     public void SpritesheetCanvasLeftMouseUp(int mouseX, int mouseY)
     {
+        if (selectedSprite == null || selectedSpritesheet == null) return;
+
         RedrawCommit(() =>
         {
             int topLeftX = (int)Math.Min(spritesheetCanvas.lastClickedMouseX, mouseX);
@@ -80,18 +72,28 @@ public partial class State
             int botRightX = (int)Math.Max(spritesheetCanvas.lastClickedMouseX, mouseX);
             int botRightY = (int)Math.Max(spritesheetCanvas.lastClickedMouseY, mouseY);
 
+            // This block selects a single contiguous blob if all pixels in selected drag rect are non-empty
             for (int i = topLeftY; i <= botRightY; i++)
             {
                 for (int j = topLeftX; j <= botRightX; j++)
                 {
                     if (selectedSpritesheet.imgPixelGrid.InRange(i, j) && selectedSpritesheet.imgPixelGrid[i, j].rgb.A != 0)
                     {
-                        MyRect? rect = selectedSpritesheet.GetPixelClumpRect(j, i);
-                        if (rect == null) continue;
-                        pendingFrame = new Frame(context, rect.Value, 10, new MyPoint(0, 0));
-                        return;
+                        MyRect? rect = selectedSpritesheet.GetPixelClumpRect(mouseX, mouseY);
+                        if (rect != null)
+                        {
+                            pendingFrame = new Frame(context, rect.Value, 10, new MyPoint(0, 0));
+                            return;
+                        }
                     }
                 }
+            }
+
+            // This block selects minimum surrounding rect if you drag select multiple separate "islands"
+            MyRect? rect2 = selectedSpritesheet.GetSelectedPixelRect(topLeftX, topLeftY, botRightX, botRightY);
+            if (rect2 != null)
+            {
+                pendingFrame = new Frame(context, rect2.Value, 10, new MyPoint(0, 0));
             }
         });
     }

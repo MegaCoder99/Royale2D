@@ -1,0 +1,34 @@
+{
+  "spritesheetName": "objects.png",
+  "frames": [
+    {
+      "rect": {
+        "x1": 6,
+        "y1": 106,
+        "x2": 11,
+        "y2": 121
+      },
+      "duration": 10,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    }
+  ],
+  "hitboxes": [
+    {
+      "rect": {
+        "x1": -3,
+        "y1": -8,
+        "x2": 4,
+        "y2": 8
+      }
+    }
+  ],
+  "loopStartFrame": 0,
+  "alignment": "center",
+  "wrapMode": "loop"
+}

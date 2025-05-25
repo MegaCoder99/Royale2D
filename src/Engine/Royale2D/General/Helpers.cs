@@ -231,19 +231,15 @@ namespace Royale2D
             return Deserialize<T>(Serialize(obj));
         }
 
-        // Do NOT use this for anything besides local debugging since it may not get the right IPv4 address in some cases
         public static string GetLocalIpv4Address()
         {
-#if DEBUG
-            var host = Dns.GetHostEntry(Dns.GetHostName());
-            foreach (var ip in host.AddressList)
+            foreach (var ip in Dns.GetHostEntry(Dns.GetHostName()).AddressList)
             {
-                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                if (ip.AddressFamily == AddressFamily.InterNetwork && !IPAddress.IsLoopback(ip))
                 {
                     return ip.ToString();
                 }
             }
-#endif
             return "";
         }
 
@@ -255,7 +251,7 @@ namespace Royale2D
             foreach (char c in message)
             {
                 retMsg += c;
-                if (i == charsPerLine && c == ' ')
+                if (i >= charsPerLine && c == ' ')
                 {
                     retMsg += "\n";
                     i = 0;

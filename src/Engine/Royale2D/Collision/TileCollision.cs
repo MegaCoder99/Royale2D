@@ -65,7 +65,10 @@ namespace Royale2D
             bool useSpeedOfOne = false;
 
             TileInstance tileInstance = other.tileInstance;
-            Debug.hitTileCoords = new GridCoords(tileInstance.i, tileInstance.j);
+            if (Debug.main != null)
+            {
+                Debug.main.hitTileCoords = new GridCoords(tileInstance.i, tileInstance.j);
+            }
             if (tileInstance.IsLedge()) isLedge = true;
 
             IntShape myShape = mine.GetWorldShape();

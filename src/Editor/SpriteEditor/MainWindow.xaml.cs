@@ -223,6 +223,24 @@ public partial class MainWindow : Window
         }
     }
 
+    public void OnMoveGlobalHitboxUpClick(object sender, RoutedEventArgs e)
+    {
+        if ((sender as Button)?.DataContext is Hitbox hitbox)
+        {
+            state.MoveGlobalHitboxCommit(hitbox, -1);
+            state.spriteCanvas.Focus();
+        }
+    }
+
+    public void OnMoveGlobalHitboxDownClick(object sender, RoutedEventArgs e)
+    {
+        if ((sender as Button)?.DataContext is Hitbox hitbox)
+        {
+            state.MoveGlobalHitboxCommit(hitbox, 1);
+            state.spriteCanvas.Focus();
+        }
+    }
+
     public void OnRemoveGlobalHitboxClick(object sender, RoutedEventArgs e)
     {
         if ((sender as Button)?.DataContext is Hitbox hitbox)
@@ -345,6 +363,18 @@ public partial class MainWindow : Window
         if ((sender as Button)?.DataContext is Frame frame)
         {
             state.MoveFrameDownCommit(frame);
+        }
+    }
+
+    private void OnChangeFrameRectClick(object sender, RoutedEventArgs e)
+    {
+        if ((sender as Button)?.DataContext is Frame frame)
+        {
+            var changeRectDialog = new ChangeRectDialog(frame.rect.ToModel());
+            if (changeRectDialog.ShowDialog() == true)
+            {
+                state.OnChangeFrameRectClick(frame, changeRectDialog.X1, changeRectDialog.Y1, changeRectDialog.X2, changeRectDialog.Y2);
+            }
         }
     }
 

@@ -55,7 +55,7 @@
                 float yOff = 0;
                 if (actor is Character chr) yOff = -4;
                 Point renderPos = actor.GetRenderFloatPos().AddXY(0, (actor.sprite.frames[0].rect.h / 2.0f) + yOff);
-                wadeSprite.Render(drawer, renderPos, frameIndex, actor.GetRenderZIndex(ZIndex.ChildOffsetWade));
+                wadeSprite.Render(drawer, renderPos, frameIndex, actor.GetRenderZIndex(ZIndex.DrawboxOffsetWade));
             }
         }
         

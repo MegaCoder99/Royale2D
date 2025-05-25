@@ -8,8 +8,14 @@ namespace Royale2D
         public string name = "";
         public string properties = "";
         public string tags = "";
+        public string transformTileClumpNameCsv = "";
 
         public string transformClumpName = "";
+        // Support a few alternate clumps to transform into
+        public string transformClumpName2 = "";
+        public string transformClumpName3 = "";
+        public string transformClumpName4 = "";
+
         public string transformSound = "";
         public string liftSprite = "";
         public string breakSound = "";
@@ -19,6 +25,21 @@ namespace Royale2D
 
         public int rows => tileIds.GetLength(0);
         public int cols => tileIds.GetLength(1);
+
+        public void Init()
+        {
+            if (transformTileClumpNameCsv.IsSet())
+            {
+                string[] pieces = transformTileClumpNameCsv.Split();
+                transformClumpName = pieces[0];
+                transformClumpName2 = pieces.SafeGet(1) ?? "";
+                transformClumpName3 = pieces.SafeGet(2) ?? "";
+                transformClumpName4 = pieces.SafeGet(3) ?? "";
+            }
+
+            AutoSetFieldsFromNamingConventions();
+            ParseFromProperties();
+        }
 
         public bool CheckIfClumpMatches(int[,] otherTileIds, int i, int j)
         {
@@ -58,6 +79,9 @@ namespace Royale2D
             });
         }
 
+        // Methods like these promote "convention over configuration", reducing configuration required of tile clumps in the editor.
+        // However it's a hotly contested subject, and there is an argument explicit is better. We can always respect manual config
+        // by IsSet() checks for some cases like liftables where there is more variation and only setting if it doesn't exist.
         public void AutoSetFieldsFromNamingConventions()
         {
             if (tags.Unset())
@@ -80,7 +104,10 @@ namespace Royale2D
             }
             if (tags.Contains(TileClumpTags.Liftable))
             {
-                transformClumpName = name + "Base";
+                if (!transformClumpName.IsSet())
+                {
+                    transformClumpName = name + "Base";
+                }
             }
             if (tags.Contains(TileClumpTags.Cuttable))
             {
@@ -94,6 +121,10 @@ namespace Royale2D
             if (tags.Contains(TileClumpTags.TallGrass))
             {
                 breakSound = "grass destroyed";
+            }
+            if (!breakSound.IsSet())
+            {
+                breakSound = "rock break";
             }
         }
     }
@@ -116,41 +147,48 @@ namespace Royale2D
 
         public static string GetTagsFromName(string name)
         {
-            if (name.StartsWith("Bush"))
+            if (name.StartsWith("Bush") && !name.EndsWith("Base"))
             {
-                return Bush + "," + Cuttable + "," + Liftable;
+                return Bush + "," + Cuttable + "," + Liftable + "," + ProjFlyOver;
             }
             else if (name.StartsWith("ChestSmall") || name.StartsWith("ChestBig"))
             {
-                return Chest;
+                if (name.EndsWith("Open"))
+                {
+                    return ProjFlyOver;
+                }
+                else
+                {
+                    return Chest + "," + ProjFlyOver;
+                }
             }
-            else if (name.StartsWith("Grass"))
+            else if (name.StartsWith("Grass") && !name.EndsWith("Base"))
             {
                 return TallGrass + "," + Cuttable;
             }
-            else if (name.StartsWith("Door"))
+            else if (name.StartsWith("Door") && !name.EndsWith("Open"))
             {
                 return Door;
             }
-            else if (name.StartsWith("CW"))
+            else if (name.StartsWith("CW") && !name.EndsWith("Open"))
             {
-                return CrackedWall;
+                return CrackedWall + ",";
             }
-            else if (name.StartsWith("Pot"))
+            else if (name.StartsWith("Pot") && !name.EndsWith("Base"))
             {
-                return Liftable;
+                return Liftable + ProjFlyOver;
             }
-            else if (name.StartsWith("Rock") && name.Contains("Gray"))
+            else if (name.StartsWith("Rock") && name.Contains("Gray") && !name.EndsWith("Base"))
             {
-                return Liftable + "," + LiftableGlove1;
+                return Liftable + "," + LiftableGlove1 + "," + ProjFlyOver;
             }
-            else if (name.StartsWith("Rock") && name.Contains("Black"))
+            else if (name.StartsWith("Rock") && name.Contains("Black") && !name.EndsWith("Base"))
             {
-                return Liftable + "," + LiftableGlove2;
+                return Liftable + "," + LiftableGlove2 + "," + ProjFlyOver;
             }
-            else if (name.StartsWith("Sign"))
+            else if (name.StartsWith("Sign") && !name.EndsWith("Base"))
             {
-                return Sign + "," + Liftable;
+                return Sign + "," + Liftable + "," + ProjFlyOver;
             }
             return "";
         }

@@ -87,7 +87,6 @@
             if (throwingUpOrDown)
             {
                 zComponent.useZForWallCollisions = true;
-                // When throwing down, the lifted object could be touching a wall if your back is to it. This allows it to not be destroyed immediately
                 if (unitDir.y > 0)
                 {
                     projMoveStrategy.CheckHitWallLastFrame();
@@ -96,10 +95,12 @@
             else
             {
                 zComponent.useZForWallCollisions = false;
+                projMoveStrategy.CheckHitWallLastFrame();
             }
 
             velComponent.vel = new FdPoint(throwSpeedForward * unitDir.x, throwSpeedForward * unitDir.y);
 
+            actor.EnableComponent<DamagerComponent>();
             actor.EnableComponent<WadeComponent>();
             actor.EnableComponent<ShadowComponent>();
         }

@@ -15,9 +15,6 @@ namespace Royale2D
             get
             {
                 bool dc = matchUdpClient.client.ConnectionStatus == NetConnectionStatus.Disconnected;
-                if (dc)
-                {
-                }
                 return dc;
             }
         }
@@ -25,7 +22,7 @@ namespace Royale2D
         public NetcodeSafeRng netcodeSafeRng;
         public bool isHost => mainPlayer.id == 0;
         public bool isClient => !isHost;
-        public string hostIp => "0.0.0.0";
+        public string hostIp => matchUdpClient.relayServerIp;
         public OnlineWorldHost? onlineWorldHost => worldHost as OnlineWorldHost;
         public bool desyncDetected;
 
@@ -101,7 +98,10 @@ namespace Royale2D
 
         public override void Update()
         {
-            Debug.waitingForPlayers = false;
+            if (Debug.main != null)
+            {
+                Debug.main.waitingForPlayers = false;
+            }
 
             matchUdpClient.UpdateReceive();
 

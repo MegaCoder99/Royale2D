@@ -15,7 +15,7 @@
         public CaneBlock? caneBlock;
         public bool magicCapeOn;
         int footstepTime = 0;
-        public List<string> childFrameTagsToHide = ["sword1", "sword2", "sword3", "sword4", "shield1", "shield2", "shield3", "hook"];
+        public List<string> drawboxTagsToHide = ["sword1", "sword2", "sword3", "sword4", "shield1", "shield2", "shield3", "hook"];
         public BattleBusData battleBusData = new BattleBusData();
         public FluteScreenData fluteScreenData = new FluteScreenData();
         public CharMusic charMusic;
@@ -50,7 +50,7 @@
             this.playerId = playerId;
 
             var mainCollider = new Collider(IntRect.CreateWHCentered(0, 3, 16, 16), isMultiSprite: true, isWallCollider: true);
-            var damagableCollider = new Collider(IntRect.CreateWHCentered(0, 3, 8, 8), isMultiSprite: true, isDamagable: true);
+            var damagableCollider = new Collider(IntRect.CreateWHCentered(0, 0, 8, 10), isMultiSprite: true, isDamagable: true);
             colliderComponent = AddComponent(new ColliderComponent(this, [mainCollider, damagableCollider]));
             colliderComponent.ChangeMoveStrategy(new CharMoveStrategy(colliderComponent, this));
             directionComponent = AddComponent(new DirectionComponent(this, Direction.Down));
@@ -68,10 +68,10 @@
             damagerComponent = AddComponent(new DamagerComponent(this, DamagerType.sword1, null), true);
 
             inventory = new Inventory(this);
-            health = new Stat(StatType.Health, this, startValue: 12, maxValue: 12, addCooldown: 10, addIncAmount: 4, maxValueCap: 10);
+            health = new Stat(StatType.Health, this, startValue: 12, maxValue: 12, addCooldown: 10, addIncAmount: 4, maxValueCap: 40);
             magic = new Stat(StatType.Magic, this, startValue: 32, maxValue: 32, addCooldown: 4);
-            rupees = new Stat(StatType.Rupee, this, startValue: Debug.startRupees, maxValue: 999, addCooldown: 2);
-            arrows = new Stat(StatType.Arrow, this, startValue: Debug.startArrows, maxValue: 99, addCooldown: 0);
+            rupees = new Stat(StatType.Rupee, this, startValue: Debug.main?.startRupees ?? 0, maxValue: 999, addCooldown: 2);
+            arrows = new Stat(StatType.Arrow, this, startValue: Debug.main?.startArrows ?? 0, maxValue: 99, addCooldown: 0);
 
             charState = new UninitializedState(this);
 
@@ -153,7 +153,7 @@
 
             inventory.Render(drawer);
 
-            if (Debug.showHitboxes)
+            if (Debug.main?.showHitboxes == true)
             {
                 var drawPos = GetCenterPos();
                 drawer.DrawPixel(drawPos.x.intVal, drawPos.y.intVal, SFML.Graphics.Color.Red);
@@ -222,14 +222,14 @@
             return pos.AddXY(0, 2);
         }
 
-        public override List<string> GetChildFrameTagsToHide()
+        public override List<string> GetDrawboxTagsToHide()
         {
-            var childFrameTagsToHideCopy = new List<string>(childFrameTagsToHide);
+            var drawboxTagsToHideCopy = new List<string>(drawboxTagsToHide);
             int swordLevel = inventory.SwordLevel();
-            if (swordLevel > 0) childFrameTagsToHideCopy.Remove($"sword{swordLevel}");
+            if (swordLevel > 0) drawboxTagsToHideCopy.Remove($"sword{swordLevel}");
             int shieldLevel = inventory.ShieldLevel();
-            if (shieldLevel > 0) childFrameTagsToHideCopy.Remove($"shield{shieldLevel}");
-            return childFrameTagsToHideCopy;
+            if (shieldLevel > 0) drawboxTagsToHideCopy.Remove($"shield{shieldLevel}");
+            return drawboxTagsToHideCopy;
         }
 
         public override string GetOverrideTexture()
@@ -274,13 +274,80 @@
             charState.OnTileCollision(collision);
 
             TileInstance tileInstance = collision.other.tileInstance;
-            // ANOW0 need to get tile clump by tags, type or something
             TileClumpInstance? tileClumpInstance = tileInstance.GetTileClumpInstanceFromTag(TileClumpTags.Door);
-            if (tileClumpInstance != null)
+            if (tileClumpInstance != null && IsFacingAndCloseToTileClump(tileClumpInstance.Value, isDoorOverrideThreshold: true))
             {
                 PlaySound("door open");
                 layer.TransformTileClump(tileClumpInstance.Value);
             }
+        }
+
+        public bool IsFacingAndCloseToTileClump(TileClumpInstance tileClumpInstance, bool isDoorOverrideThreshold = false)
+        {
+            FdPoint tileClumpCenterPos = tileClumpInstance.GetCenterPos();
+            
+            int distFromCenter;
+            if (dir == Direction.Up || dir == Direction.Down)
+            {
+                distFromCenter = Math.Abs((tileClumpCenterPos.x - pos.x).intVal);
+                int pixelWidth = tileClumpInstance.GetPixelWidth();
+                int overrideThreshold = pixelWidth / 2;
+                if (isDoorOverrideThreshold)
+                {
+                    overrideThreshold = pixelWidth / 4;
+                }
+                if (distFromCenter <= overrideThreshold)
+                {
+                    if (dir == Direction.Up) return tileClumpCenterPos.y < pos.y;
+                    else return tileClumpCenterPos.y > pos.y;
+                }
+            }
+            else
+            {
+                distFromCenter = Math.Abs((tileClumpCenterPos.y - pos.y).intVal);
+                int pixelHeight = tileClumpInstance.GetPixelWidth();
+                int overrideThreshold = pixelHeight / 2;
+                if (isDoorOverrideThreshold)
+                {
+                    overrideThreshold = pixelHeight / 4;
+                }
+                if (distFromCenter <= overrideThreshold)
+                {
+                    if (dir == Direction.Left) return tileClumpCenterPos.x < pos.x;
+                    else return tileClumpCenterPos.x > pos.x;
+                }
+            }
+
+            return false;
+        }
+
+        public bool IsFacingAndCloseToPos(FdPoint centerPos, int pixelWidth, int pixelHeight)
+        {
+            int distFromCenter;
+            if (dir == Direction.Up || dir == Direction.Down)
+            {
+                distFromCenter = Math.Abs((centerPos.x - pos.x).intVal);
+                int overrideThreshold = pixelWidth / 2;
+                
+                if (distFromCenter <= overrideThreshold)
+                {
+                    if (dir == Direction.Up) return centerPos.y < pos.y;
+                    else return centerPos.y > pos.y;
+                }
+            }
+            else
+            {
+                distFromCenter = Math.Abs((centerPos.y - pos.y).intVal);
+                int overrideThreshold = pixelHeight / 2;
+                
+                if (distFromCenter <= overrideThreshold)
+                {
+                    if (dir == Direction.Left) return centerPos.x < pos.x;
+                    else return centerPos.x > pos.x;
+                }
+            }
+
+            return false;
         }
 
         public void MoveCode(InputMoveData moveData)
@@ -318,7 +385,11 @@
                 footstepTime--;
             }
 
-            moveAmount *= Debug.charSpeedModifier;
+            if (Debug.main != null)
+            {
+                moveAmount *= Debug.main.charSpeedModifier;
+            }
+
             if (!moveAmount.IsZero())
             {
                 IncPos(moveData.moveAmount);
@@ -434,7 +505,7 @@
                 recoilUnitVec = attackerAci.GetWorldShape().Center().ToFdPoint().DirToNormalized(pos);
             }
 
-            if (Debug.oneShotKill) damager.damage = 100;
+            if (Debug.main?.oneShotKill == true) damager.damage = 100;
 
             if (damager.damage > 0)
             {

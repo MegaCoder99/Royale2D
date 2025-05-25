@@ -2,14 +2,17 @@
 {
     public class FeatureGate
     {
-        public static bool swim => Debug.customAssets || false;
-        public static bool lift => Debug.customAssets || false;
-        public static bool spinAttack => Debug.customAssets || false;
-        public static bool pitEntrance => Debug.customAssets || false;
-        public static bool attack => Debug.customAssets || false;
-        public static bool menu => Debug.customAssets || false;
-        public static bool battlebus => Debug.customAssets || false;
-        public static bool hud => Debug.customAssets || false;
-        public static bool storm => Debug.customAssets || false;
+        public static bool swim => (Debug.main?.customAssets == true) || false;
+        public static bool lift => (Debug.main?.customAssets == true) || false;
+        public static bool spinAttack => (Debug.main?.customAssets == true) || false;
+        public static bool pitEntrance => (Debug.main?.customAssets == true) || false;
+        public static List<ItemType> allowedItems = Debug.main?.customAssets == true ? [] : 
+        [
+            ItemType.sword1,
+            ItemType.bow,
+            ItemType.arrows10,
+            ItemType.heartPiece,
+            ItemType.heartContainer
+        ];
     }
 }

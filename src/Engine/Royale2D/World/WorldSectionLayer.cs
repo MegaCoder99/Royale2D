@@ -71,6 +71,7 @@ namespace Royale2D
             WorldSectionLayer? layerAbove = section.layers.SafeGet(layerIndex + 1);
 
             TileClump newTileClump = tileClumps[overrideTransformClumpName ?? tileClumpInstance.tileClump.transformClumpName];
+            var newTileClumpInstance = new TileClumpInstance(newTileClump, tileClumpInstance.i1, tileClumpInstance.j1);
             for (int i = tileClumpInstance.i1; i <= tileClumpInstance.i2; i++)
             {
                 for (int j = tileClumpInstance.j1; j <= tileClumpInstance.j2; j++)
@@ -79,21 +80,21 @@ namespace Royale2D
                     int newTileId = newTileClump.tileIds[i - tileClumpInstance.i1, j - tileClumpInstance.j1];
                     if (isSubsection && layerAbove != null)
                     {
-                        layerAbove.TransformTile(i, j, newTileId);
+                        layerAbove.TransformTile(i, j, newTileId, newTileClumpInstance);
                     }
 
-                    TransformTile(i, j, newTileId);
+                    TransformTile(i, j, newTileId, newTileClumpInstance);
                 }
             }
         }
 
-        public void TransformTile(int i, int j, int newTileId)
+        public void TransformTile(int i, int j, int newTileId, TileClumpInstance newTileClumpInstance)
         {
             tileGrid[i, j] = tileDatas[newTileId];
             tileTextureManager.DrawToRenderTexture(i, j, tileDatas[newTileId], tileTextureManager.renderTextures);
 
             string key = new GridCoords(i, j).ToString();
-            tileClumpInstanceCache.Remove(key);
+            tileClumpInstanceCache[key] = newTileClumpInstance;
         }
     }
 }

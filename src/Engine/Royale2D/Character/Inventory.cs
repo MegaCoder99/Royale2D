@@ -4,7 +4,7 @@ namespace Royale2D
 {
     public class Inventory
     {
-        public List<InventoryItem?> items = Debug.GetDebugItems();
+        public List<InventoryItem?> items = Debug.main?.GetDebugItems() ?? [null, null, null, null, null];
         public int selectedItemIndex;
         public Character character;
         public int itemGetTime;
@@ -43,7 +43,8 @@ namespace Royale2D
             if (itemGetTime > 0)
             {
                 float offsetY = itemGetTime > 30 ? 0.5f : (itemGetTime / 60f);
-                Assets.GetSprite("field_item").Render(drawer, character.pos.x.floatVal, character.pos.y.floatVal - 5 - offsetY * 24, itemGetSpriteIndex, ZIndex.UIGlobal);
+                FdPoint charPos = character.GetRenderPos();
+                Assets.GetSprite("field_item").Render(drawer, charPos.x.floatVal, charPos.y.floatVal - 5 - offsetY * 24, itemGetSpriteIndex, ZIndex.UIGlobal);
             }
         }
 
@@ -75,10 +76,11 @@ namespace Royale2D
                 {
                     firstIndexItem.quantity -= 4;
                     if (firstIndexItem.quantity == 0) items[firstIndex] = null;
-                    inventoryItem.item.itemType = ItemType.heartContainer;
+                    inventoryItem.itemType = ItemType.heartContainer;
+
                     inventoryItem.quantity = 1;
                     collected = true;
-                    AddItem(inventoryItem, -1);
+                    AddItem(inventoryItem, 0);
                 }
                 else if (inventoryItem.quantity == 0)
                 {
@@ -127,10 +129,10 @@ namespace Royale2D
             {
                 if (inventoryItem.itemType == ItemType.heartContainer)
                 {
-                    character.health.IncreaseMaxValue(1);
-                    character.health.AddOverTime(1);
+                    character.health.IncreaseMaxValue(4);
+                    character.health.AddOverTime(4);
                 }
-                if (inventoryItem.itemType == ItemType.arrows10) character.arrows.AddImmediate(5);
+                if (inventoryItem.itemType == ItemType.arrows10) character.arrows.AddImmediate(10);
                 if (inventoryItem.itemType == ItemType.arrows30) character.arrows.AddImmediate(30);
                 if (inventoryItem.itemType == ItemType.greenRupee) character.rupees.AddOverTime(1);
                 if (inventoryItem.itemType == ItemType.blueRupee) character.rupees.AddOverTime(5);
@@ -151,7 +153,7 @@ namespace Royale2D
             if (items[slot] == null) return;
             InventoryItem inventoryItem = items[slot]!;
 
-            FieldItem fieldItem = new FieldItem(character, character.pos, inventoryItem, Helpers.DirToFdVec(character.dir), true);
+            FieldItem fieldItem = new FieldItem(character, character.GetCenterPos(), inventoryItem, Helpers.DirToFdVec(character.dir), true);
             items[slot] = null;
 
             character.PlaySound("throw");
@@ -161,7 +163,7 @@ namespace Royale2D
         {
             if (amount == 0 || amount > character.rupees.value) return;
             character.rupees.DeductImmediate(amount);
-            Collectables.CreateRupeeLoot(character.section, character.pos, Helpers.DirToFdVec(character.dir), (int)character.rupees.value);
+            Collectables.CreateRupeeLoot(character.section, character.GetCenterPos(), Helpers.DirToFdVec(character.dir), (int)character.rupees.value);
             character.PlaySound("throw");
         }
 
@@ -169,7 +171,7 @@ namespace Royale2D
         {
             if (amount == 0 || amount > character.arrows.value) return;
             character.arrows.DeductImmediate(amount);
-            Collectables.CreateArrowLoot(character.section, character.pos, Helpers.DirToFdVec(character.dir), (int)character.arrows.value);
+            Collectables.CreateArrowLoot(character.section, character.GetCenterPos(), Helpers.DirToFdVec(character.dir), (int)character.arrows.value);
             character.PlaySound("throw");
         }
 
@@ -180,12 +182,12 @@ namespace Royale2D
                 itemType == ItemType.powerGlove ||
                 itemType == ItemType.titansMitt)
             {
-                return Debug.hasEverything;
+                if (Debug.main?.hasEverything == true) return true;
             }
-            if (itemType == ItemType.sword1 && Debug.sword == 1) return true;
-            if (itemType == ItemType.sword2 && Debug.sword == 2) return true;
-            if (itemType == ItemType.sword3 && Debug.sword == 3) return true;
-            if (itemType == ItemType.sword4 && Debug.sword == 4) return true;
+            if (itemType == ItemType.sword1 && Debug.main?.sword == 1) return true;
+            if (itemType == ItemType.sword2 && Debug.main?.sword == 2) return true;
+            if (itemType == ItemType.sword3 && Debug.main?.sword == 3) return true;
+            if (itemType == ItemType.sword4 && Debug.main?.sword == 4) return true;
             return items.Any(i => i?.item.itemType == itemType);
         }
 
@@ -196,7 +198,7 @@ namespace Royale2D
 
         public int SwordLevel()
         {
-            if (Debug.sword != null) return Debug.sword.Value;
+            if (Debug.main?.sword != null) return Debug.main.sword.Value;
             if (HasItem(ItemType.sword4)) return 4;
             if (HasItem(ItemType.sword3)) return 3;
             if (HasItem(ItemType.sword2)) return 2;
@@ -211,7 +213,7 @@ namespace Royale2D
 
         public int ShieldLevel()
         {
-            if (Debug.shield != null) return Debug.shield.Value;
+            if (Debug.main?.shield != null) return Debug.main.shield.Value;
             if (HasItem(ItemType.shield3)) return 3;
             if (HasItem(ItemType.shield2)) return 2;
             if (HasItem(ItemType.shield1)) return 1;

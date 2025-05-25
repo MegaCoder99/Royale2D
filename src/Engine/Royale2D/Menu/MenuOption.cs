@@ -4,6 +4,7 @@
     {
         public string text;
         public Action selectAction;
+        public Action<string>? selectActionWithOption = null;
 
         // Only used by main menu right now, think of an ECS and/or builder pattern here...
         public List<string> options = new List<string>();
@@ -51,7 +52,14 @@
         {
             if (Game.input.IsPressed(Control.MenuSelectPrimary))
             {
-                selectAction.Invoke();
+                if (selectActionWithOption != null && options.Count > 0)
+                {
+                    selectActionWithOption.Invoke(options[selectedOptionIndex]);
+                }
+                else
+                {
+                    selectAction.Invoke();
+                }
             }
 
             if (options.Count > 0)

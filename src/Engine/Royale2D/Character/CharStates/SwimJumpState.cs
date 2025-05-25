@@ -33,9 +33,9 @@
             {
                 if (time > 7)
                 {
+                    character.damagableComponent.ApplyDamage(Damagers.damagers[DamagerType.water], null, null);
                     visible = true;
                     character.pos = lastLandPos;
-                    character.damagableComponent.ApplyDamage(Damagers.damagers[DamagerType.water], null, null);
                     character.ChangeState(new IdleState(character));
                 }
             }
@@ -47,7 +47,8 @@
             if (!skipJump)
             {
                 character.zComponent = character.ResetComponent(new ZComponent(character, zVel: Fd.New(1, 0), useGravity: true));
-                character.velComponent = character.ResetComponent(new VelComponent(character, character.directionComponent.ForwardFdVec(1)));
+                FdPoint jumpDir = lastLandPos.DirToNormalized(character.pos);
+                character.velComponent = character.ResetComponent(new VelComponent(character, jumpDir));
             }
         }
 

@@ -2,7 +2,7 @@
 
 To run the engine code locally, open "Royale2D.sln", set Royale2D as startup if not already, and F5 or Ctrl+F5.
 
-This is a WIP and many custom assets (not provided) are required to enable a lot of the features under development. Otherwise, you'll load with a very basic, barebones player experience that tests the basics of exported sprites and maps. (i.e. a character with exported walk sprites that can walk around in an exported map file/tileset).
+This is a WIP and many custom assets (not provided) are required to enable a lot of the features under development. Otherwise, you'll be left with a lot more barebones experience.
 
 ## Patterns
 

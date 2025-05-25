@@ -50,18 +50,16 @@ namespace Royale2D
 
             world.textureManager.AddRenderTexture(renderTextureName, (uint)pixelWidth, (uint)pixelHeight);
 
-            if (Debug.debugStorm)
+            if (Debug.main != null && Debug.main.debugStorm == true)
             {
                 isStormWait = false;
-                currentStormCenter = Debug.quickStartPos.ToFdPoint();
+                currentStormCenter = Debug.main.quickStartPos.ToFdPoint();
                 currentStormRadius = 100;
             }
         }
 
         public void Update()
         {
-            if (!FeatureGate.storm) return;
-
             int incRateInFrames = (isFastStormTimer ? 100 : 1);
             if (isBattleBusPhase)
             {

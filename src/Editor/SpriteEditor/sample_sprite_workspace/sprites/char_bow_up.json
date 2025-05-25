@@ -1,0 +1,78 @@
+{
+  "spritesheetName": "character.png",
+  "frames": [
+    {
+      "rect": {
+        "x1": 206,
+        "y1": 57,
+        "x2": 228,
+        "y2": 83
+      },
+      "duration": 4,
+      "offset": {
+        "x": 2,
+        "y": -3
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 238,
+        "y1": 57,
+        "x2": 260,
+        "y2": 83
+      },
+      "duration": 4,
+      "offset": {
+        "x": 3,
+        "y": -3
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 269,
+        "y1": 58,
+        "x2": 290,
+        "y2": 83
+      },
+      "duration": 4,
+      "offset": {
+        "x": 2,
+        "y": -3
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": []
+    },
+    {
+      "rect": {
+        "x1": 301,
+        "y1": 57,
+        "x2": 324,
+        "y2": 83
+      },
+      "duration": 4,
+      "offset": {
+        "x": 3,
+        "y": -3
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [
+        {
+          "x": 0,
+          "y": -16
+        }
+      ]
+    }
+  ],
+  "hitboxes": [],
+  "loopStartFrame": 0,
+  "alignment": "center",
+  "wrapMode": "loop"
+}

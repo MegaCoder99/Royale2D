@@ -73,7 +73,7 @@ namespace Royale2D
                 newWindow = new RenderWindow(new VideoMode(VideoMode.DesktopMode.Width, VideoMode.DesktopMode.Height), "Royale2D", Styles.Fullscreen);
             }
 
-            if (!Debug.unlimitedFPS)
+            if (Debug.main?.unlimitedFPS != true)
             {
                 newWindow.SetVerticalSyncEnabled(true);
                 newWindow.SetFramerateLimit(60);
@@ -119,15 +119,16 @@ namespace Royale2D
 
                 window.Display();
 
+#if DEBUG
                 if (input.IsKeyPressed(Keyboard.Key.F12))
                 {
-                    // menuDev = !menuDev;
                     Texture screenshotTexture = new Texture(Game.window.Size.X, Game.window.Size.Y);
                     screenshotTexture.Update(Game.window);
                     SFML.Graphics.Image screenshot = screenshotTexture.CopyToImage();
                     SFML.Graphics.Image scaledDownImage = Helpers.ScaleDownImage(screenshot, ScreenW, ScreenH);
-                    scaledDownImage.SaveToFile("C:/users/username/Desktop/screenshot.png");
+                    scaledDownImage.SaveToFile(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/r2d_screenshot.png");
                 }
+#endif
 
                 time += spf;
                 frameCount++;
@@ -136,7 +137,7 @@ namespace Royale2D
 
         static void Update()
         {
-            Debug.Update();
+            Debug.main?.Update();
             input.Update();
             Menu.current?.Update();
             Match.current?.Update();
@@ -152,7 +153,7 @@ namespace Royale2D
             Menu.current?.Render();
             Match.current?.Render();
             // REFACTOR pass in drawable for others too?
-            Debug.RenderToScreen(menuDrawer);
+            Debug.main?.RenderToScreen(menuDrawer);
 
             worldDrawer.PostRender();
             hudDrawer.PostRender();
@@ -222,6 +223,7 @@ namespace Royale2D
         private static void OnClosed(object sender, EventArgs e)
         {
             RenderWindow window = (RenderWindow)sender;
+            Match.current?.Leave("User shut down game client.");
             window.Close();
         }
     }

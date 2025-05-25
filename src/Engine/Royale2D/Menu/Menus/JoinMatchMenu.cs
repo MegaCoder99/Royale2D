@@ -2,7 +2,7 @@
 {
     public class JoinMatchMenu : EnterTextMenu
     {
-        static string lastTextUsed = Debug.quickStartMatchName;
+        static string lastTextUsed = Debug.main?.quickStartMatchName ?? "";
 
         public JoinMatchMenu(Menu prevMenu) : 
             base(prevMenu, "JOIN MATCH", "Enter match name:", 15, null)

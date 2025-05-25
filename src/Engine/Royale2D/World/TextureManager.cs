@@ -28,7 +28,17 @@ namespace Royale2D
             return renderTextures[key];
         }
 
-        // CLEANUP
+        public void Cleanup()
+        {
+            foreach (RenderTexture rt in renderTextures.Values)
+            {
+                rt.Dispose();
+            }
+            foreach (TileTextureManager ttm in tileTextureManagers.Values)
+            {
+                ttm.Cleanup();
+            }
+        }
     }
 
     public class TileTextureManager
@@ -63,6 +73,17 @@ namespace Royale2D
 
             LoadRenderTextures();
             //DrawInitialRenderTextures();
+        }
+
+        public void Cleanup()
+        {
+            for (int i = 0; i < renderTextures.GetLength(0); i++)
+            {
+                for (int j = 0; j < renderTextures.GetLength(1); j++)
+                {
+                    renderTextures[i, j]?.Dispose();
+                }
+            }
         }
 
         public void LoadRenderTextures()
@@ -158,7 +179,7 @@ namespace Royale2D
                     {
                         drawer.DrawTexture(renderTextures[i, j].Texture, j * TextureSize, i * TextureSize, ZIndex.FromLayerIndex(layerIndex, ZIndex.LayerOffsetTile));
                     }
-                    if (Debug.showHitboxes)
+                    if (Debug.main?.showHitboxes == true)
                     {
                         drawer.DrawRectWH(j * TextureSize, i * TextureSize, TextureSize, TextureSize, false, SFML.Graphics.Color.Yellow, 1, zIndex: ZIndex.UIGlobal);
                     }

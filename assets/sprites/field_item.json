@@ -1,0 +1,1079 @@
+{
+  "frames": [
+    {
+      "rect": {
+        "x1": 700,
+        "y1": 1,
+        "x2": 713,
+        "y2": 14
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 4,
+        "y1": 1,
+        "x2": 5,
+        "y2": 2
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 4,
+        "y1": 1,
+        "x2": 5,
+        "y2": 2
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 4,
+        "y1": 1,
+        "x2": 5,
+        "y2": 2
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 4,
+        "y1": 1,
+        "x2": 5,
+        "y2": 2
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 4,
+        "y1": 1,
+        "x2": 5,
+        "y2": 2
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 4,
+        "y1": 1,
+        "x2": 5,
+        "y2": 2
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 4,
+        "y1": 1,
+        "x2": 5,
+        "y2": 2
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 4,
+        "y1": 1,
+        "x2": 5,
+        "y2": 2
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 4,
+        "y1": 1,
+        "x2": 5,
+        "y2": 2
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 4,
+        "y1": 1,
+        "x2": 5,
+        "y2": 2
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 4,
+        "y1": 1,
+        "x2": 5,
+        "y2": 2
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 4,
+        "y1": 1,
+        "x2": 5,
+        "y2": 2
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 4,
+        "y1": 1,
+        "x2": 5,
+        "y2": 2
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 4,
+        "y1": 1,
+        "x2": 5,
+        "y2": 2
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 4,
+        "y1": 1,
+        "x2": 5,
+        "y2": 2
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 683,
+        "y1": 1,
+        "x2": 698,
+        "y2": 14
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 4,
+        "y1": 1,
+        "x2": 5,
+        "y2": 2
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 472,
+        "y1": 1,
+        "x2": 480,
+        "y2": 13
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 4,
+        "y1": 1,
+        "x2": 5,
+        "y2": 2
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 4,
+        "y1": 1,
+        "x2": 5,
+        "y2": 2
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 4,
+        "y1": 1,
+        "x2": 5,
+        "y2": 2
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 4,
+        "y1": 1,
+        "x2": 5,
+        "y2": 2
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 4,
+        "y1": 1,
+        "x2": 5,
+        "y2": 2
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 4,
+        "y1": 1,
+        "x2": 5,
+        "y2": 2
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 4,
+        "y1": 1,
+        "x2": 5,
+        "y2": 2
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 4,
+        "y1": 1,
+        "x2": 5,
+        "y2": 2
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 4,
+        "y1": 1,
+        "x2": 5,
+        "y2": 2
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 4,
+        "y1": 1,
+        "x2": 5,
+        "y2": 2
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 4,
+        "y1": 1,
+        "x2": 5,
+        "y2": 2
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 4,
+        "y1": 1,
+        "x2": 5,
+        "y2": 2
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 4,
+        "y1": 1,
+        "x2": 5,
+        "y2": 2
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 4,
+        "y1": 1,
+        "x2": 5,
+        "y2": 2
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 4,
+        "y1": 1,
+        "x2": 5,
+        "y2": 2
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 4,
+        "y1": 1,
+        "x2": 5,
+        "y2": 2
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 4,
+        "y1": 1,
+        "x2": 5,
+        "y2": 2
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 4,
+        "y1": 1,
+        "x2": 5,
+        "y2": 2
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 4,
+        "y1": 1,
+        "x2": 5,
+        "y2": 2
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 4,
+        "y1": 1,
+        "x2": 5,
+        "y2": 2
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 4,
+        "y1": 1,
+        "x2": 5,
+        "y2": 2
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 4,
+        "y1": 1,
+        "x2": 5,
+        "y2": 2
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 4,
+        "y1": 1,
+        "x2": 5,
+        "y2": 2
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 4,
+        "y1": 1,
+        "x2": 5,
+        "y2": 2
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 4,
+        "y1": 1,
+        "x2": 5,
+        "y2": 2
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 4,
+        "y1": 1,
+        "x2": 5,
+        "y2": 2
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 4,
+        "y1": 1,
+        "x2": 5,
+        "y2": 2
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 4,
+        "y1": 1,
+        "x2": 5,
+        "y2": 2
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 4,
+        "y1": 1,
+        "x2": 5,
+        "y2": 2
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 731,
+        "y1": 1,
+        "x2": 745,
+        "y2": 14
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 715,
+        "y1": 1,
+        "x2": 729,
+        "y2": 14
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 4,
+        "y1": 1,
+        "x2": 5,
+        "y2": 2
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 4,
+        "y1": 1,
+        "x2": 5,
+        "y2": 2
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 4,
+        "y1": 1,
+        "x2": 5,
+        "y2": 2
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 4,
+        "y1": 1,
+        "x2": 5,
+        "y2": 2
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 4,
+        "y1": 1,
+        "x2": 5,
+        "y2": 2
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 771,
+        "y1": 1,
+        "x2": 776,
+        "y2": 16
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 4,
+        "y1": 1,
+        "x2": 5,
+        "y2": 2
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 4,
+        "y1": 1,
+        "x2": 5,
+        "y2": 2
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 4,
+        "y1": 1,
+        "x2": 5,
+        "y2": 2
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 4,
+        "y1": 1,
+        "x2": 5,
+        "y2": 2
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 4,
+        "y1": 1,
+        "x2": 5,
+        "y2": 2
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    },
+    {
+      "rect": {
+        "x1": 4,
+        "y1": 1,
+        "x2": 5,
+        "y2": 2
+      },
+      "duration": 4,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    }
+  ],
+  "hitboxes": [
+    {
+      "rect": {
+        "x1": -6,
+        "y1": -6,
+        "x2": 6,
+        "y2": 6
+      }
+    },
+    {
+      "rect": {
+        "x1": -10,
+        "y1": -10,
+        "x2": 10,
+        "y2": 10
+      }
+    }
+  ],
+  "loopStartFrame": 0,
+  "alignment": "center",
+  "wrapMode": "once"
+}

@@ -1,0 +1,25 @@
+{
+  "frames": [
+    {
+      "rect": {
+        "x1": 382,
+        "y1": 1,
+        "x2": 393,
+        "y2": 12
+      },
+      "duration": 10,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "hitboxes": [],
+      "drawboxes": [],
+      "POIs": [],
+      "spritesheetName": "packaged.png"
+    }
+  ],
+  "hitboxes": [],
+  "loopStartFrame": 0,
+  "alignment": "topleft",
+  "wrapMode": "loop"
+}
