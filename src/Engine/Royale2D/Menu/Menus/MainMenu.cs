@@ -20,6 +20,7 @@
             //menuOptions.Add(new TransitionMenuOption("Skins", () => new SkinsMenu(this)));
             //menuOptions.Add(new TransitionMenuOption("Options", () => new OptionsMenu(this)));
             //menuOptions.Add(new MenuOption("Controls", () => new ControlsMenu()).AddOptions(["Keyboard", "Controller"]));
+            menuOptions.Add(new TransitionMenuOption("View Controls", () => new ControlsMenu(this)));
             menuOptions.Add(new MenuOption("Quit", () => Game.window.Close()));
 
             Div menuOptionsDiv = gui.GetNodeById("menu-options") as Div;
